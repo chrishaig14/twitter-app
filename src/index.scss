@@ -77,15 +77,18 @@ button:active {
   display: flex;
   flex-direction: row;
   align-items: center;
+
   .comment-user-pic {
     width: 32px;
     height: 32px;
     border-radius: 50%;
     background-color: gray;
   }
+
   .comment-user {
     color: black;
   }
+
   .comment-content {
     background-color: white;
   }
@@ -93,4 +96,17 @@ button:active {
 
 .new-post {
   background-color: orange;
+}
+
+.feed-view {
+  background-color: violet;
+
+  .feed-header {
+    display: flex;
+    flex-direction: row;
+
+    .search-box {
+      background-color: deeppink;
+    }
+  }
 }

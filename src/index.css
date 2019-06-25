@@ -67,4 +67,12 @@ button:active {
 .new-post {
   background-color: orange; }
 
+.feed-view {
+  background-color: violet; }
+  .feed-view .feed-header {
+    display: flex;
+    flex-direction: row; }
+    .feed-view .feed-header .search-box {
+      background-color: deeppink; }
+
 /*# sourceMappingURL=index.css.map */
