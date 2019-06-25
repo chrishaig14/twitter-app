@@ -21,9 +21,10 @@ class Post extends React.Component {
                 <h1>Post</h1>
                 <div className={"post-header"}>
                     <div className={"post-user-pic"}></div>
-                    <NavLink to={"/user/" + "username"} className={"post-user"}>username</NavLink>
+                    <NavLink to={"/user/" + this.props.data.username}
+                             className={"post-user"}>{this.props.data.username}</NavLink>
                 </div>
-                <div className={"post-content"}>Lorem ipsum dolor sit amet</div>
+                <div className={"post-content"}>{this.props.data.content}</div>
                 <div className={"post-footer"}>
                     <button onClick={this.openCommentSection}>Reply</button>
                     <button>Retweet</button>

@@ -49,7 +49,7 @@ class LoginView extends React.Component {
 
     render() {
         if (this.state.toFeed) {
-            return (<Redirect to={"/feed"}/>);
+            return (<Redirect to={{pathname: "/feed", state: {username: this.state.username}}}/>);
         }
         return (
             <div id={"login-view"}>

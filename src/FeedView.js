@@ -5,17 +5,45 @@ import SearchBox from "./SearchBox";
 import NewPost from "./NewPost";
 
 class FeedView extends React.Component {
+
+    serverUrl = "http://localhost:8888";
+
     constructor(props) {
         super(props);
         this.logout = this.logout.bind(this);
+        this.state = {"posts": []};
     }
 
     logout() {
         console.log("Logging out!");
     }
 
+    componentDidMount() {
+        fetch(this.serverUrl + "/feed", {
+            method: "GET",
+            headers: {
+                "Authorization": this.props.location.state.username
+            }
+        }).then(
+            (res) => {
+                return res.json();
+            }
+        ).then(
+            body => {
+                console.log("BODY; ", body);
+                this.setState({"posts": body});
+                // for (let post of body) {
+                //     console.log("POST #", post);
+                //
+                // }
+                return body;
+            }
+        );
+    }
+
     render() {
         return (
+
             <div className={"feed-view"}>
                 FEED VIEW
                 <div className={"feed-header"}>
@@ -32,14 +60,12 @@ class FeedView extends React.Component {
                     </div>
                     <div className={"post-container"}>
                         <NewPost/>
-                        <Post/>
-                        <Post/>
-                        <Post/>
-                        <Post/>
+                        {this.state.posts.map((data) => <Post key={data.id} data={data}/>)}
                     </div>
                 </div>
             </div>
-        );
+        )
+            ;
     }
 }
 
