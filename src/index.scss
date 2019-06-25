@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  monospace;
+}
+
+button {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+button:hover {
+  background-color: lightblue;
+}
+
+button:active {
+  background-color: cornflowerblue;
+}
+
+#login-view {
+  background-color: coral;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .login-buttons {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}
+
+#signup-view {
+  background-color: crimson;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.post {
+  background-color: darkolivegreen;
+
+  .post-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .post-user-pic {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: gray;
+    }
+  }
+
+  .post-content {
+    background-color: white;
+  }
+}
+
+.comment {
+  background-color: forestgreen;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .comment-user-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: gray;
+  }
+  .comment-user {
+    color: black;
+  }
+  .comment-content {
+    background-color: white;
+  }
+}
+
+.new-post {
+  background-color: orange;
+}

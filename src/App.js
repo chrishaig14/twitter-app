@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import LoginView from "./LoginView";
+import SignupView from "./SignupView";
+import Post from "./Post";
+import Comment from "./Comment";
+import NewPost from "./NewPost";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    render() {
+        return (
+            <div>
+                <LoginView/>
+                <SignupView/>
+                <Post/>
+                <Comment/>
+                <NewPost/>
+            </div>
+        );
+    }
 }
 
 export default App;

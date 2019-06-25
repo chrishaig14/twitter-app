@@ -1,13 +1,70 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  -moz-osx-font-smoothing: grayscale; }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace; }
+
+button {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black; }
+
+button:hover {
+  background-color: lightblue; }
+
+button:active {
+  background-color: cornflowerblue; }
+
+#login-view {
+  background-color: coral; }
+  #login-view form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    #login-view form .login-buttons {
+      display: flex;
+      flex-direction: row; }
+
+#signup-view {
+  background-color: crimson; }
+  #signup-view form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+
+.post {
+  background-color: darkolivegreen; }
+  .post .post-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center; }
+    .post .post-header .post-user-pic {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: gray; }
+  .post .post-content {
+    background-color: white; }
+
+.comment {
+  background-color: forestgreen;
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+  .comment .comment-user-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: gray; }
+  .comment .comment-user {
+    color: black; }
+  .comment .comment-content {
+    background-color: white; }
+
+.new-post {
+  background-color: orange; }
+
+/*# sourceMappingURL=index.css.map */
