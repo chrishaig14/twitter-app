@@ -2,6 +2,7 @@ import React from "react";
 import Post from "./Post";
 import {NavLink} from "react-router-dom";
 import SearchBox from "./SearchBox";
+import NewPost from "./NewPost";
 
 class FeedView extends React.Component {
     constructor(props) {
@@ -29,10 +30,13 @@ class FeedView extends React.Component {
                         <p className={"user-info-info"}>Lorem ipsum dolor sit amet...</p>
 
                     </div>
-                    <div className={"post-container"}><Post/>
+                    <div className={"post-container"}>
+                        <NewPost/>
                         <Post/>
                         <Post/>
-                        <Post/></div>
+                        <Post/>
+                        <Post/>
+                    </div>
                 </div>
             </div>
         );
