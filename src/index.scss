@@ -100,10 +100,12 @@ button:active {
 
 .feed-view {
   background-color: violet;
+
   .feed-main {
     display: flex;
     flex-direction: row;
   }
+
   .feed-header {
     display: flex;
     flex-direction: row;
@@ -126,6 +128,7 @@ button:active {
 .user-info {
   background-color: brown;
   flex-grow: 1;
+
   .user-info-pic {
     width: 48px;
     height: 48px;
@@ -139,5 +142,21 @@ button:active {
 
   .user-info-info {
     font-family: Serif;
+  }
+}
+
+.user-view {
+  display: flex;
+  flex-direction: row;
+  .user-info {
+    .user-pic {
+      width: 48px;
+      height: 48px;
+      background-color: gray;
+      border-radius: 50%;
+    }
+  }
+  .user-posts{
+    flex-grow: 10;
   }
 }

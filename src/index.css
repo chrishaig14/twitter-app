@@ -98,4 +98,15 @@ button:active {
   .user-info .user-info-info {
     font-family: Serif; }
 
+.user-view {
+  display: flex;
+  flex-direction: row; }
+  .user-view .user-info .user-pic {
+    width: 48px;
+    height: 48px;
+    background-color: gray;
+    border-radius: 50%; }
+  .user-view .user-posts {
+    flex-grow: 10; }
+
 /*# sourceMappingURL=index.css.map */

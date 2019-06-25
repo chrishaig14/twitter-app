@@ -7,6 +7,7 @@ import Comment from "./Comment";
 import NewPost from "./NewPost";
 import {Route} from "react-router-dom";
 import FeedView from "./FeedView";
+import UserView from "./UserView";
 
 
 class App extends React.Component {
@@ -19,6 +20,7 @@ class App extends React.Component {
                 <Route path={"/comment"} component={Comment}/>
                 <Route path={"/newpost"} component={NewPost}/>
                 <Route path={"/feed"} component={FeedView}/>
+                <Route path={"/user/username"} component={UserView}/>
                 {/*<LoginView/>*/}
                 {/*<SignupView/>*/}
                 {/*<Post/>*/}
