@@ -100,7 +100,10 @@ button:active {
 
 .feed-view {
   background-color: violet;
-
+  .feed-main {
+    display: flex;
+    flex-direction: row;
+  }
   .feed-header {
     display: flex;
     flex-direction: row;
@@ -113,4 +116,28 @@ button:active {
 
 .new-comment {
   background-color: lightseagreen;
+}
+
+.post-container {
+  flex-grow: 5;
+  background-color: yellow;
+}
+
+.user-info {
+  background-color: brown;
+  flex-grow: 1;
+  .user-info-pic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: gray;
+  }
+
+  .user-info-username {
+    font-weight: bold;
+  }
+
+  .user-info-info {
+    font-family: Serif;
+  }
 }

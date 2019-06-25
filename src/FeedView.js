@@ -21,10 +21,19 @@ class FeedView extends React.Component {
                     <SearchBox/>
                     <button onClick={this.logout}>Logout</button>
                 </div>
-                <Post/>
-                <Post/>
-                <Post/>
-                <Post/>
+
+                <div className={"feed-main"}>
+                    <div className={"user-info"}>
+                        <span className={"user-info-username"}>username</span>
+                        <div className={"user-info-pic"}></div>
+                        <p className={"user-info-info"}>Lorem ipsum dolor sit amet...</p>
+
+                    </div>
+                    <div className={"post-container"}><Post/>
+                        <Post/>
+                        <Post/>
+                        <Post/></div>
+                </div>
             </div>
         );
     }
