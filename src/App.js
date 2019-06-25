@@ -1,21 +1,27 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import LoginView from "./LoginView";
 import SignupView from "./SignupView";
 import Post from "./Post";
 import Comment from "./Comment";
 import NewPost from "./NewPost";
+import {Route} from "react-router-dom";
+
 
 class App extends React.Component {
     render() {
         return (
             <div>
-                <LoginView/>
-                <SignupView/>
-                <Post/>
-                <Comment/>
-                <NewPost/>
+                <Route exact path={"/"} component={LoginView}/>
+                <Route path={"/signup"} component={SignupView}/>
+                <Route path={"/post"} component={Post}/>
+                <Route path={"/comment"} component={Comment}/>
+                <Route path={"/newpost"} component={NewPost}/>
+                {/*<LoginView/>*/}
+                {/*<SignupView/>*/}
+                {/*<Post/>*/}
+                {/*<Comment/>*/}
+                {/*<NewPost/>*/}
             </div>
         );
     }
