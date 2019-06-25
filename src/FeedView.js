@@ -7,11 +7,14 @@ import NewPost from "./NewPost";
 class FeedView extends React.Component {
 
     serverUrl = "http://localhost:8888";
+    token = "";
+    username = "";
 
     constructor(props) {
         super(props);
         this.logout = this.logout.bind(this);
         this.state = {"posts": []};
+        this.token = this.props.location.state.token;
     }
 
     logout() {
@@ -19,10 +22,23 @@ class FeedView extends React.Component {
     }
 
     componentDidMount() {
+        fetch(this.serverUrl + "/users/me", {
+            method: "GET",
+            headers: {
+                "Authorization": this.token
+            }
+        }).then(
+            res => res.json()
+        ).then(
+            res => {
+                this.username = res.username;
+                console.log("received current user data: ", res);
+            }
+        );
         fetch(this.serverUrl + "/feed", {
             method: "GET",
             headers: {
-                "Authorization": this.props.location.state.username
+                "Authorization": this.token
             }
         }).then(
             (res) => {
@@ -32,10 +48,6 @@ class FeedView extends React.Component {
             body => {
                 console.log("BODY; ", body);
                 this.setState({"posts": body});
-                // for (let post of body) {
-                //     console.log("POST #", post);
-                //
-                // }
                 return body;
             }
         );
@@ -53,7 +65,7 @@ class FeedView extends React.Component {
 
                 <div className={"feed-main"}>
                     <div className={"user-info"}>
-                        <span className={"user-info-username"}>username</span>
+                        <span className={"user-info-username"}>{this.username}</span>
                         <div className={"user-info-pic"}></div>
                         <p className={"user-info-info"}>Lorem ipsum dolor sit amet...</p>
 

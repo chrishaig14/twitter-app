@@ -6,6 +6,7 @@ import {Link, Redirect} from "react-router-dom";
 class LoginView extends React.Component {
 
     serverUrl = "http://localhost:8888";
+    token = "";
 
     constructor(props) {
         super(props);
@@ -36,20 +37,32 @@ class LoginView extends React.Component {
         }).then(
             (res) => {
                 if (!res.ok) {
+                    console.log("SOMETHINGS NOT OK");
                     this.setState({error: "There was an error!"});
                 } else {
+                    console.log("headers:  ", res.headers.entries());
+
+                    res.headers.forEach(console.log);
+                    this.token = res.headers.get("Authorization");
+                    console.log("TOKEN ;: ", this.token);
+                    // console.log("HEADERS: ", res.headers.get("Authorization"));
+                    // return res.json();
                     this.setState({toFeed: true});
                 }
             }
         ).catch(
-            () => this.setState({error: "Could not process request!"})
+            (res) => {
+                console.log("RESULT: ", res);
+                this.setState({error: "Could not process request!"});
+
+            }
         );
         event.preventDefault();
     }
 
     render() {
         if (this.state.toFeed) {
-            return (<Redirect to={{pathname: "/feed", state: {username: this.state.username}}}/>);
+            return (<Redirect to={{pathname: "/feed", state: {token: this.token}}}/>);
         }
         return (
             <div id={"login-view"}>
