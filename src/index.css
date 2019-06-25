@@ -75,4 +75,7 @@ button:active {
     .feed-view .feed-header .search-box {
       background-color: deeppink; }
 
+.new-comment {
+  background-color: lightseagreen; }
+
 /*# sourceMappingURL=index.css.map */

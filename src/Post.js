@@ -1,7 +1,20 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
+import Comment from "./Comment";
+import NewComment from "./NewComment";
 
 class Post extends React.Component {
+    constructor(props) {
+        super(props);
+        this.openCommentSection = this.openCommentSection.bind(this);
+        this.state = {commentSection: false};
+    }
+
+    openCommentSection() {
+        console.log("opening comment section for post");
+        this.setState({commentSection: true});
+    }
+
     render() {
         return (
             <div className={"post"}>
@@ -12,9 +25,17 @@ class Post extends React.Component {
                 </div>
                 <div className={"post-content"}>Lorem ipsum dolor sit amet</div>
                 <div className={"post-footer"}>
-                    <button>Reply</button>
+                    <button onClick={this.openCommentSection}>Reply</button>
                     <button>Retweet</button>
                 </div>
+
+                {this.state.commentSection ? (<div>
+                    <NewComment/>
+                    <Comment/>
+                    <Comment/>
+                    <Comment/>
+                    <Comment/>
+                </div>) : null}
             </div>
         );
     }
