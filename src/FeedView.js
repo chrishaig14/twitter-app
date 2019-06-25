@@ -6,6 +6,11 @@ import SearchBox from "./SearchBox";
 class FeedView extends React.Component {
     constructor(props) {
         super(props);
+        this.logout = this.logout.bind(this);
+    }
+
+    logout() {
+        console.log("Logging out!");
     }
 
     render() {
@@ -14,7 +19,7 @@ class FeedView extends React.Component {
                 FEED VIEW
                 <div className={"feed-header"}>
                     <SearchBox/>
-                    <button>Logout</button>
+                    <button onClick={this.logout}>Logout</button>
                 </div>
                 <Post/>
                 <Post/>

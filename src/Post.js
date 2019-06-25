@@ -1,4 +1,5 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
 
 class Post extends React.Component {
     render() {
@@ -7,7 +8,7 @@ class Post extends React.Component {
                 <h1>Post</h1>
                 <div className={"post-header"}>
                     <div className={"post-user-pic"}></div>
-                    <a className={"post-user"}>username</a>
+                    <NavLink to={"/user/" + "username"} className={"post-user"}>username</NavLink>
                 </div>
                 <div className={"post-content"}>Lorem ipsum dolor sit amet</div>
                 <div className={"post-footer"}>
