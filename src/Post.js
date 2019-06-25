@@ -21,7 +21,7 @@ class Post extends React.Component {
                 <h1>Post</h1>
                 <div className={"post-header"}>
                     <div className={"post-user-pic"}></div>
-                    <NavLink to={"/user/" + this.props.data.username}
+                    <NavLink to={"/users/" + this.props.data.username}
                              className={"post-user"}>{this.props.data.username}</NavLink>
                 </div>
                 <div className={"post-content"}>{this.props.data.content}</div>

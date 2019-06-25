@@ -107,6 +107,7 @@ button:active {
     background-color: gray;
     border-radius: 50%; }
   .user-view .user-posts {
-    flex-grow: 10; }
+    flex-grow: 10;
+    background-color: blue; }
 
 /*# sourceMappingURL=index.css.map */

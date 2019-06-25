@@ -20,7 +20,7 @@ class App extends React.Component {
                 <Route path={"/comment"} component={Comment}/>
                 <Route path={"/newpost"} component={NewPost}/>
                 <Route path={"/feed"} component={FeedView}/>
-                <Route path={"/user/username"} component={UserView}/>
+                <Route path={"/users/:id"} component={UserView}/>
                 {/*<LoginView/>*/}
                 {/*<SignupView/>*/}
                 {/*<Post/>*/}
