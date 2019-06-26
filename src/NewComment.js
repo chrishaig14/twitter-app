@@ -14,7 +14,8 @@ class NewComment extends React.Component {
         return (
             <div className={"new-comment"}>
                 <form onSubmit={this.submitComment}>
-                    <label>COMMENT<input type={"text"}/></label>
+                    <label for="content">COMMENT</label>
+                    <input autoComplete={"off"} id="content" type={"text"}/>
                     <button type={"submit"}>Send</button>
                 </form>
             </div>

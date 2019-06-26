@@ -37,9 +37,9 @@ class UserView extends React.Component {
                         Lorem ipsum dolor sit amet...
                     </p>
                     <button>Follow</button>
-                    <button>Unfollow</button>|
+                    <button>Unfollow</button>
                 </div>
-                <div className={"user-posts"}>
+                <div className={"post-container"}>
                     {this.state.posts.map(data => <Post key={data.id} data={data}/>)}
                 </div>
             </div>

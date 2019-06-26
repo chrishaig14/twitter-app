@@ -13,9 +13,14 @@ code {
 }
 
 button {
-  background-color: white;
+  background-color: aliceblue;
   border-radius: 5px;
   border: 1px solid black;
+  padding: 5px;
+}
+
+button:focus {
+  outline: none;
 }
 
 button:hover {
@@ -26,57 +31,108 @@ button:active {
   background-color: cornflowerblue;
 }
 
+input[type="text"], input[type="password"] {
+  padding: 5px;
+  border-radius: 5px;
+  border: solid 2px transparent;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  outline: none;
+  border: solid 2px #6d8891;
+}
+
+
 #login-view {
-  background-color: coral;
+  background-color: lightblue;
+  padding: 5px;
 
   form {
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    * {
+      margin-bottom: 5px;
+    }
+
+    label {
+      * {
+        margin-left: 5px;
+      }
+    }
+
     .login-buttons {
       display: flex;
       flex-direction: row;
+      margin-top: 5px;
+
+      * {
+        margin-right: 5px;
+      }
     }
   }
 }
 
 #signup-view {
-  background-color: crimson;
+  background-color: lightblue;
 
   form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    * {
+      margin-top: 5px;
+    }
   }
 }
 
 .post {
-  background-color: darkolivegreen;
+  background-color: lightblue;
+  border: solid 1px black;
+  border-radius: 5px;
+  padding: 5px;
 
   .post-header {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 5px;
 
     .post-user-pic {
-      width: 48px;
-      height: 48px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background-color: gray;
+      margin-right: 5px;
     }
   }
 
   .post-content {
+    margin-bottom: 5px;
     background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  .post-footer {
+    button {
+      margin-right: 5px;
+    }
   }
 }
 
 .comment {
-  background-color: forestgreen;
+  background-color: lightblue;
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: 5px;
+  border-bottom: 1px solid black;
+
+  * {
+    margin-right: 5px;
+  }
 
   .comment-user-pic {
     width: 32px;
@@ -90,16 +146,38 @@ button:active {
   }
 
   .comment-content {
+    border-radius: 5px;
+    padding: 5px;
     background-color: white;
+    flex-grow: 1;
   }
 }
 
 .new-post {
-  background-color: orange;
+  background-color: lightblue;
+  border: solid 1px black;
+  border-radius: 5px;
+  padding: 5px;
+
+  form {
+    display: flex;
+    flex-direction: row;
+    //justify-items: stretch;
+    .new-post-text {
+      border: none;
+      flex-grow: 1;
+      border-radius: 5px;
+      padding: 5px;
+    }
+
+    * {
+      margin-right: 5px;
+    }
+  }
 }
 
 .feed-view {
-  background-color: violet;
+  //background-color: lightblue;
 
   .feed-main {
     display: flex;
@@ -109,25 +187,54 @@ button:active {
   .feed-header {
     display: flex;
     flex-direction: row;
+    background-color: cornflowerblue;
+    margin-bottom: 5px;
+    align-items: center;
+    padding: 5px;
 
     .search-box {
-      background-color: deeppink;
+    }
+
+    .submit-search-btn {
     }
   }
 }
 
 .new-comment {
-  background-color: lightseagreen;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: lightblue;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  padding: 5px;
+
+  form {
+    display: flex;
+    flex-direction: row;
+
+    input[type="text"] {
+      flex-grow: 1;
+      margin-right: 5px;
+    }
+  }
 }
 
 .post-container {
   flex-grow: 5;
-  background-color: yellow;
+  //background-color: lightblue;
+  .post, .new-post {
+    margin-bottom: 5px;
+  }
 }
 
 .user-info {
-  background-color: brown;
+  background-color: lightblue;
   flex-grow: 1;
+  border: solid 1px black;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding: 5px;
+  border-radius: 5px;
 
   .user-info-pic {
     width: 48px;
@@ -150,6 +257,13 @@ button:active {
   flex-direction: row;
 
   .user-info {
+    border: solid 1px black;
+    background-color: lightblue;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-radius: 5px;
+    padding: 5px;
+
     .user-pic {
       width: 48px;
       height: 48px;

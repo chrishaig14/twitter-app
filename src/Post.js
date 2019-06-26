@@ -18,7 +18,7 @@ class Post extends React.Component {
     render() {
         return (
             <div className={"post"}>
-                <h1>Post</h1>
+                {/*<h1>Post</h1>*/}
                 <div className={"post-header"}>
                     <div className={"post-user-pic"}></div>
                     <NavLink to={"/users/" + this.props.data.username}

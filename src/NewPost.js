@@ -4,9 +4,9 @@ class NewPost extends React.Component {
     render() {
         return (
             <div className={"new-post"}>
-                <h1>New post</h1>
+                {/*<h1>New post</h1>*/}
                 <form>
-                    <input type={"text"}/>
+                    <input className={"new-post-text"} type={"text"}/>
                     <button type={"submit"}>Post!</button>
                 </form>
             </div>
