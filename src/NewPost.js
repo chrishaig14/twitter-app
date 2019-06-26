@@ -19,9 +19,18 @@ class NewPost extends React.Component {
             res => {
                 if (res.ok) {
                     console.log("POST OK!");
+                    console.log(this.props.onPost);
+                    console.log("RES: ", res);
+                    this.setState({post: ""});
                 } else {
                     console.log("POST NOT OK!");
                 }
+                return res.json();
+            }
+        ).then(
+            res => {
+                this.props.onPost(res);
+                console.log("FINAL RES: ", res);
             }
         );
         event.preventDefault();
@@ -36,7 +45,8 @@ class NewPost extends React.Component {
             <div className={"new-post"}>
                 {/*<h1>New post</h1>*/}
                 <form onSubmit={this.onSubmit}>
-                    <input className={"new-post-text"} type={"text"} onChange={this.onContentChange}/>
+                    <input className={"new-post-text"} value={this.state.post} type={"text"}
+                           onChange={this.onContentChange}/>
                     <button type={"submit"}>Post!</button>
                 </form>
             </div>

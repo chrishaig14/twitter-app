@@ -15,6 +15,7 @@ class FeedView extends React.Component {
         this.logout = this.logout.bind(this);
         this.state = {"posts": []};
         this.token = this.props.location.state.token;
+        this.addNewPost = this.addNewPost.bind(this);
     }
 
     logout() {
@@ -53,6 +54,14 @@ class FeedView extends React.Component {
         );
     }
 
+    addNewPost(post) {
+        console.log("ADDING POST: ", post)
+        this.setState(state => {
+            state.posts.unshift(post);
+            return {posts: state.posts};
+        }, () => console.log("posts:", this.state.posts));
+    }
+
     render() {
         return (
 
@@ -71,7 +80,7 @@ class FeedView extends React.Component {
 
                     </div>
                     <div className={"post-container"}>
-                        <NewPost token={this.token}/>
+                        <NewPost token={this.token} onPost={this.addNewPost}/>
                         {this.state.posts.map((data) => <Post key={data.id} data={data}/>)}
                     </div>
                 </div>
