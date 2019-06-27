@@ -66,7 +66,7 @@ class LoginView extends React.Component {
         }
         return (
             <div id={"login-view"}>
-                <h1>Login View</h1>
+                {/*<h1>Login View</h1>*/}
                 <form onSubmit={this.submitLogin}>
                     <label>USERNAME<input type="text" value={this.state.username}
                                           onChange={this.onUsernameChange}/></label>
