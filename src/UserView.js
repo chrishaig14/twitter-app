@@ -31,7 +31,7 @@ class UserView extends React.Component {
         return (
             <div className={"user-view"}>
                 <div className={"user-info"}>
-                    <span>username</span>
+                    <span>{this.username}</span>
                     <div className={"user-pic"}></div>
                     <p className={"user-info"}>
                         Lorem ipsum dolor sit amet...
