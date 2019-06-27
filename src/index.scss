@@ -106,6 +106,7 @@ input[type="text"]:focus, input[type="password"]:focus {
     flex-direction: row;
     align-items: center;
     margin-bottom: 5px;
+    //justify-items: stretch;
 
     .post-user-pic {
       width: 40px;
@@ -114,6 +115,13 @@ input[type="text"]:focus, input[type="password"]:focus {
       background-color: gray;
       margin-right: 5px;
     }
+
+    .post-time {
+      color: darken(gray,20%);
+      font-size: 0.7em;
+      margin-left: auto;
+    }
+
   }
 
   .post-content {
@@ -285,3 +293,4 @@ input[type="text"]:focus, input[type="password"]:focus {
     background-color: blue;
   }
 }
+

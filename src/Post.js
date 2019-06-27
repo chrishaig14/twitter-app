@@ -15,7 +15,20 @@ class Post extends React.Component {
         this.setState({commentSection: true});
     }
 
+    dateToString(date){
+        let now = new Date();
+        let strDate = "";
+        if (date.toDateString() === now.toDateString()){
+            strDate = date.toLocaleTimeString();
+        } else {
+            strDate = date.toDateString() + " at " + date.toLocaleTimeString();
+        }
+        return strDate
+    }
+
     render() {
+        // console.log("DATE IS: ", new Date(this.props.data.timestamp));
+        let date = (new Date(this.props.data.timestamp));
         return (
             <div className={"post"}>
                 {/*<h1>Post</h1>*/}
@@ -23,6 +36,7 @@ class Post extends React.Component {
                     <div className={"post-user-pic"}></div>
                     <NavLink to={"/users/" + this.props.data.username}
                              className={"post-user"}>{this.props.data.username}</NavLink>
+                    <span className="post-time">{this.dateToString(date)}</span>
                 </div>
                 <div className={"post-content"}>{this.props.data.content}</div>
                 <div className={"post-footer"}>
