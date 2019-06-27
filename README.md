@@ -1,3 +1,12 @@
+# Twitter
+
+Twitter clone app made with React.
+
+## Features
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

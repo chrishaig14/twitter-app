@@ -3,6 +3,8 @@ import React from "react";
 // import "./SignupView.css"
 
 class SignupView extends React.Component {
+    serverUrl = "http://localhost:8888";
+
     constructor(props) {
         super(props);
         this.onUsernameChange = this.onUsernameChange.bind(this);
@@ -26,7 +28,22 @@ class SignupView extends React.Component {
 
     onSignup(event) {
         console.log(`Signing up username=${this.state.username} password=${this.state.password} confirmPassword=${this.state.confirmPassword}`);
-        this.setState({signup: true});
+        fetch(this.serverUrl + "/users", {
+            method: "POST",
+            body: JSON.stringify({username: this.state.username, password: this.state.password})
+        }).then(
+            res => {
+                if (res.ok) {
+                    console.log("SIGNUP OK!");
+                    this.setState({signup: true});
+                } else {
+                    console.log("ERROR SIGNING UP!");
+                }
+            }
+        ).catch(e => {
+            console.log("ERRRRRRRRRRRRROR: ", e);
+        });
+
     }
 
     render() {
