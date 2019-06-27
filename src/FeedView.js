@@ -1,6 +1,6 @@
 import React from "react";
 import Post from "./Post";
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import SearchBox from "./SearchBox";
 import NewPost from "./NewPost";
 
@@ -13,13 +13,14 @@ class FeedView extends React.Component {
     constructor(props) {
         super(props);
         this.logout = this.logout.bind(this);
-        this.state = {"posts": []};
+        this.state = {"posts": [], toHome: false};
         this.token = this.props.location.state.token;
         this.addNewPost = this.addNewPost.bind(this);
     }
 
     logout() {
         console.log("Logging out!");
+        this.setState({toHome: true});
     }
 
     componentDidMount() {
@@ -55,7 +56,7 @@ class FeedView extends React.Component {
     }
 
     addNewPost(post) {
-        console.log("ADDING POST: ", post)
+        console.log("ADDING POST: ", post);
         this.setState(state => {
             state.posts.unshift(post);
             return {posts: state.posts};
@@ -63,6 +64,9 @@ class FeedView extends React.Component {
     }
 
     render() {
+        if (this.state.toHome) {
+            return (<Redirect to={"/"}/>);
+        }
         return (
 
             <div className={"feed-view"}>
