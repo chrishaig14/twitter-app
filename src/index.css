@@ -149,6 +149,12 @@ input[type="text"]:focus, input[type="password"]:focus {
   margin-bottom: 5px;
   align-items: center;
   padding: 5px; }
+  .feed-view .feed-header * {
+    margin-right: 5px; }
+  .feed-view .feed-header .logout-btn {
+    margin-left: auto; }
+  .feed-view .feed-header .submit-search-btn {
+    margin-left: 5px; }
 
 .new-comment {
   margin-top: 5px;

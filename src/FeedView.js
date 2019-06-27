@@ -86,7 +86,7 @@ class FeedView extends React.Component {
                 {/*FEED VIEW*/}
                 <div className={"feed-header"}>
                     <SearchBox/>
-                    <button onClick={this.logout}>Logout</button>
+                    <button onClick={this.logout} className={"logout-btn"}>Logout</button>
                 </div>
 
                 <div className={"feed-main"}>

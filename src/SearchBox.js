@@ -5,8 +5,8 @@ class SearchBox extends React.Component {
         return (
             <div className={"search-box"}>
                 <form>
-                    <label>SEARCH<input type={"text"}/></label>
-                    <button className={"submit-search-btn"} type={"submit"}><span role={"img"}>🔍</span></button>
+                    <input type={"text"}/>
+                    <button className={"submit-search-btn"} type={"submit"}>Search</button>
                 </form>
             </div>
         );
