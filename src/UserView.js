@@ -1,5 +1,6 @@
 import React from "react";
 import Post from "./Post";
+import Header from "./Header";
 
 class UserView extends React.Component {
     serverUrl = "http://localhost:8888";
@@ -68,19 +69,22 @@ class UserView extends React.Component {
         console.log("IS FOLLOWED: ", this.state.followed);
         return (
             <div className={"user-view"}>
-                <div className={"user-info"}>
-                    <span>{this.username}</span>
-                    <div className={"user-pic"}></div>
-                    <p className={"user-info"}>
-                        Lorem ipsum dolor sit amet...
-                    </p>
-                    {this.state.followed ?
-                        (<button onClick={this.unfollow}>Unfollow</button>) :
-                        (<button onClick={this.follow}>Follow</button>)
-                    }
-                </div>
-                <div className={"post-container"}>
-                    {this.state.posts.map(data => <Post key={data.id} data={data}/>)}
+                <Header/>
+                <div className={"user-view-main"}>
+                    <div className={"user-info"}>
+                        <span>{this.username}</span>
+                        <div className={"user-pic"}></div>
+                        <p className={"user-info"}>
+                            Lorem ipsum dolor sit amet...
+                        </p>
+                        {this.state.followed ?
+                            (<button onClick={this.unfollow}>Unfollow</button>) :
+                            (<button onClick={this.follow}>Follow</button>)
+                        }
+                    </div>
+                    <div className={"post-container"}>
+                        {this.state.posts.map(data => <Post key={data.id} data={data}/>)}
+                    </div>
                 </div>
             </div>
         );

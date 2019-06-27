@@ -213,6 +213,26 @@ input[type="text"]:focus, input[type="password"]:focus {
     }
   }
 }
+.header {
+  display: flex;
+  flex-direction: row;
+  background-color: cornflowerblue;
+  margin-bottom: 5px;
+  align-items: center;
+  padding: 5px;
+  * {
+    margin-right: 5px;
+  }
+  .logout-btn {
+    margin-left:auto;
+  }
+  .search-box {
+  }
+
+  .submit-search-btn {
+    margin-left: 5px;
+  }
+}
 
 .feed-view {
   //background-color: lightblue;
@@ -222,26 +242,7 @@ input[type="text"]:focus, input[type="password"]:focus {
     flex-direction: row;
   }
 
-  .feed-header {
-    display: flex;
-    flex-direction: row;
-    background-color: cornflowerblue;
-    margin-bottom: 5px;
-    align-items: center;
-    padding: 5px;
-    * {
-      margin-right: 5px;
-    }
-    .logout-btn {
-      margin-left:auto;
-    }
-    .search-box {
-    }
 
-    .submit-search-btn {
-      margin-left: 5px;
-    }
-  }
 }
 
 .new-comment {
@@ -299,6 +300,10 @@ input[type="text"]:focus, input[type="password"]:focus {
 }
 
 .user-view {
+
+}
+
+.user-view-main {
   display: flex;
   flex-direction: row;
 

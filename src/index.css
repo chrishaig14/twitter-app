@@ -139,22 +139,23 @@ input[type="text"]:focus, input[type="password"]:focus {
     .new-post form * {
       margin-right: 5px; }
 
-.feed-view .feed-main {
-  display: flex;
-  flex-direction: row; }
-.feed-view .feed-header {
+.header {
   display: flex;
   flex-direction: row;
   background-color: cornflowerblue;
   margin-bottom: 5px;
   align-items: center;
   padding: 5px; }
-  .feed-view .feed-header * {
+  .header * {
     margin-right: 5px; }
-  .feed-view .feed-header .logout-btn {
+  .header .logout-btn {
     margin-left: auto; }
-  .feed-view .feed-header .submit-search-btn {
+  .header .submit-search-btn {
     margin-left: 5px; }
+
+.feed-view .feed-main {
+  display: flex;
+  flex-direction: row; }
 
 .new-comment {
   margin-top: 5px;
@@ -194,22 +195,22 @@ input[type="text"]:focus, input[type="password"]:focus {
   .user-info .user-info-info {
     font-family: Serif; }
 
-.user-view {
+.user-view-main {
   display: flex;
   flex-direction: row; }
-  .user-view .user-info {
+  .user-view-main .user-info {
     border: solid 1px black;
     background-color: lightblue;
     margin-right: 5px;
     margin-left: 5px;
     border-radius: 5px;
     padding: 5px; }
-    .user-view .user-info .user-pic {
+    .user-view-main .user-info .user-pic {
       width: 48px;
       height: 48px;
       background-color: gray;
       border-radius: 50%; }
-  .user-view .user-posts {
+  .user-view-main .user-posts {
     flex-grow: 10;
     background-color: blue; }
 

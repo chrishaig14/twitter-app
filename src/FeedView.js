@@ -3,6 +3,7 @@ import Post from "./Post";
 import {NavLink, Redirect} from "react-router-dom";
 import SearchBox from "./SearchBox";
 import NewPost from "./NewPost";
+import Header from "./Header";
 
 class FeedView extends React.Component {
 
@@ -22,7 +23,7 @@ class FeedView extends React.Component {
 
     constructor(props) {
         super(props);
-        this.logout = this.logout.bind(this);
+        // this.logout = this.logout.bind(this);
         this.state = {"posts": [], toHome: false};
         this.token = this.str_obj(document.cookie).token;
         console.log("TOKEN : ", this.token);
@@ -30,11 +31,7 @@ class FeedView extends React.Component {
         this.addNewPost = this.addNewPost.bind(this);
     }
 
-    logout() {
-        console.log("Logging out!");
-        this.setState({toHome: true});
-        document.cookie = "token=";
-    }
+
 
     componentDidMount() {
         fetch(this.serverUrl + "/users/me", {
@@ -77,17 +74,13 @@ class FeedView extends React.Component {
     }
 
     render() {
-        if (this.state.toHome) {
-            return (<Redirect to={"/"}/>);
-        }
+
         return (
 
             <div className={"feed-view"}>
                 {/*FEED VIEW*/}
-                <div className={"feed-header"}>
-                    <SearchBox/>
-                    <button onClick={this.logout} className={"logout-btn"}>Logout</button>
-                </div>
+
+                <Header/>
 
                 <div className={"feed-main"}>
                     <div className={"user-info"}>
