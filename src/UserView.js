@@ -5,12 +5,23 @@ class UserView extends React.Component {
     serverUrl = "http://localhost:8888";
     username = "";
 
+    str_obj(str) {
+        str = str.split("; ");
+        var result = {};
+        for (var i = 0; i < str.length; i++) {
+            var cur = str[i].split("=");
+            result[cur[0]] = cur[1];
+        }
+        return result;
+    }
 
     constructor(props) {
         super(props);
         console.log("username: ", this.props.match.params.id);
         this.username = this.props.match.params.id;
-        this.token = this.props.location.state.token;
+        // this.token = this.props.location.state.token;
+        this.token = this.str_obj(document.cookie).token;
+        console.log("USER VIEW TOKEN : ", this.token);
         console.log("my token is: ", this.token);
         this.state = {"posts": [], followed: false};
         this.follow = this.follow.bind(this);

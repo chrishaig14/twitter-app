@@ -10,17 +10,30 @@ class FeedView extends React.Component {
     token = "";
     username = "";
 
+    str_obj(str) {
+        str = str.split("; ");
+        var result = {};
+        for (var i = 0; i < str.length; i++) {
+            var cur = str[i].split("=");
+            result[cur[0]] = cur[1];
+        }
+        return result;
+    }
+
     constructor(props) {
         super(props);
         this.logout = this.logout.bind(this);
         this.state = {"posts": [], toHome: false};
-        this.token = this.props.location.state.token;
+        this.token = this.str_obj(document.cookie).token;
+        console.log("TOKEN : ", this.token);
+        // this.token = this.props.location.state.token;
         this.addNewPost = this.addNewPost.bind(this);
     }
 
     logout() {
         console.log("Logging out!");
         this.setState({toHome: true});
+        document.cookie = "token=";
     }
 
     componentDidMount() {

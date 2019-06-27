@@ -8,12 +8,30 @@ class LoginView extends React.Component {
     serverUrl = "http://localhost:8888";
     token = "";
 
+    str_obj(str) {
+        str = str.split("; ");
+        var result = {};
+        for (var i = 0; i < str.length; i++) {
+            var cur = str[i].split("=");
+            result[cur[0]] = cur[1];
+        }
+        return result;
+    }
+
+
+
     constructor(props) {
         super(props);
         this.state = {username: "", password: "", toFeed: false, error: false};
         this.submitLogin = this.submitLogin.bind(this);
         this.onUsernameChange = this.onUsernameChange.bind(this);
         this.onPasswordChange = this.onPasswordChange.bind(this);
+    }
+
+    componentDidMount() {
+        if (this.str_obj(document.cookie).token) {
+            this.setState({toFeed: true});
+        }
     }
 
     onUsernameChange(event) {
@@ -44,6 +62,7 @@ class LoginView extends React.Component {
 
                     res.headers.forEach(console.log);
                     this.token = res.headers.get("Authorization");
+                    document.cookie = `token=${this.token}`;
                     console.log("TOKEN ;: ", this.token);
                     // console.log("HEADERS: ", res.headers.get("Authorization"));
                     // return res.json();
