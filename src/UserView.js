@@ -5,11 +5,16 @@ class UserView extends React.Component {
     serverUrl = "http://localhost:8888";
     username = "";
 
+
     constructor(props) {
         super(props);
         console.log("username: ", this.props.match.params.id);
         this.username = this.props.match.params.id;
-        this.state = {"posts": []};
+        this.token = this.props.location.state.token;
+        console.log("my token is: ", this.token);
+        this.state = {"posts": [], followed: false};
+        this.follow = this.follow.bind(this);
+        this.unfollow = this.unfollow.bind(this);
     }
 
     componentDidMount() {
@@ -24,10 +29,32 @@ class UserView extends React.Component {
                 this.setState({"posts": res});
             }
         );
+        this.checkFollowed();
+    }
 
+    checkFollowed() {
+        fetch(this.serverUrl + "/users/me/followees/" + this.username, {
+            method: "GET", headers: {"Authorization": this.token}
+        }).then(
+            res => {
+                console.log("RES.STATUS: ", res.status);
+                if (res.status === 200) {
+                    this.setState({followed: true});
+                } else {
+                    this.setState({followed: false});
+                }
+            }
+        );
+    }
+
+    follow() {
+    }
+
+    unfollow() {
     }
 
     render() {
+        console.log("IS FOLLOWED: ", this.state.followed);
         return (
             <div className={"user-view"}>
                 <div className={"user-info"}>
@@ -36,8 +63,10 @@ class UserView extends React.Component {
                     <p className={"user-info"}>
                         Lorem ipsum dolor sit amet...
                     </p>
-                    <button>Follow</button>
-                    <button>Unfollow</button>
+                    {this.state.followed ?
+                        (<button onClick={this.unfollow}>Unfollow</button>) :
+                        (<button onClick={this.follow}>Follow</button>)
+                    }
                 </div>
                 <div className={"post-container"}>
                     {this.state.posts.map(data => <Post key={data.id} data={data}/>)}

@@ -15,15 +15,15 @@ class Post extends React.Component {
         this.setState({commentSection: true});
     }
 
-    dateToString(date){
+    dateToString(date) {
         let now = new Date();
         let strDate = "";
-        if (date.toDateString() === now.toDateString()){
+        if (date.toDateString() === now.toDateString()) {
             strDate = date.toLocaleTimeString();
         } else {
             strDate = date.toDateString() + " at " + date.toLocaleTimeString();
         }
-        return strDate
+        return strDate;
     }
 
     render() {
@@ -34,7 +34,7 @@ class Post extends React.Component {
                 {/*<h1>Post</h1>*/}
                 <div className={"post-header"}>
                     <div className={"post-user-pic"}></div>
-                    <NavLink to={"/users/" + this.props.data.username}
+                    <NavLink to={{pathname: "/users/" + this.props.data.username, state: {token: this.props.token}}}
                              className={"post-user"}>{this.props.data.username}</NavLink>
                     <span className="post-time">{this.dateToString(date)}</span>
                 </div>
