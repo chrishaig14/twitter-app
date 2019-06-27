@@ -8,6 +8,7 @@ class NewComment extends React.Component {
 
     submitComment(event) {
         console.log("submitting comment!");
+        event.preventDefault();
     }
 
     render() {
