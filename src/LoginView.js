@@ -62,7 +62,7 @@ class LoginView extends React.Component {
 
                     res.headers.forEach(console.log);
                     this.token = res.headers.get("Authorization");
-                    document.cookie = `token=${this.token}`;
+                    document.cookie = `token=${this.token};path=/`;
                     console.log("TOKEN ;: ", this.token);
                     // console.log("HEADERS: ", res.headers.get("Authorization"));
                     // return res.json();

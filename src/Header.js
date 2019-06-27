@@ -13,7 +13,7 @@ class Header extends React.Component {
     logout() {
         console.log("Logging out!");
         this.setState({toHome: true});
-        document.cookie = "token=";
+        document.cookie = "token=;path=/";
     }
 
     render() {
