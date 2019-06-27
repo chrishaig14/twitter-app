@@ -105,7 +105,8 @@ input[type="text"]:focus, input[type="password"]:focus {
   border-radius: 5px;
   padding: 5px;
   box-shadow: black 0px 0px 2px 0px;
-  border:none;
+  border: none;
+
   .post-header {
     display: flex;
     flex-direction: row;
@@ -121,8 +122,22 @@ input[type="text"]:focus, input[type="password"]:focus {
       margin-right: 5px;
     }
 
+    .post-user {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      &:visited {
+        color:inherit;
+      }
+      &:hover {
+        //color: blueviolet
+        text-decoration: underline;
+      }
+
+    }
+
     .post-time {
-      color: darken(gray,20%);
+      color: darken(gray, 20%);
       font-size: 0.7em;
       margin-left: auto;
     }
@@ -181,6 +196,7 @@ input[type="text"]:focus, input[type="password"]:focus {
   padding: 5px;
   border: none;
   box-shadow: black 0 0 2px 0;
+
   form {
     display: flex;
     flex-direction: row;
