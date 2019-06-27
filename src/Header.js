@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBox from "./SearchBox";
-import {Redirect} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 
 class Header extends React.Component {
 
@@ -22,6 +22,7 @@ class Header extends React.Component {
         }
         return (
             <div className={"header"}>
+                <NavLink to={"/"}>Home</NavLink>
                 <SearchBox/>
                 <button onClick={this.logout} className={"logout-btn"}>Logout</button>
             </div>
