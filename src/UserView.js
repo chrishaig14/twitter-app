@@ -60,9 +60,29 @@ class UserView extends React.Component {
     }
 
     follow() {
+        fetch(this.serverUrl + "/users/me/followees/" + this.username, {
+            method: "PUT", headers: {"Authorization": this.token}
+        }).then(
+            res => {
+                if (res.ok) {
+                    console.log("NOW FOLLOWING USER: ", this.username);
+                    this.setState({followed: true});
+                }
+            }
+        );
     }
 
     unfollow() {
+        fetch(this.serverUrl + "/users/me/followees/" + this.username, {
+            method: "DELETE", headers: {"Authorization": this.token}
+        }).then(
+            res => {
+                if (res.ok) {
+                    console.log("STOPPED FOLLOWING USER: ", this.username);
+                    this.setState({followed: false});
+                }
+            }
+        );
     }
 
     render() {
