@@ -45,7 +45,7 @@ button:active {
 input[type="text"], input[type="password"] {
   padding: 5px;
   border-radius: 5px;
-  border: solid 2px transparent;
+  border: solid 2px lightblue;
 }
 
 input[type="text"]:focus, input[type="password"]:focus {
@@ -100,12 +100,14 @@ input[type="text"]:focus, input[type="password"]:focus {
 }
 
 .post {
-  background-color: lightblue;
+  background-color: white;
   //border: solid 1px black;
   border-radius: 5px;
   padding: 5px;
   box-shadow: black 0px 0px 2px 0px;
   border: none;
+  //max-width: 75%;
+  width: 90%;
 
   .post-header {
     display: flex;
@@ -126,9 +128,11 @@ input[type="text"]:focus, input[type="password"]:focus {
       text-decoration: none;
       color: black;
       font-weight: bold;
+
       &:visited {
-        color:inherit;
+        color: inherit;
       }
+
       &:hover {
         //color: blueviolet
         text-decoration: underline;
@@ -149,6 +153,7 @@ input[type="text"]:focus, input[type="password"]:focus {
     background-color: white;
     border-radius: 5px;
     padding: 5px;
+    word-wrap: break-word;
   }
 
   .post-footer {
@@ -190,22 +195,22 @@ input[type="text"]:focus, input[type="password"]:focus {
 }
 
 .new-post {
-  background-color: lightblue;
+  //background-color: lightblue;
   //border: solid 1px black;
   border-radius: 5px;
   padding: 5px;
   border: none;
   box-shadow: black 0 0 2px 0;
-
+  width: 90%;
   form {
     display: flex;
     flex-direction: row;
     //justify-items: stretch;
     .new-post-text {
-      border: none;
+      //border: none;
       flex-grow: 1;
-      border-radius: 5px;
-      padding: 5px;
+      //border-radius: 5px;
+      //padding: 5px;
     }
 
     * {
@@ -213,19 +218,26 @@ input[type="text"]:focus, input[type="password"]:focus {
     }
   }
 }
+
 .header {
   display: flex;
   flex-direction: row;
-  background-color: cornflowerblue;
+  background-color: white;
   margin-bottom: 5px;
   align-items: center;
   padding: 5px;
+  border-bottom: solid 1px black;
+  border-top: solid 1px black;
+  margin-top: 5px;
+
   * {
     margin-right: 5px;
   }
+
   .logout-btn {
-    margin-left:auto;
+    margin-left: auto;
   }
+
   .search-box {
   }
 
@@ -263,13 +275,30 @@ input[type="text"]:focus, input[type="password"]:focus {
     }
   }
 }
+.main-post{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .new-post {
+    margin-bottom: 20px;
+  }
+}
 
 .post-container {
   flex-grow: 5;
   //background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  //scroll-behavior: auto;
   .post, .new-post {
-    margin-bottom: 5px;
+    //min-width: 50%;
+    margin-bottom: 20px;
   }
+}
+
+.post-main-container {
+
 }
 
 .user-info {
@@ -278,10 +307,10 @@ input[type="text"]:focus, input[type="password"]:focus {
   //border: solid 1px black;
   margin-right: 5px;
   margin-left: 5px;
-  padding: 5px;
-  border-radius: 5px;
+  //padding: 5px;
+  //border-radius: 5px;
   border: none;
-  box-shadow: black 0 0 2px 0;
+  //box-shadow: black 0 0 2px 0;
 
   .user-info-pic {
     width: 48px;
@@ -299,27 +328,37 @@ input[type="text"]:focus, input[type="password"]:focus {
   }
 }
 
-.user-view {
-
-}
-
-.user-view-main {
+.other-user-view-main {
   display: flex;
-  flex-direction: row;
+  //flex-direction: row;
+  flex-direction: column;
 
-  .user-info {
-    border: solid 1px black;
-    background-color: lightblue;
-    margin-right: 5px;
-    margin-left: 5px;
-    border-radius: 5px;
-    padding: 5px;
+  .user-posts-title {
+    font-weight: bold;
+  }
 
-    .user-pic {
-      width: 48px;
-      height: 48px;
+  .other-user-info {
+    //border: solid 1px black;
+    //background-color: lightblue;
+    //margin-right: 5px;
+    //margin-left: 5px;
+    //border-radius: 5px;
+    //padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-bottom: solid 1px black;
+
+    .other-user-pic {
+      width: 96px;
+      height: 96px;
       background-color: gray;
       border-radius: 50%;
+    }
+
+    .username {
+      font-weight: bold;
     }
   }
 
@@ -329,3 +368,17 @@ input[type="text"]:focus, input[type="password"]:focus {
   }
 }
 
+.current-user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .current-user-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: red;
+  }
+  .current-username {
+    font-weight: bold;
+  }
+}

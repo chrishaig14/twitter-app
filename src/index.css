@@ -30,7 +30,7 @@ button:active {
 input[type="text"], input[type="password"] {
   padding: 5px;
   border-radius: 5px;
-  border: solid 2px transparent; }
+  border: solid 2px lightblue; }
 
 input[type="text"]:focus, input[type="password"]:focus {
   outline: none;
@@ -64,11 +64,12 @@ input[type="text"]:focus, input[type="password"]:focus {
       margin-top: 5px; }
 
 .post {
-  background-color: lightblue;
+  background-color: white;
   border-radius: 5px;
   padding: 5px;
   box-shadow: black 0px 0px 2px 0px;
-  border: none; }
+  border: none;
+  width: 90%; }
   .post .post-header {
     display: flex;
     flex-direction: row;
@@ -96,7 +97,8 @@ input[type="text"]:focus, input[type="password"]:focus {
     margin-bottom: 5px;
     background-color: white;
     border-radius: 5px;
-    padding: 5px; }
+    padding: 5px;
+    word-wrap: break-word; }
   .post .post-footer button {
     margin-right: 5px; }
 
@@ -123,29 +125,29 @@ input[type="text"]:focus, input[type="password"]:focus {
     flex-grow: 1; }
 
 .new-post {
-  background-color: lightblue;
   border-radius: 5px;
   padding: 5px;
   border: none;
-  box-shadow: black 0 0 2px 0; }
+  box-shadow: black 0 0 2px 0;
+  width: 90%; }
   .new-post form {
     display: flex;
     flex-direction: row; }
     .new-post form .new-post-text {
-      border: none;
-      flex-grow: 1;
-      border-radius: 5px;
-      padding: 5px; }
+      flex-grow: 1; }
     .new-post form * {
       margin-right: 5px; }
 
 .header {
   display: flex;
   flex-direction: row;
-  background-color: cornflowerblue;
+  background-color: white;
   margin-bottom: 5px;
   align-items: center;
-  padding: 5px; }
+  padding: 5px;
+  border-bottom: solid 1px black;
+  border-top: solid 1px black;
+  margin-top: 5px; }
   .header * {
     margin-right: 5px; }
   .header .logout-btn {
@@ -171,20 +173,27 @@ input[type="text"]:focus, input[type="password"]:focus {
       flex-grow: 1;
       margin-right: 5px; }
 
+.main-post {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .main-post .new-post {
+    margin-bottom: 20px; }
+
 .post-container {
-  flex-grow: 5; }
+  flex-grow: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
   .post-container .post, .post-container .new-post {
-    margin-bottom: 5px; }
+    margin-bottom: 20px; }
 
 .user-info {
   background-color: lightblue;
   flex-grow: 1;
   margin-right: 5px;
   margin-left: 5px;
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
-  box-shadow: black 0 0 2px 0; }
+  border: none; }
   .user-info .user-info-pic {
     width: 48px;
     height: 48px;
@@ -195,23 +204,38 @@ input[type="text"]:focus, input[type="password"]:focus {
   .user-info .user-info-info {
     font-family: Serif; }
 
-.user-view-main {
+.other-user-view-main {
   display: flex;
-  flex-direction: row; }
-  .user-view-main .user-info {
-    border: solid 1px black;
-    background-color: lightblue;
-    margin-right: 5px;
-    margin-left: 5px;
-    border-radius: 5px;
-    padding: 5px; }
-    .user-view-main .user-info .user-pic {
-      width: 48px;
-      height: 48px;
+  flex-direction: column; }
+  .other-user-view-main .user-posts-title {
+    font-weight: bold; }
+  .other-user-view-main .other-user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-bottom: solid 1px black; }
+    .other-user-view-main .other-user-info .other-user-pic {
+      width: 96px;
+      height: 96px;
       background-color: gray;
       border-radius: 50%; }
-  .user-view-main .user-posts {
+    .other-user-view-main .other-user-info .username {
+      font-weight: bold; }
+  .other-user-view-main .user-posts {
     flex-grow: 10;
     background-color: blue; }
+
+.current-user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+  .current-user-info .current-user-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: red; }
+  .current-user-info .current-username {
+    font-weight: bold; }
 
 /*# sourceMappingURL=index.css.map */

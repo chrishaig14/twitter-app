@@ -68,22 +68,28 @@ class UserView extends React.Component {
     render() {
         console.log("IS FOLLOWED: ", this.state.followed);
         return (
-            <div className={"user-view"}>
+            <div className={"other-user-view"}>
                 <Header/>
-                <div className={"user-view-main"}>
-                    <div className={"user-info"}>
-                        <span>{this.username}</span>
-                        <div className={"user-pic"}></div>
-                        <p className={"user-info"}>
-                            Lorem ipsum dolor sit amet...
-                        </p>
+                <div className={"other-user-view-main"}>
+                    <div className={"other-user-info"}>
+                        <div className={"other-user-pic"}></div>
+                        <span className={"username"}>{this.username}</span>
+
+                        {/*<p className={"other-user-info"}>*/}
+                        {/*    Lorem ipsum dolor sit amet...*/}
+                        {/*</p>*/}
                         {this.state.followed ?
                             (<button onClick={this.unfollow}>Unfollow</button>) :
                             (<button onClick={this.follow}>Follow</button>)
                         }
                     </div>
-                    <div className={"post-container"}>
-                        {this.state.posts.map(data => <Post key={data.id} data={data}/>)}
+
+                    <div className={"post-main-container"}>
+                        <h4 className={"user-posts-title"}>{this.username}'s posts</h4>
+                        <div className={"post-container"}>
+
+                            {this.state.posts.map(data => <Post key={data.id} data={data}/>)}
+                        </div>
                     </div>
                 </div>
             </div>

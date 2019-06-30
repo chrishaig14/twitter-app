@@ -32,21 +32,8 @@ class FeedView extends React.Component {
     }
 
 
-
     componentDidMount() {
-        fetch(this.serverUrl + "/users/me", {
-            method: "GET",
-            headers: {
-                "Authorization": this.token
-            }
-        }).then(
-            res => res.json()
-        ).then(
-            res => {
-                this.username = res.username;
-                console.log("received current user data: ", res);
-            }
-        );
+
         fetch(this.serverUrl + "/feed", {
             method: "GET",
             headers: {
@@ -83,15 +70,18 @@ class FeedView extends React.Component {
                 <Header/>
 
                 <div className={"feed-main"}>
-                    <div className={"user-info"}>
-                        <span className={"user-info-username"}>{this.username}</span>
-                        <div className={"user-info-pic"}></div>
-                        <p className={"user-info-info"}>Lorem ipsum dolor sit amet...</p>
+                    {/*<div className={"user-info"}>*/}
+                    {/*    <span className={"user-info-username"}>{this.username}</span>*/}
+                    {/*    <div className={"user-info-pic"}></div>*/}
+                    {/*    <p className={"user-info-info"}>Lorem ipsum dolor sit amet...</p>*/}
 
-                    </div>
-                    <div className={"post-container"}>
+                    {/*</div>*/}
+                    <div className={"main-post"}>
                         <NewPost token={this.token} onPost={this.addNewPost}/>
-                        {this.state.posts.map((data) => <Post key={data.id} data={data} token={this.token}/>)}
+                        <div className={"post-container"}>
+
+                            {this.state.posts.map((data) => <Post key={data.id} data={data} token={this.token}/>)}
+                        </div>
                     </div>
                 </div>
             </div>
