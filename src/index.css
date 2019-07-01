@@ -7,7 +7,7 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace; }
 
-button {
+button, .profile-pic-label {
   background-color: aliceblue;
   border-radius: 5px;
   border: none;
@@ -16,16 +16,13 @@ button {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 0.8em; }
-
-button:focus {
-  outline: none; }
-
-button:hover {
-  background-color: #8eb8e6; }
-
-button:active {
-  box-shadow: none;
-  background-color: cornflowerblue; }
+  button:focus, .profile-pic-label:focus {
+    outline: none; }
+  button:hover, .profile-pic-label:hover {
+    background-color: #8eb8e6; }
+  button:active, .profile-pic-label:active {
+    box-shadow: none;
+    background-color: cornflowerblue; }
 
 input[type="text"], input[type="password"] {
   padding: 5px;
@@ -237,5 +234,22 @@ input[type="text"]:focus, input[type="password"]:focus {
     background-color: red; }
   .current-user-info .current-username {
     font-weight: bold; }
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .profile .profile-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .profile .profile-form .profile-pic {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background-color: black; }
+    .profile .profile-form .profile-pic-input {
+      display: none; }
 
 /*# sourceMappingURL=index.css.map */

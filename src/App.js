@@ -8,6 +8,7 @@ import NewPost from "./NewPost";
 import {Route} from "react-router-dom";
 import FeedView from "./FeedView";
 import UserView from "./UserView";
+import EditProfile from "./EditProfile";
 
 
 class App extends React.Component {
@@ -21,6 +22,7 @@ class App extends React.Component {
                 <Route path={"/newpost"} component={NewPost}/>
                 <Route path={"/feed"} component={FeedView}/>
                 <Route path={"/users/:id"} component={UserView}/>
+                <Route path={"/editProfile"} component={EditProfile}/>
                 {/*<LoginView/>*/}
                 {/*<SignupView/>*/}
                 {/*<Post/>*/}

@@ -13,7 +13,7 @@ code {
   monospace;
 }
 
-button {
+button, .profile-pic-label{
   background-color: aliceblue;
   border-radius: 5px;
   //border: 2px solid #737373;
@@ -24,23 +24,33 @@ button {
   font-weight: bold;
   font-size: 0.8em;
   //color: #4d4d4d;
+  &:focus{
+    outline: none;
+  }
+  &:hover{
+    background-color: #8eb8e6;
+  }
+  &:active{
+    box-shadow: none;
+    background-color: cornflowerblue;
+  }
 }
 
-button:focus {
-  outline: none;
-}
-
-button:hover {
-
-
-  background-color: #8eb8e6;
-}
-
-button:active {
-  box-shadow: none;
-  background-color: cornflowerblue;
-
-}
+//button:focus {
+//  outline: none;
+//}
+//
+//button:hover {
+//
+//
+//  background-color: #8eb8e6;
+//}
+//
+//button:active {
+//  box-shadow: none;
+//  background-color: cornflowerblue;
+//
+//}
 
 input[type="text"], input[type="password"] {
   padding: 5px;
@@ -202,6 +212,7 @@ input[type="text"]:focus, input[type="password"]:focus {
   border: none;
   box-shadow: black 0 0 2px 0;
   width: 90%;
+
   form {
     display: flex;
     flex-direction: row;
@@ -275,10 +286,12 @@ input[type="text"]:focus, input[type="password"]:focus {
     }
   }
 }
-.main-post{
+
+.main-post {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .new-post {
     margin-bottom: 20px;
   }
@@ -372,13 +385,50 @@ input[type="text"]:focus, input[type="password"]:focus {
   display: flex;
   flex-direction: row;
   align-items: center;
+
   .current-user-pic {
     width: 32px;
     height: 32px;
     border-radius: 50%;
     background-color: red;
   }
+
   .current-username {
     font-weight: bold;
+  }
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .profile-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .profile-pic {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background-color: black;
+    }
+
+    .profile-pic-input {
+      display: none
+    }
+    //.profile-pic-label {
+    //  border-radius: 5px;
+    //  border: solid 1px black;
+    //  padding: 5px;
+    //  &:hover{
+    //    background-color: yellow;
+    //  }
+    //  &:active{
+    //    background-color: blue;
+    //  }
+    //}
   }
 }

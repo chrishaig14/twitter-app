@@ -5,7 +5,8 @@ import {NavLink, Redirect} from "react-router-dom";
 class Header extends React.Component {
 
     serverUrl = "http://localhost:8888";
-    username = "";
+
+    // username = "";
 
     str_obj(str) {
         str = str.split("; ");
@@ -19,7 +20,7 @@ class Header extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {toHome: false};
+        this.state = {toHome: false, username: ""};
         this.logout = this.logout.bind(this);
         this.token = this.str_obj(document.cookie).token;
     }
@@ -34,7 +35,7 @@ class Header extends React.Component {
             res => res.json()
         ).then(
             res => {
-                this.username = res.username;
+                this.setState({username: res.username});
                 console.log("HHHEADER TOKKKEN: ", this.token);
                 console.log("header received current user data: ", res);
             }
@@ -59,7 +60,7 @@ class Header extends React.Component {
                     <div className={"current-user-pic"}>
 
                     </div>
-                    <span className={"current-username"}>{this.username}</span>
+                    <NavLink to={{pathname: "/editProfile"}} className={"current-username"}>{this.state.username}</NavLink>
 
                 </div>
                 <button onClick={this.logout} className={"logout-btn"}>Logout</button>
