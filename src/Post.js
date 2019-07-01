@@ -4,10 +4,31 @@ import Comment from "./Comment";
 import NewComment from "./NewComment";
 
 class Post extends React.Component {
+    serverUrl ="http://localhost:8888"
     constructor(props) {
         super(props);
         this.openCommentSection = this.openCommentSection.bind(this);
-        this.state = {commentSection: false};
+        this.state = {commentSection: false, userpic: ""};
+    }
+
+    componentDidMount() {
+        let url = this.serverUrl + "/users/" + this.props.data.username+"/img";
+        console.log("USER IMAGE URL:", url);
+        fetch(url, {
+            method: "GET"
+        }).then(
+            res => {
+                console.log("HERE");
+
+return                res.text()
+                // return res.json();
+            }
+        ).then(
+            res => {
+                console.log(`GOT USER ${this.props.data.username} POSTS:`, res);
+                this.setState({"userpic": res});
+            }
+        );
     }
 
     openCommentSection() {
@@ -33,7 +54,7 @@ class Post extends React.Component {
             <div className={"post"}>
                 {/*<h1>Post</h1>*/}
                 <div className={"post-header"}>
-                    <div className={"post-user-pic"}></div>
+                    <img src={this.state.userpic} className={"post-user-pic"}></img>
                     <NavLink to={{pathname: "/users/" + this.props.data.username, state: {token: this.props.token}}}
                              className={"post-user"}>{this.props.data.username}</NavLink>
                     <span className="post-time">{this.dateToString(date)}</span>

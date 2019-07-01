@@ -35,7 +35,7 @@ class Header extends React.Component {
             res => res.json()
         ).then(
             res => {
-                this.setState({username: res.username});
+                this.setState({username: res.username, pic:res.pic});
                 console.log("HHHEADER TOKKKEN: ", this.token);
                 console.log("header received current user data: ", res);
             }
@@ -57,9 +57,10 @@ class Header extends React.Component {
                 <NavLink to={"/"}>Home</NavLink>
                 <SearchBox/>
                 <div className={"current-user-info"}>
-                    <div className={"current-user-pic"}>
+                    <img
+                         src={this.state.pic} className={"current-user-pic"}>
 
-                    </div>
+                    </img>
                     <NavLink to={{pathname: "/editProfile"}} className={"current-username"}>{this.state.username}</NavLink>
 
                 </div>

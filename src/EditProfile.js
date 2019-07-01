@@ -26,6 +26,23 @@ class EditProfile extends React.Component {
         };
     }
 
+    componentDidMount() {
+        fetch(this.serverUrl + "/users/me", {
+            method: "GET",
+            headers: {"Authorization": this.token}
+        }).then(
+            res => {
+                if (res.ok) {
+                    return res.json();
+                }
+            }
+        ).then(
+            res => {
+                this.setState({pic: res.pic, info: res.info});
+            }
+        );
+    }
+
     encodeImageFileAsURL(file, callback) {
         var reader = new FileReader();
         reader.onloadend = function () {
@@ -74,6 +91,7 @@ class EditProfile extends React.Component {
                 {/*<form className={"profile-form"} onSubmit={this.profileSubmit}>*/}
 
                 {/*<div className={"profile-pic"}></div>*/}
+                <h1>Edit your profile</h1>
                 <div className={"profile-form"}>
                     <img className={"profile-pic"} src={this.state.pic}/>
                     <label className={"profile-pic-label"}>Change<input type={"file"} ref="pic"

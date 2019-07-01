@@ -31,6 +31,16 @@ class UserView extends React.Component {
 
     componentDidMount() {
         console.log("SENDING REQUEST TO GET USER POSTS");
+        fetch(this.serverUrl + "/users/" + this.username, {
+            method: "GET"
+        }).then(
+            res => res.json()
+        ).then(
+            res => {
+                console.log(`GOT USER ${this.username} POSTS:`, res);
+                this.setState({"pic": res.pic});
+            }
+        );
         fetch(this.serverUrl + "/users/" + this.username + "/posts", {
             method: "GET"
         }).then(
@@ -92,7 +102,7 @@ class UserView extends React.Component {
                 <Header/>
                 <div className={"other-user-view-main"}>
                     <div className={"other-user-info"}>
-                        <div className={"other-user-pic"}></div>
+                        <img className={"other-user-pic"} src={this.state.pic}></img>
                         <span className={"username"}>{this.username}</span>
 
                         {/*<p className={"other-user-info"}>*/}
