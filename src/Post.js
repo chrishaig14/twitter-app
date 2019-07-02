@@ -66,7 +66,7 @@ return                res.text()
                 </div>
 
                 {this.state.commentSection ? (<div>
-                    <NewComment/>
+                    <NewComment postId={this.props.data.id}/>
                     <Comment/>
                     <Comment/>
                     <Comment/>
