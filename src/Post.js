@@ -4,15 +4,22 @@ import Comment from "./Comment";
 import NewComment from "./NewComment";
 
 class Post extends React.Component {
-    serverUrl ="http://localhost:8888"
+    serverUrl = "http://localhost:8888";
+
     constructor(props) {
         super(props);
         this.openCommentSection = this.openCommentSection.bind(this);
-        this.state = {commentSection: false, userpic: ""};
+        this.state = {commentSection: false, userpic: "", comments: []};
+        this.onNewComment = this.onNewComment.bind(this);
+    }
+
+    onNewComment(comment) {
+        console.log("ON NEW COMMENT!°");
+        this.setState((state) => {state.comments.push(comment); return state;});
     }
 
     componentDidMount() {
-        let url = this.serverUrl + "/users/" + this.props.data.username+"/img";
+        let url = this.serverUrl + "/users/" + this.props.data.username + "/img";
         console.log("USER IMAGE URL:", url);
         fetch(url, {
             method: "GET"
@@ -20,7 +27,7 @@ class Post extends React.Component {
             res => {
                 console.log("HERE");
 
-return                res.text()
+                return res.text();
                 // return res.json();
             }
         ).then(
@@ -33,7 +40,14 @@ return                res.text()
 
     openCommentSection() {
         console.log("opening comment section for post");
-        this.setState({commentSection: true});
+        fetch(this.serverUrl + "/posts/" + this.props.data.id + "/comments", {
+            method: "GET"
+        }).then(res => res.json()).then(
+            res => {
+                this.setState({commentSection: true, comments: res});
+            }
+        );
+
     }
 
     dateToString(date) {
@@ -66,11 +80,12 @@ return                res.text()
                 </div>
 
                 {this.state.commentSection ? (<div>
-                    <NewComment postId={this.props.data.id}/>
-                    <Comment/>
-                    <Comment/>
-                    <Comment/>
-                    <Comment/>
+                    <NewComment onSubmit={this.onNewComment} postId={this.props.data.id}/>
+                    {this.state.comments.map(comment => <Comment data={comment} key={comment.id}/>)}
+                    {/*<Comment/>*/}
+                    {/*<Comment/>*/}
+                    {/*<Comment/>*/}
+                    {/*<Comment/>*/}
                 </div>) : null}
             </div>
         );

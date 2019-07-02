@@ -36,6 +36,7 @@ class NewComment extends React.Component {
             res => res.json()
         ).then(
             res => {
+                this.props.onSubmit(res)
                 console.log("NEW COMMENT POSTED: ", res);
             }
         );
