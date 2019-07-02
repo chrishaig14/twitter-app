@@ -100,7 +100,6 @@ input[type="text"]:focus, input[type="password"]:focus {
     margin-right: 5px; }
 
 .comment {
-  background-color: lightblue;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -159,7 +158,6 @@ input[type="text"]:focus, input[type="password"]:focus {
 .new-comment {
   margin-top: 5px;
   margin-bottom: 5px;
-  background-color: lightblue;
   border-bottom: 1px solid gray;
   border-top: 1px solid gray;
   padding: 5px; }
