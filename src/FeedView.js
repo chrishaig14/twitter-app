@@ -67,7 +67,7 @@ class FeedView extends React.Component {
             <div className={"feed-view"}>
                 {/*FEED VIEW*/}
 
-                <Header/>
+                {/*<Header/>*/}
 
                 <div className={"feed-main"}>
                     {/*<div className={"user-info"}>*/}

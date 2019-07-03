@@ -86,7 +86,7 @@ class EditProfile extends React.Component {
     render() {
         return (
             <div className={"profile"}>
-                <Header/>
+                {/*<Header/>*/}
                 {/*<div >*/}
                 {/*<form className={"profile-form"} onSubmit={this.profileSubmit}>*/}
 

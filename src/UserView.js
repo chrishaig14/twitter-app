@@ -99,7 +99,7 @@ class UserView extends React.Component {
         console.log("IS FOLLOWED: ", this.state.followed);
         return (
             <div className={"other-user-view"}>
-                <Header/>
+                {/*<Header/>*/}
                 <div className={"other-user-view-main"}>
                     <div className={"other-user-info"}>
                         <img className={"other-user-pic"} src={this.state.pic}></img>
