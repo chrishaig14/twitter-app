@@ -437,3 +437,19 @@ input[type="text"]:focus, input[type="password"]:focus {
     //}
   }
 }
+
+.followed-user {
+  border-radius: 5px;
+  padding: 5px;
+  border: solid 1px gray;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .followed-user-pic {
+    width: 64px;
+    height: 64px;
+    border: solid 1px gray;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+}
