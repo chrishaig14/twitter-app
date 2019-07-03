@@ -15,16 +15,21 @@ class Post extends React.Component {
 
     onNewComment(comment) {
         console.log("ON NEW COMMENT!°");
-        this.setState((state) => {state.comments.push(comment); return state;});
+        this.setState((state) => {
+            state.comments.push(comment);
+            return state;
+        });
     }
 
     componentDidMount() {
         let url = this.serverUrl + "/users/" + this.props.data.username + "/img";
         console.log("USER IMAGE URL:", url);
+        let start = new Date();
         fetch(url, {
             method: "GET"
         }).then(
             res => {
+
                 console.log("HERE");
 
                 return res.text();
@@ -32,6 +37,8 @@ class Post extends React.Component {
             }
         ).then(
             res => {
+                let end = new Date();
+                console.log("TOOK ", end - start);
                 console.log(`GOT USER ${this.props.data.username} POSTS:`, res);
                 this.setState({"userpic": res});
             }

@@ -146,8 +146,6 @@ input[type="text"]:focus, input[type="password"]:focus {
   margin-top: 5px; }
   .header * {
     margin-right: 5px; }
-  .header .logout-btn {
-    margin-left: auto; }
   .header .submit-search-btn {
     margin-left: 5px; }
 
@@ -224,7 +222,8 @@ input[type="text"]:focus, input[type="password"]:focus {
 .current-user-info {
   display: flex;
   flex-direction: row;
-  align-items: center; }
+  align-items: center;
+  margin-left: auto; }
   .current-user-info .current-user-pic {
     width: 32px;
     height: 32px;
