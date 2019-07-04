@@ -2,9 +2,8 @@ import React from "react";
 import {functionTypeAnnotation} from "@babel/types";
 import {NavLink} from "react-router-dom";
 
-class FollowedUser extends React.Component {
+class UserCard extends React.Component {
     serverUrl = "http://localhost:8888";
-
 
     str_obj(str) {
         str = str.split("; ");
@@ -18,9 +17,11 @@ class FollowedUser extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {pic: ""};
+        this.state = {pic: "", followed: false};
         this.token = this.str_obj(document.cookie).token;
         this.unfollow = this.unfollow.bind(this);
+        this.follow = this.follow.bind(this);
+        console.log("MY USERNAME IS: ", this.props.username);
     }
 
 
@@ -31,8 +32,33 @@ class FollowedUser extends React.Component {
         ).then(res => {
             this.setState({pic: res});
         });
+        fetch(this.serverUrl + "/users/me/followees/" + this.props.username, {
+            method: "GET", headers: {"Authorization": this.token}
+        }).then(
+            res => {
+                console.log("RES.STATUS: ", res.status);
+                if (res.status === 200) {
+                    this.setState({followed: true});
+                } else {
+                    this.setState({followed: false});
+                }
+            }
+        );
     }
 
+
+    follow() {
+        fetch(this.serverUrl + "/users/me/followees/" + this.props.username, {
+            method: "PUT", headers: {"Authorization": this.token}
+        }).then(
+            res => {
+                if (res.ok) {
+                    console.log("NOW FOLLOWING USER: ", this.props.username);
+                    this.setState({followed: true});
+                }
+            }
+        );
+    }
 
     unfollow() {
         fetch(this.serverUrl + "/users/me/followees/" + this.props.username, {
@@ -41,8 +67,7 @@ class FollowedUser extends React.Component {
             res => {
                 if (res.ok) {
                     console.log("STOPPED FOLLOWING USER: ", this.props.username);
-                    // this.setState({followed: false});
-                    this.props.onUnfollow(this.props.username);
+                    this.setState({followed: false});
                 }
             }
         );
@@ -53,10 +78,14 @@ class FollowedUser extends React.Component {
             <div className={"followed-user"}>
                 <img className={"followed-user-pic"} src={this.state.pic}/>
                 <NavLink to={"/users/" + this.props.username}>{this.props.username}</NavLink>
-                <button onClick={this.unfollow}>Unfollow</button>
+                {this.state.followed ?
+                    (<button onClick={this.unfollow}>Unfollow</button>) :
+                    (<button onClick={this.follow}>Follow</button>)
+                }
             </div>
+
         );
     }
 }
 
-export default FollowedUser;
+export default UserCard;

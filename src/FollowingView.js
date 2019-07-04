@@ -1,5 +1,6 @@
 import React from "react";
-import FollowedUser from "./FollowedUser";
+import UserCard from "./UserCard";
+// import FollowedUser from "./FollowedUser";
 
 class FollowingView extends React.Component {
     serverUrl = "http://localhost:8888";
@@ -41,6 +42,7 @@ class FollowingView extends React.Component {
             res => res.json()
         ).then(
             res => {
+                console.log("RECEIVED: ", res);
                 this.setState({users: res.map(x => x.followee)});
             }
         );
@@ -51,8 +53,8 @@ class FollowingView extends React.Component {
             <div>
                 <h2>Following {this.state.users.length} users</h2>
                 <div className={"following-view"}>
-                {this.state.users.map(username => <FollowedUser key={username} onUnfollow={this.onUnfollow}
-                                                                username={username}/>)}
+                    {this.state.users.map(username => <UserCard key={username} onUnfollow={this.onUnfollow}
+                                                                    username={username}/>)}
                 </div>
             </div>
         );
