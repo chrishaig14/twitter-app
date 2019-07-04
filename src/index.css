@@ -129,6 +129,7 @@ input[type="text"]:focus, input[type="password"]:focus {
     padding: 5px;
     flex-direction: row; }
     .new-post form .new-post-text {
+      margin-right: 5px;
       flex-grow: 1; }
 
 .header {
