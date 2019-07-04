@@ -442,12 +442,15 @@ input[type="text"]:focus, input[type="password"]:focus {
   display: flex;
   flex-direction: row;
   align-items: center;
-
+  margin-bottom: 20px;
   .followed-user-pic {
     width: 64px;
     height: 64px;
     border: solid 1px gray;
     border-radius: 50%;
     margin-right: 10px;
+  }
+  button {
+    margin-left: 20px;
   }
 }
