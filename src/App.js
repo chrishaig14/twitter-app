@@ -11,6 +11,7 @@ import UserView from "./UserView";
 import EditProfile from "./EditProfile";
 import FollowingView from "./FollowingView";
 import Header from "./Header";
+import SearchResultsView from "./SearchResultsView";
 
 
 class App extends React.Component {
@@ -29,6 +30,7 @@ class App extends React.Component {
 
                 <Route path={"/feed"} component={FeedView}/>
                 <Route path={"/users/:id"} component={UserView}/>
+                <Route path={"/search"} component={SearchResultsView}/>
                 <Route path={"/editProfile"} component={EditProfile}/>
                 <Route path={"/following"} component={FollowingView}/>
 
