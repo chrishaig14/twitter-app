@@ -50,8 +50,10 @@ class FollowingView extends React.Component {
         return (
             <div>
                 <h2>Following {this.state.users.length} users</h2>
+                <div className={"following-view"}>
                 {this.state.users.map(username => <FollowedUser key={username} onUnfollow={this.onUnfollow}
                                                                 username={username}/>)}
+                </div>
             </div>
         );
     }
