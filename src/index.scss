@@ -242,10 +242,17 @@ input[type="text"]:focus, input[type="password"]:focus {
   background-color: white;
   margin-bottom: 5px;
   align-items: center;
-  padding: 5px;
+  //padding: 5px;
   border-bottom: solid 1px black;
   border-top: solid 1px black;
-  margin-top: 5px;
+  //margin-top: 5px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  & + div {
+    margin-top: 70px;
+  }
 
   * {
     margin-right: 5px;
@@ -301,7 +308,7 @@ input[type="text"]:focus, input[type="password"]:focus {
   width: 90%;
   //padding: 5px;
   //scroll-behavior: auto;
-  .post{
+  .post {
     //min-width: 50%;
     margin-bottom: 20px;
   }
@@ -445,6 +452,7 @@ input[type="text"]:focus, input[type="password"]:focus {
   flex-direction: row;
   align-items: center;
   margin-bottom: 20px;
+
   .followed-user-pic {
     width: 64px;
     height: 64px;
@@ -452,6 +460,7 @@ input[type="text"]:focus, input[type="password"]:focus {
     border-radius: 50%;
     margin-right: 10px;
   }
+
   button {
     margin-left: 20px;
   }
