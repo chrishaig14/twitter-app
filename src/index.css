@@ -65,7 +65,8 @@ input[type="text"]:focus, input[type="password"]:focus {
   border-radius: 5px;
   padding: 5px;
   box-shadow: black 0px 0px 2px 0px;
-  border: none; }
+  border: none;
+  width: 490px; }
   .post .post-header {
     display: flex;
     flex-direction: row;
@@ -123,7 +124,7 @@ input[type="text"]:focus, input[type="password"]:focus {
   border-radius: 5px;
   border: none;
   box-shadow: black 0 0 2px 0;
-  width: 90%; }
+  width: 500px; }
   .new-post form {
     display: flex;
     padding: 5px;
@@ -174,6 +175,7 @@ input[type="text"]:focus, input[type="password"]:focus {
 .post-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 90%; }
   .post-container .post {
     margin-bottom: 20px; }
