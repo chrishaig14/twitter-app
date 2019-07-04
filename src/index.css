@@ -65,8 +65,7 @@ input[type="text"]:focus, input[type="password"]:focus {
   border-radius: 5px;
   padding: 5px;
   box-shadow: black 0px 0px 2px 0px;
-  border: none;
-  width: 90%; }
+  border: none; }
   .post .post-header {
     display: flex;
     flex-direction: row;
@@ -122,17 +121,15 @@ input[type="text"]:focus, input[type="password"]:focus {
 
 .new-post {
   border-radius: 5px;
-  padding: 5px;
   border: none;
   box-shadow: black 0 0 2px 0;
   width: 90%; }
   .new-post form {
     display: flex;
+    padding: 5px;
     flex-direction: row; }
     .new-post form .new-post-text {
       flex-grow: 1; }
-    .new-post form * {
-      margin-right: 5px; }
 
 .header {
   display: flex;
@@ -149,10 +146,6 @@ input[type="text"]:focus, input[type="password"]:focus {
   .header .submit-search-btn {
     margin-left: 5px; }
 
-.feed-view .feed-main {
-  display: flex;
-  flex-direction: row; }
-
 .new-comment {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -166,19 +159,18 @@ input[type="text"]:focus, input[type="password"]:focus {
       flex-grow: 1;
       margin-right: 5px; }
 
-.main-post {
+.feed-view {
   display: flex;
   flex-direction: column;
   align-items: center; }
-  .main-post .new-post {
+  .feed-view .new-post {
     margin-bottom: 20px; }
 
 .post-container {
-  flex-grow: 5;
   display: flex;
   flex-direction: column;
-  align-items: center; }
-  .post-container .post, .post-container .new-post {
+  width: 90%; }
+  .post-container .post {
     margin-bottom: 20px; }
 
 .user-info {

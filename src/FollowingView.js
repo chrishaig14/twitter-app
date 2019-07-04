@@ -2,7 +2,8 @@ import React from "react";
 import FollowedUser from "./FollowedUser";
 
 class FollowingView extends React.Component {
-    serverUrl = "http://localhost:8888"
+    serverUrl = "http://localhost:8888";
+
     str_obj(str) {
         str = str.split("; ");
         var result = {};
@@ -17,6 +18,19 @@ class FollowingView extends React.Component {
         super(props);
         this.state = {users: []};
         this.token = this.str_obj(document.cookie).token;
+        this.onUnfollow = this.onUnfollow.bind(this);
+    }
+
+    onUnfollow(id) {
+        console.log("UNFOLLOWING USER: ", id);
+        this.setState(prevState => {
+                console.log(prevState);
+                return {users: prevState.users.filter(el => el != id)};
+            },
+            () => {
+                console.log("NEW STATE: ", this.state);
+            }
+        );
     }
 
     componentDidMount() {
@@ -27,7 +41,7 @@ class FollowingView extends React.Component {
             res => res.json()
         ).then(
             res => {
-                this.setState({users: res});
+                this.setState({users: res.map(x => x.followee)});
             }
         );
     }
@@ -35,7 +49,9 @@ class FollowingView extends React.Component {
     render() {
         return (
             <div>
-                {this.state.users.map(username => <FollowedUser key={username.followee} username={username.followee}/>)}
+                <h2>Following {this.state.users.length} users</h2>
+                {this.state.users.map(username => <FollowedUser key={username} onUnfollow={this.onUnfollow}
+                                                                username={username}/>)}
             </div>
         );
     }

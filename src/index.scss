@@ -13,7 +13,7 @@ code {
   monospace;
 }
 
-button, .profile-pic-label{
+button, .profile-pic-label {
   background-color: aliceblue;
   border-radius: 5px;
   //border: 2px solid #737373;
@@ -24,13 +24,15 @@ button, .profile-pic-label{
   font-weight: bold;
   font-size: 0.8em;
   //color: #4d4d4d;
-  &:focus{
+  &:focus {
     outline: none;
   }
-  &:hover{
+
+  &:hover {
     background-color: #8eb8e6;
   }
-  &:active{
+
+  &:active {
     box-shadow: none;
     background-color: cornflowerblue;
   }
@@ -117,7 +119,7 @@ input[type="text"]:focus, input[type="password"]:focus {
   box-shadow: black 0px 0px 2px 0px;
   border: none;
   //max-width: 75%;
-  width: 90%;
+  //width: 90%;
 
   .post-header {
     display: flex;
@@ -210,13 +212,14 @@ input[type="text"]:focus, input[type="password"]:focus {
   //background-color: lightblue;
   //border: solid 1px black;
   border-radius: 5px;
-  padding: 5px;
+  //padding: 5px;
   border: none;
   box-shadow: black 0 0 2px 0;
   width: 90%;
 
   form {
     display: flex;
+    padding: 5px;
     flex-direction: row;
     //justify-items: stretch;
     .new-post-text {
@@ -226,9 +229,9 @@ input[type="text"]:focus, input[type="password"]:focus {
       //padding: 5px;
     }
 
-    * {
-      margin-right: 5px;
-    }
+    //* {
+    //  margin-right: 5px;
+    //}
   }
 }
 
@@ -259,17 +262,6 @@ input[type="text"]:focus, input[type="password"]:focus {
   }
 }
 
-.feed-view {
-  //background-color: lightblue;
-
-  .feed-main {
-    display: flex;
-    flex-direction: row;
-  }
-
-
-}
-
 .new-comment {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -289,7 +281,7 @@ input[type="text"]:focus, input[type="password"]:focus {
   }
 }
 
-.main-post {
+.feed-view {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -300,13 +292,15 @@ input[type="text"]:focus, input[type="password"]:focus {
 }
 
 .post-container {
-  flex-grow: 5;
+  //flex-grow: 5;
   //background-color: lightblue;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  //align-items: center;
+  width: 90%;
+  //padding: 5px;
   //scroll-behavior: auto;
-  .post, .new-post {
+  .post{
     //min-width: 50%;
     margin-bottom: 20px;
   }
@@ -425,6 +419,7 @@ input[type="text"]:focus, input[type="password"]:focus {
     .profile-pic-input {
       display: none
     }
+
     //.profile-pic-label {
     //  border-radius: 5px;
     //  border: solid 1px black;
@@ -446,6 +441,7 @@ input[type="text"]:focus, input[type="password"]:focus {
   display: flex;
   flex-direction: row;
   align-items: center;
+
   .followed-user-pic {
     width: 64px;
     height: 64px;

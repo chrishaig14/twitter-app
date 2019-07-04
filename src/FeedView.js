@@ -65,28 +65,13 @@ class FeedView extends React.Component {
         return (
 
             <div className={"feed-view"}>
-                {/*FEED VIEW*/}
-
-                {/*<Header/>*/}
-
-                <div className={"feed-main"}>
-                    {/*<div className={"user-info"}>*/}
-                    {/*    <span className={"user-info-username"}>{this.username}</span>*/}
-                    {/*    <div className={"user-info-pic"}></div>*/}
-                    {/*    <p className={"user-info-info"}>Lorem ipsum dolor sit amet...</p>*/}
-
-                    {/*</div>*/}
-                    <div className={"main-post"}>
-                        <NewPost token={this.token} onPost={this.addNewPost}/>
-                        <div className={"post-container"}>
-
-                            {this.state.posts.map((data) => <Post key={data.id} data={data} token={this.token}/>)}
-                        </div>
-                    </div>
+                <NewPost token={this.token} onPost={this.addNewPost}/>
+                <div className={"post-container"}>
+                    {this.state.posts.map((data) => <Post key={data.id} data={data} token={this.token}/>)}
                 </div>
+
             </div>
-        )
-            ;
+        );
     }
 }
 
