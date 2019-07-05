@@ -276,4 +276,9 @@ input[type="text"]:focus, input[type="password"]:focus {
   .followed-user button {
     margin-left: 20px; }
 
+.search-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
 /*# sourceMappingURL=index.css.map */

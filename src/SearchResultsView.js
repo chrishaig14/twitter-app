@@ -6,6 +6,7 @@ import UserCard from "./UserCard";
 
 class SearchResultsView extends React.Component {
     serverUrl = "http://localhost:8888";
+    term = "";
 
     constructor(props) {
         super(props);
@@ -13,12 +14,24 @@ class SearchResultsView extends React.Component {
     }
 
 
-
     search() {
         console.log("NEW SEARCH WITH: ", this.props.location.search);
         let x = parse(this.props.location.search);
+        console.log("x: ", x);
+        this.term = x.term;
+        let url = this.serverUrl + "/search" + this.props.location.search;
+        console.log("SEARCH URL: ", url);
+        fetch(url, {method: "GET"}).then(
+            res => {
+                console.log("PEPEP: ", res);
+                return res.json();
+            }
+        ).then(res => {
+            console.log("SEARCH RESULT: ", res);
+            this.setState({users: res.map(a => a.username)});
+        });
         console.log(x);
-        this.setState(prevState => (prevState.users=[x.term]));
+        // this.setState(prevState => (prevState.users = [x.term]));
 
     }
 
@@ -37,10 +50,12 @@ class SearchResultsView extends React.Component {
     render() {
         return (
             <div>
-                Results for: {this.props.location.search}
+                {this.state.users.length} results for "{this.term}"
                 {/*{this.state.users.map(user => <div key={user}>{user}</div>)}*/}
-                {this.state.users.map(username => <UserCard key={username} onUnfollow={this.onUnfollow}
+                <div className={"search-results"}>
+                    {this.state.users.map(username => <UserCard key={username} onUnfollow={this.onUnfollow}
                                                                 username={username}/>)}
+                </div>
             </div>
         );
     }
