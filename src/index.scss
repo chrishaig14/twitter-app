@@ -199,6 +199,16 @@ input[type="text"]:focus, input[type="password"]:focus {
 
   .comment-user {
     color: black;
+    font-weight: bold;
+    text-decoration: none;
+    &:visited {
+      color: inherit;
+    }
+
+    &:hover {
+      //color: blueviolet
+      text-decoration: underline;
+    }
   }
 
   .comment-content {
