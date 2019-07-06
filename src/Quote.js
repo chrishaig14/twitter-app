@@ -2,6 +2,7 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import NewComment from "./NewComment";
 import Comment from "./Comment";
+import UserPic from "./UserPic";
 
 class Quote extends React.Component {
 
@@ -44,10 +45,11 @@ class Quote extends React.Component {
 
     render() {
         return (
-            <div className={"post"}>
+            <div className={"quote"}>
                 Quote
                 <div className={"post-header"}>
-                    <img src={this.state.userpic} className={"post-user-pic"}/>
+                    {/*<img src={this.state.userpic} className={"post-user-pic"}/>*/}
+                    <UserPic username={this.props.data.username}/>
                     <NavLink to={{pathname: "/users/" + this.props.data.username, state: {token: this.props.token}}}
                              className={"post-user"}>{this.props.data.username}</NavLink>
                     {/*<span className="post-time">{this.dateToString(date)}</span>*/}

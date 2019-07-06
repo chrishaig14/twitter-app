@@ -2,6 +2,7 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import Comment from "./Comment";
 import NewComment from "./NewComment";
+import UserPic from "./UserPic";
 
 class SimplePost extends React.Component {
     serverUrl = "http://localhost:8888";
@@ -106,7 +107,8 @@ class SimplePost extends React.Component {
             <div className={"post"}>
                 Simple Post
                 <div className={"post-header"}>
-                    <img src={this.state.userpic} className={"post-user-pic"}/>
+                    {/*<img src={this.state.userpic} className={"post-user-pic"}/>*/}
+                    <UserPic username={this.props.data.username}/>
                     <NavLink to={{pathname: "/users/" + this.props.data.username, state: {token: this.props.token}}}
                              className={"post-user"}>{this.props.data.username}</NavLink>
                     <span className="post-time">{this.dateToString(date)}</span>

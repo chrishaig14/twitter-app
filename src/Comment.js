@@ -1,5 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
+import UserPic from "./UserPic";
 
 class Comment extends React.Component {
     serverUrl = "http://localhost:8888";
@@ -25,7 +26,8 @@ class Comment extends React.Component {
         return (
             <div className={"comment"}>
                 {/*<h1>Comment</h1>*/}
-                <img className={"comment-user-pic"} src={this.state.userpic}/>
+                {/*<img className={"comment-user-pic"} src={this.state.userpic}/>*/}
+                <UserPic username={this.props.data.username}/>
                 <NavLink to={"/users/"+this.props.data.username} className={"comment-user"}>{this.props.data.username}</NavLink>
                 <div className={"comment-content"}>{this.props.data.content}</div>
             </div>

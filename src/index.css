@@ -296,4 +296,8 @@ input[type="text"]:focus, input[type="password"]:focus {
 .retweet-content {
   border: solid 1px blue; }
 
+.quote {
+  background-color: gray;
+  border-radius: 5px; }
+
 /*# sourceMappingURL=index.css.map */
