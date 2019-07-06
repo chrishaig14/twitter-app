@@ -11,7 +11,7 @@ class NewPost extends React.Component {
     }
 
     onSubmit(event) {
-        fetch(this.serverUrl + "/users/me/posts", {
+        fetch(this.serverUrl + "/posts", {
             method: "POST",
             headers: {"Authorization": this.props.token},
             body: JSON.stringify({content: this.state.post})

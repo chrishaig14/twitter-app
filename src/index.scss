@@ -489,3 +489,15 @@ input[type="text"]:focus, input[type="password"]:focus {
   flex-direction: column;
   align-items: center;
 }
+
+.retweet-wo-comment {
+  border: solid 1px gray;
+}
+
+.retweet-w-comment {
+  border: solid 1px gray;
+}
+
+.retweet-content {
+  border: solid 1px blue;
+}

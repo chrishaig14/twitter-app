@@ -2,12 +2,8 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import Comment from "./Comment";
 import NewComment from "./NewComment";
-import SimplePost from "./SimplePost";
-import RetweetWithoutComment from "./RetweetWithoutComment";
-import RetweetWithComment from "./RetweetWithComment";
-import Retweet from "./Retweet";
 
-class Post extends React.Component {
+class SimplePost extends React.Component {
     serverUrl = "http://localhost:8888";
 
     str_obj(str) {
@@ -40,10 +36,6 @@ class Post extends React.Component {
     }
 
     retweet() {
-
-        // Update posts table so that any post can be a retweet of another post
-        // user1 retweeted
-        //  user2's post
         let post_id = this.props.data.id;
         fetch(this.serverUrl + "/posts",
             {
@@ -64,15 +56,8 @@ class Post extends React.Component {
     }
 
     componentDidMount() {
-        if (this.props.data.retweet !== null) {
-            fetch(this.serverUrl + "/posts/" + this.props.data.retweet, {method: "GET"}).then(
-                res => res.json()
-            ).then(res => {
-                this.setState({data: res});
-            });
-        }
         let url = this.serverUrl + "/users/" + this.props.data.username + "/img";
-        console.log("USER IMAGE URL:", url);
+        console.log(" SIMPLE USER IMAGE URL:", url);
         let start = new Date();
         fetch(url, {
             method: "GET"
@@ -115,52 +100,30 @@ class Post extends React.Component {
     }
 
     render() {
-        // console.log("DATE IS: ", new Date(this.props.data.timestamp));
+        console.log("RENDERING SIMPLEPOST: ", this.props.data);
         let date = (new Date(this.props.data.timestamp));
-        let header;
-        if (this.props.data.retweet === null) {
-            console.log("NO RETWEET");
+        return (
+            <div className={"post"}>
+                Simple Post
+                <div className={"post-header"}>
+                    <img src={this.state.userpic} className={"post-user-pic"}/>
+                    <NavLink to={{pathname: "/users/" + this.props.data.username, state: {token: this.props.token}}}
+                             className={"post-user"}>{this.props.data.username}</NavLink>
+                    <span className="post-time">{this.dateToString(date)}</span>
+                </div>
+                <div className={"post-content"}>{this.props.data.content}</div>
+                <div className={"post-footer"}>
+                    <button onClick={this.openCommentSection}>Reply</button>
+                    <button onClick={this.retweet}>Retweet</button>
+                </div>
 
-            return (
-                <div className={"post-main"}>
-                    <SimplePost data={this.props.data}/>
-                </div>
-            );
-        } else {
-            return (
-                <div className={"post-main"}>
-                    <Retweet data={this.props.data}/>
-                </div>
-            );
-            // if (this.props.data.content === ""){
-            //     console.log("RETWEET WITHOUT COMMENT");
-            //     return (
-            //
-            //         <RetweetWithoutComment data={this.props.data}/>
-            //     );
-            // } else {
-            //     console.log("RETWEET WITH COMMENT")
-            //     return (
-            //         <RetweetWithComment data={this.props.data}/>
-            //     );
-            // }
-        }
-        // return (
-        //     <div className={"post"}>
-        //         {header}
-        //         <div className={"post-content"}>{this.props.data.content}</div>
-        //         <div className={"post-footer"}>
-        //             <button onClick={this.openCommentSection}>Reply</button>
-        //             <button onClick={this.retweet}>Retweet</button>
-        //         </div>
-        //
-        //         {this.state.commentSection ? (<div>
-        //             <NewComment onSubmit={this.onNewComment} postId={this.props.data.id}/>
-        //             {this.state.comments.map(comment => <Comment data={comment} key={comment.id}/>)}
-        //         </div>) : null}
-        //     </div>
-        // );
+                {this.state.commentSection ? (<div>
+                    <NewComment onSubmit={this.onNewComment} postId={this.props.data.id}/>
+                    {this.state.comments.map(comment => <Comment data={comment} key={comment.id}/>)}
+                </div>) : null}
+            </div>
+        );
     }
 }
 
-export default Post;
+export default SimplePost;
