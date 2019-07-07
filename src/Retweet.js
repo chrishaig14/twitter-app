@@ -1,6 +1,6 @@
 import React from "react";
 import SimplePost from "./SimplePost";
-import RetweetWithoutComment from "./RetweetWithoutComment";
+import Share from "./Share";
 import RetweetWithComment from "./RetweetWithComment";
 
 class Retweet extends React.Component {
@@ -27,8 +27,7 @@ class Retweet extends React.Component {
             console.log("RETWEET WITHOUT COMMENT!");
             return (
                 <div>
-                    {this.state.retweet ?
-                        <RetweetWithoutComment data={this.props.data} retweet={this.state.retweet}/> : null}
+                    {/*{this.state.retweet ?*/}
                 </div>
             );
         } else {
@@ -40,13 +39,6 @@ class Retweet extends React.Component {
                 </div>
             );
         }
-        return (
-            <div>
-                Retweeted post content: {this.props.data.content}
-                {this.props.data.username} retweeted post {this.props.data.retweet}:
-                {this.state.retweet ? <SimplePost data={this.state.retweet}/> : null}
-            </div>
-        );
     }
 }
 

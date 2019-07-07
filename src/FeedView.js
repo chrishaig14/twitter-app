@@ -4,6 +4,7 @@ import {NavLink, Redirect} from "react-router-dom";
 import SearchBox from "./SearchBox";
 import NewPost from "./NewPost";
 import Header from "./Header";
+import Share from "./Share";
 
 class FeedView extends React.Component {
 
@@ -24,7 +25,7 @@ class FeedView extends React.Component {
     constructor(props) {
         super(props);
         // this.logout = this.logout.bind(this);
-        this.state = {"posts": [], toHome: false};
+        this.state = {"posts": [], toHome: false, shares:[]};
         this.token = this.str_obj(document.cookie).token;
         console.log("TOKEN : ", this.token);
         // this.token = this.props.location.state.token;
@@ -44,10 +45,10 @@ class FeedView extends React.Component {
                 return res.json();
             }
         ).then(
-            body => {
-                console.log("BODY; ", body);
-                this.setState({"posts": body});
-                return body;
+            res => {
+                console.log("BODY; ", res);
+                this.setState({"posts": res.posts, "shares": res.shares});
+                return res;
             }
         );
     }
@@ -67,9 +68,9 @@ class FeedView extends React.Component {
             <div className={"feed-view"}>
                 <NewPost token={this.token} onPost={this.addNewPost}/>
                 <div className={"post-container"}>
-                    {this.state.posts.map((data) => <Post key={data.id} data={data} token={this.token}/>)}
+                    {this.state.posts.map(data => <Post key={data.id} data={data} token={this.token}/>)}
+                    {this.state.shares.map(data => <Share key={data.post_id} data={data}/>)}
                 </div>
-
             </div>
         );
     }

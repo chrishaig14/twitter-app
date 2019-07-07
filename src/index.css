@@ -60,6 +60,11 @@ input[type="text"]:focus, input[type="password"]:focus {
     #signup-view form * {
       margin-top: 5px; }
 
+.post-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+
 .post {
   background-color: white;
   border-radius: 5px;
@@ -72,7 +77,7 @@ input[type="text"]:focus, input[type="password"]:focus {
     flex-direction: row;
     align-items: center;
     margin-bottom: 5px; }
-    .post .post-header .post-user-pic {
+    .post .post-header .userpic {
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -98,6 +103,13 @@ input[type="text"]:focus, input[type="password"]:focus {
     word-wrap: break-word; }
   .post .post-footer button {
     margin-right: 5px; }
+
+.post-content {
+  margin-bottom: 5px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  word-wrap: break-word; }
 
 .comment {
   display: flex;
@@ -287,17 +299,61 @@ input[type="text"]:focus, input[type="password"]:focus {
   flex-direction: column;
   align-items: center; }
 
-.retweet-wo-comment {
+.retweet-w-comment {
+  display: flex;
+  flex-direction: column; }
+
+.userpic {
+  width: 32px;
+  height: 32px;
+  border: solid 1px gray;
+  border-radius: 50%; }
+
+.retweet-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+
+.quote {
+  border: solid 1px gray;
+  border-radius: 5px;
+  width: 90%;
+  align-self: center; }
+
+.round {
+  border-radius: 50%; }
+
+.with-border {
   border: solid 1px gray; }
 
-.retweet-w-comment {
+.post-main {
+  margin-bottom: 20px;
+  border-radius: 5px;
   border: solid 1px gray; }
 
 .retweet-content {
-  border: solid 1px blue; }
-
-.quote {
-  background-color: gray;
+  background-color: lightgray;
+  padding: 5px;
   border-radius: 5px; }
+
+hr {
+  width: 96%; }
+
+.main-post {
+  border: solid 1px gray;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 500px;
+  padding: 5px; }
+
+.share {
+  border: solid 1px gray;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 500px;
+  padding: 5px; }
+  .share .main-post {
+    border: none;
+    margin-bottom: 0; }
 
 /*# sourceMappingURL=index.css.map */

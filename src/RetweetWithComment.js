@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import NewComment from "./NewComment";
 import Comment from "./Comment";
 import Quote from "./Quote";
+import UserPic from "./UserPic";
 
 class RetweetWithComment extends React.Component {
     serverUrl = "http://localhost:8888";
@@ -22,8 +23,8 @@ class RetweetWithComment extends React.Component {
         super(props);
         this.state = {retweet: null, retweeting: false};
         this.token = this.str_obj(document.cookie).token;
-        this.retweetWithoutComment = this.retweetWithoutComment.bind(this);
-        this.retweetWithComment = this.retweetWithComment.bind(this);
+        // this.retweetWithoutComment = this.retweetWithoutComment.bind(this);
+        // this.retweetWithComment = this.retweetWithComment.bind(this);
         this.onWrite = this.onWrite.bind(this);
         this.submitRetweet = this.submitRetweet.bind(this);
     }
@@ -39,25 +40,6 @@ class RetweetWithComment extends React.Component {
         );
     }
 
-    retweetWithoutComment() {
-        let post_id = this.props.data.id;
-        fetch(this.serverUrl + "/posts",
-            {
-                method: "POST",
-                headers: {"Authorization": this.token},
-                body: JSON.stringify({content: "", retweet: post_id})
-            }
-        ).then(
-            res => {
-                if (res.ok) {
-                    console.log("RETWEETED OK!");
-                } else {
-                    console.log("COULD NOT RETWEET!");
-                }
-            }
-        );
-        console.log("retweeting!");
-    }
 
     retweetWithComment() {
         this.setState({retweeting: true});
@@ -94,13 +76,16 @@ class RetweetWithComment extends React.Component {
 
         return (
             <div className={"retweet-w-comment"}>
-                {this.props.data.username} retweeted post
+                <div className={"retweet-header"}>
+                    <UserPic username={this.props.data.username}/>
+
+                    <span><NavLink>{this.props.data.username}</NavLink></span>
+                </div>
+                <hr/>
                 <div className={"retweet-content"}>
                     {this.props.data.content}
                 </div>
                 {this.state.retweet ? <Quote data={this.state.retweet}/> : null}
-                <button onClick={this.retweetWithoutComment}>Retweet without comment</button>
-                <button onClick={this.retweetWithComment}>Retweet with comment</button>
                 {this.state.retweeting ?
                     <div>
                         <form onSubmit={this.submitRetweet}>

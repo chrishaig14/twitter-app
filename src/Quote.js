@@ -46,7 +46,7 @@ class Quote extends React.Component {
     render() {
         return (
             <div className={"quote"}>
-                Quote
+                {/*Quote*/}
                 <div className={"post-header"}>
                     {/*<img src={this.state.userpic} className={"post-user-pic"}/>*/}
                     <UserPic username={this.props.data.username}/>

@@ -111,6 +111,12 @@ input[type="text"]:focus, input[type="password"]:focus {
   }
 }
 
+.post-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .post {
   background-color: white;
   //border: solid 1px black;
@@ -129,7 +135,7 @@ input[type="text"]:focus, input[type="password"]:focus {
     margin-bottom: 5px;
     //justify-items: stretch;
 
-    .post-user-pic {
+    .userpic {
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -175,6 +181,14 @@ input[type="text"]:focus, input[type="password"]:focus {
       margin-right: 5px;
     }
   }
+}
+
+.post-content {
+  margin-bottom: 5px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  word-wrap: break-word;
 }
 
 .comment {
@@ -491,18 +505,86 @@ input[type="text"]:focus, input[type="password"]:focus {
 }
 
 .retweet-wo-comment {
-  border: solid 1px gray;
+  //border: solid 1px gray;
 }
 
 .retweet-w-comment {
+  //border: solid 1px gray;
+  display: flex;
+  flex-direction: column;
+  //align-items: center;
+}
+
+.userpic {
+  width: 32px;
+  height: 32px;
   border: solid 1px gray;
+  border-radius: 50%;
+}
+
+.simple-post {
+  .userpic {
+
+  }
 }
 
 .retweet-content {
-  border: solid 1px blue;
+  //border: solid 1px blue;
+}
+
+.retweet-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .quote {
-  background-color: gray;
+  //background-color: lightgray;
+  border: solid 1px gray;
   border-radius: 5px;
+  width: 90%;
+  align-self: center;
+}
+
+.round {
+  border-radius: 50%;
+}
+.with-border{
+  border: solid 1px gray;
+}
+
+.post-main {
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: solid 1px gray;
+}
+.retweet-content{
+  background-color: lightgray;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+hr {
+  width: 96%
+}
+
+.main-post {
+  border: solid 1px gray;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 500px;
+  padding: 5px;
+}
+
+.share {
+  border: solid 1px gray;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 500px;
+  padding: 5px;
+ .main-post {
+   border: none;
+   margin-bottom: 0;
+
+ }
 }

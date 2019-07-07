@@ -104,8 +104,8 @@ class SimplePost extends React.Component {
         console.log("RENDERING SIMPLEPOST: ", this.props.data);
         let date = (new Date(this.props.data.timestamp));
         return (
-            <div className={"post"}>
-                Simple Post
+            <div className={"simple-post"}>
+                {/*Simple Post*/}
                 <div className={"post-header"}>
                     {/*<img src={this.state.userpic} className={"post-user-pic"}/>*/}
                     <UserPic username={this.props.data.username}/>
@@ -115,8 +115,8 @@ class SimplePost extends React.Component {
                 </div>
                 <div className={"post-content"}>{this.props.data.content}</div>
                 <div className={"post-footer"}>
-                    <button onClick={this.openCommentSection}>Reply</button>
-                    <button onClick={this.retweet}>Retweet</button>
+                    {/*<button onClick={this.openCommentSection}>Reply</button>*/}
+                    {/*<button onClick={this.retweet}>Retweet</button>*/}
                 </div>
 
                 {this.state.commentSection ? (<div>

@@ -32,7 +32,7 @@ class UserPic extends React.Component {
 
     render() {
         return (
-            <img src={this.state.userpic}/>
+            <img src={this.state.userpic} className={"userpic"}/>
         );
     }
 }
