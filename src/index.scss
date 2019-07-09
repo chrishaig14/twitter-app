@@ -16,14 +16,12 @@ code {
 button, .profile-pic-label {
   background-color: aliceblue;
   border-radius: 5px;
-  //border: 2px solid #737373;
   border: none;
   padding: 5px;
   box-shadow: black 0px 0px 2px 0px;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 0.8em;
-  //color: #4d4d4d;
   &:focus {
     outline: none;
   }
@@ -37,22 +35,6 @@ button, .profile-pic-label {
     background-color: cornflowerblue;
   }
 }
-
-//button:focus {
-//  outline: none;
-//}
-//
-//button:hover {
-//
-//
-//  background-color: #8eb8e6;
-//}
-//
-//button:active {
-//  box-shadow: none;
-//  background-color: cornflowerblue;
-//
-//}
 
 input[type="text"], input[type="password"] {
   padding: 5px;
@@ -119,13 +101,9 @@ input[type="text"]:focus, input[type="password"]:focus {
 
 .simple-post {
   background-color: white;
-  //border: solid 1px black;
   border-radius: 5px;
   padding: 5px;
-  //box-shadow: black 0px 0px 2px 0px;
   border: none;
-  //max-width: 75%;
-  //width: 90%;
   width: 490px;
 
   .post-header {
@@ -133,13 +111,11 @@ input[type="text"]:focus, input[type="password"]:focus {
     flex-direction: row;
     align-items: center;
     margin-bottom: 5px;
-    //justify-items: stretch;
 
     .userpic {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      //background-color: gray;
       border: solid 1px gray;
       margin-right: 5px;
     }
@@ -154,7 +130,6 @@ input[type="text"]:focus, input[type="password"]:focus {
       }
 
       &:hover {
-        //color: blueviolet
         text-decoration: underline;
       }
 
@@ -192,7 +167,7 @@ input[type="text"]:focus, input[type="password"]:focus {
 }
 
 .comment {
-  //background-color: lightblue;
+
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -207,7 +182,7 @@ input[type="text"]:focus, input[type="password"]:focus {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    //background-color: gray;
+
     border: solid 1px gray;
   }
 
@@ -215,12 +190,13 @@ input[type="text"]:focus, input[type="password"]:focus {
     color: black;
     font-weight: bold;
     text-decoration: none;
+
     &:visited {
       color: inherit;
     }
 
     &:hover {
-      //color: blueviolet
+
       text-decoration: underline;
     }
   }
@@ -234,30 +210,26 @@ input[type="text"]:focus, input[type="password"]:focus {
 }
 
 .new-post {
-  //background-color: lightblue;
-  //border: solid 1px black;
+
   border-radius: 5px;
-  //padding: 5px;
+
   border: none;
   box-shadow: black 0 0 2px 0;
-  //width: 90%;
+
   width: 500px;
+
   form {
     display: flex;
     padding: 5px;
     flex-direction: row;
-    //justify-items: stretch;
+
     .new-post-text {
-      //border: none;
+
       margin-right: 5px;
       flex-grow: 1;
-      //border-radius: 5px;
-      //padding: 5px;
+
     }
 
-    //* {
-    //  margin-right: 5px;
-    //}
   }
 }
 
@@ -267,27 +239,21 @@ input[type="text"]:focus, input[type="password"]:focus {
   background-color: white;
   margin-bottom: 5px;
   align-items: center;
-  //padding: 5px;
+
   border-bottom: solid 1px black;
   border-top: solid 1px black;
-  //margin-top: 5px;
+
   position: fixed;
   top: 0;
   width: 100%;
   height: 50px;
+
   & + div {
     margin-top: 70px;
   }
 
   * {
     margin-right: 5px;
-  }
-
-  .logout-btn {
-    //margin-left: auto;
-  }
-
-  .search-box {
   }
 
   .submit-search-btn {
@@ -298,7 +264,6 @@ input[type="text"]:focus, input[type="password"]:focus {
 .new-comment {
   margin-top: 5px;
   margin-bottom: 5px;
-  //background-color: lightblue;
   border-bottom: 1px solid gray;
   border-top: 1px solid gray;
   padding: 5px;
@@ -325,16 +290,12 @@ input[type="text"]:focus, input[type="password"]:focus {
 }
 
 .post-container {
-  //flex-grow: 5;
-  //background-color: lightblue;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 90%;
-  //padding: 5px;
-  //scroll-behavior: auto;
+
   .post {
-    //min-width: 50%;
     margin-bottom: 20px;
   }
 }
@@ -348,13 +309,9 @@ input[type="text"]:focus, input[type="password"]:focus {
 .user-info {
   background-color: lightblue;
   flex-grow: 1;
-  //border: solid 1px black;
   margin-right: 5px;
   margin-left: 5px;
-  //padding: 5px;
-  //border-radius: 5px;
   border: none;
-  //box-shadow: black 0 0 2px 0;
 
   .user-info-pic {
     width: 48px;
@@ -374,7 +331,6 @@ input[type="text"]:focus, input[type="password"]:focus {
 
 .other-user-view-main {
   display: flex;
-  //flex-direction: row;
   flex-direction: column;
 
   .user-posts-title {
@@ -382,12 +338,6 @@ input[type="text"]:focus, input[type="password"]:focus {
   }
 
   .other-user-info {
-    //border: solid 1px black;
-    //background-color: lightblue;
-    //margin-right: 5px;
-    //margin-left: 5px;
-    //border-radius: 5px;
-    //padding: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -397,7 +347,6 @@ input[type="text"]:focus, input[type="password"]:focus {
     .other-user-pic {
       width: 96px;
       height: 96px;
-      //background-color: gray;
       border-radius: 50%;
       border: solid 1px gray;
     }
@@ -423,7 +372,6 @@ input[type="text"]:focus, input[type="password"]:focus {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    //background-color: red;
     border: solid 1px gray;
   }
 
@@ -447,30 +395,17 @@ input[type="text"]:focus, input[type="password"]:focus {
       width: 64px;
       height: 64px;
       border-radius: 50%;
-
-      //background-color: black;
     }
 
     .profile-pic-input {
       display: none
     }
 
-    //.profile-pic-label {
-    //  border-radius: 5px;
-    //  border: solid 1px black;
-    //  padding: 5px;
-    //  &:hover{
-    //    background-color: yellow;
-    //  }
-    //  &:active{
-    //    background-color: blue;
-    //  }
-    //}
   }
 }
 
 .following-view {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
@@ -485,6 +420,7 @@ input[type="text"]:focus, input[type="password"]:focus {
   align-items: center;
   margin-bottom: 20px;
   width: 290px;
+
   .followed-user-pic {
     width: 64px;
     height: 64px;
@@ -504,15 +440,9 @@ input[type="text"]:focus, input[type="password"]:focus {
   align-items: center;
 }
 
-.retweet-wo-comment {
-  //border: solid 1px gray;
-}
-
 .retweet-w-comment {
-  //border: solid 1px gray;
   display: flex;
   flex-direction: column;
-  //align-items: center;
 }
 
 .userpic {
@@ -522,34 +452,28 @@ input[type="text"]:focus, input[type="password"]:focus {
   border-radius: 50%;
 }
 
-.simple-post {
-  .userpic {
-
-  }
-}
-
-.retweet-content {
-  //border: solid 1px blue;
-}
-
-.retweet-header{
+.retweet-header {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
 .quote {
-  //background-color: lightgray;
   border: solid 1px gray;
   border-radius: 5px;
+  padding: 5px;
   width: 90%;
   align-self: center;
+  .userpic {
+    margin-right: 5px;
+  }
 }
 
 .round {
   border-radius: 50%;
 }
-.with-border{
+
+.with-border {
   border: solid 1px gray;
 }
 
@@ -558,7 +482,8 @@ input[type="text"]:focus, input[type="password"]:focus {
   border-radius: 5px;
   border: solid 1px gray;
 }
-.retweet-content{
+
+.retweet-content {
   background-color: lightgray;
   padding: 5px;
   border-radius: 5px;
@@ -569,15 +494,15 @@ hr {
 }
 
 .quote-form {
-  display:flex;
+  display: flex;
   flex-direction: row;
-  //align-self: stretch;
+
   input {
     flex-grow: 1;
   }
 }
 
-.post-footer{
+.post-footer {
   align-self: stretch;
 }
 
@@ -589,10 +514,6 @@ hr {
   padding: 5px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  //.quote {
-  //
-  //}
 }
 
 .share {
@@ -601,25 +522,23 @@ hr {
   margin-bottom: 20px;
   width: 500px;
   padding: 5px;
- .main-post {
-   border: none;
-   margin-bottom: 0;
- }
-  //.share-header {
-  //  user-
-  //}
+
+  .main-post {
+    border: none;
+    margin-bottom: 0;
+  }
 }
 
 .user-tag {
   text-decoration: none;
   font-weight: bold;
-  color:black;
-    &:visited {
-      color: inherit;
-    }
+  color: black;
 
-    &:hover {
-      //color: blueviolet
-      text-decoration: underline;
-    }
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

@@ -316,8 +316,11 @@ input[type="text"]:focus, input[type="password"]:focus {
 .quote {
   border: solid 1px gray;
   border-radius: 5px;
+  padding: 5px;
   width: 90%;
   align-self: center; }
+  .quote .userpic {
+    margin-right: 5px; }
 
 .round {
   border-radius: 50%; }
@@ -354,8 +357,7 @@ hr {
   width: 500px;
   padding: 5px;
   display: flex;
-  flex-direction: column;
-  align-items: center; }
+  flex-direction: column; }
 
 .share {
   border: solid 1px gray;
