@@ -26,7 +26,8 @@ class Share extends React.Component {
             <div className={"share"}>
                 <div className={"share-header"}>
 
-                    <span><NavLink>{this.props.data.username}</NavLink> shared</span>
+                    <span><NavLink className={"post-user"}
+                                   to={"/users/" + this.props.data.username}>{this.props.data.username}</NavLink> shared</span>
                 </div>
                 <hr/>
                 {this.state.post_data ? <Post data={this.state.post_data}/> : null}

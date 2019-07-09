@@ -82,14 +82,6 @@ input[type="text"]:focus, input[type="password"]:focus {
       border-radius: 50%;
       border: solid 1px gray;
       margin-right: 5px; }
-    .simple-post .post-header .post-user {
-      text-decoration: none;
-      color: black;
-      font-weight: bold; }
-      .simple-post .post-header .post-user:visited {
-        color: inherit; }
-      .simple-post .post-header .post-user:hover {
-        text-decoration: underline; }
     .simple-post .post-header .post-time {
       color: #4d4d4d;
       font-size: 0.7em;
@@ -102,6 +94,15 @@ input[type="text"]:focus, input[type="password"]:focus {
     word-wrap: break-word; }
   .simple-post .post-footer button {
     margin-right: 5px; }
+
+.post-user {
+  text-decoration: none;
+  color: black;
+  font-weight: bold; }
+  .post-user:visited {
+    color: inherit; }
+  .post-user:hover {
+    text-decoration: underline; }
 
 .post-content {
   margin-bottom: 5px;
