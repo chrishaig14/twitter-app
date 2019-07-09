@@ -65,43 +65,42 @@ input[type="text"]:focus, input[type="password"]:focus {
   flex-direction: row;
   align-items: center; }
 
-.post {
+.simple-post {
   background-color: white;
   border-radius: 5px;
   padding: 5px;
-  box-shadow: black 0px 0px 2px 0px;
   border: none;
   width: 490px; }
-  .post .post-header {
+  .simple-post .post-header {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-bottom: 5px; }
-    .post .post-header .userpic {
+    .simple-post .post-header .userpic {
       width: 40px;
       height: 40px;
       border-radius: 50%;
       border: solid 1px gray;
       margin-right: 5px; }
-    .post .post-header .post-user {
+    .simple-post .post-header .post-user {
       text-decoration: none;
       color: black;
       font-weight: bold; }
-      .post .post-header .post-user:visited {
+      .simple-post .post-header .post-user:visited {
         color: inherit; }
-      .post .post-header .post-user:hover {
+      .simple-post .post-header .post-user:hover {
         text-decoration: underline; }
-    .post .post-header .post-time {
+    .simple-post .post-header .post-time {
       color: #4d4d4d;
       font-size: 0.7em;
       margin-left: auto; }
-  .post .post-content {
+  .simple-post .post-content {
     margin-bottom: 5px;
     background-color: white;
     border-radius: 5px;
     padding: 5px;
     word-wrap: break-word; }
-  .post .post-footer button {
+  .simple-post .post-footer button {
     margin-right: 5px; }
 
 .post-content {
@@ -337,14 +336,17 @@ input[type="text"]:focus, input[type="password"]:focus {
   border-radius: 5px; }
 
 hr {
-  width: 96%; }
+  width: 100%; }
 
 .main-post {
   border: solid 1px gray;
   border-radius: 5px;
   margin-bottom: 20px;
   width: 500px;
-  padding: 5px; }
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
 
 .share {
   border: solid 1px gray;

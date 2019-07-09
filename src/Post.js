@@ -142,6 +142,7 @@ class Post extends React.Component {
         return (<div className={"main-post"}>
                 <SimplePost data={this.props.data}/>
                 {this.state.quoteVal ? <Quote data={this.state.quoteVal}/> : null}
+                <hr/>
                 {footer}
             </div>
         );

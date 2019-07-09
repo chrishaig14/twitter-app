@@ -117,12 +117,12 @@ input[type="text"]:focus, input[type="password"]:focus {
   align-items: center;
 }
 
-.post {
+.simple-post {
   background-color: white;
   //border: solid 1px black;
   border-radius: 5px;
   padding: 5px;
-  box-shadow: black 0px 0px 2px 0px;
+  //box-shadow: black 0px 0px 2px 0px;
   border: none;
   //max-width: 75%;
   //width: 90%;
@@ -565,7 +565,7 @@ input[type="text"]:focus, input[type="password"]:focus {
 }
 
 hr {
-  width: 96%
+  width: 100%
 }
 
 .main-post {
@@ -574,6 +574,12 @@ hr {
   margin-bottom: 20px;
   width: 500px;
   padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  //.quote {
+  //
+  //}
 }
 
 .share {
@@ -585,8 +591,10 @@ hr {
  .main-post {
    border: none;
    margin-bottom: 0;
-
  }
+  //.share-header {
+  //  user-
+  //}
 }
 
 .user-tag {

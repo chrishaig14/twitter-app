@@ -114,6 +114,7 @@ class SimplePost extends React.Component {
                              className={"post-user"}>{this.props.data.username}</NavLink>
                     <span className="post-time">{this.dateToString(date)}</span>
                 </div>
+
                 {/*<div className={"post-content"}>{this.props.data.content}</div>*/}
                 <PostContent content={this.props.data.content}/>
                 <div className={"post-footer"}>

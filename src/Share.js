@@ -28,7 +28,7 @@ class Share extends React.Component {
         return (
             <div className={"share"}>
                 <div className={"share-header"}>
-                    <UserPic username={this.props.data.username}/>
+                    {/*<UserPic username={this.props.data.username}/>*/}
                     <span><NavLink>{this.props.data.username}</NavLink> shared</span>
                 </div>
                 <hr/>
