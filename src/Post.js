@@ -129,15 +129,15 @@ class Post extends React.Component {
 
     render() {
         let footer =
-            <div>
+            <div className={"post-footer"}>
                 <button onClick={this.share}>Share</button>
                 <button onClick={this.quote}>Quote</button>
-                {this.state.retweetingWithComment ? <div>
-                    <form onSubmit={this.onSubmitRetweet}>
-                        Retweet comment: <input type={"text"} onChange={this.onCommentChange}/>
-                        <button type={"submit"}>Retweet!</button>
+                {this.state.retweetingWithComment ?
+                    <form onSubmit={this.onSubmitRetweet} className={"quote-form"}>
+                        <input type={"text"} onChange={this.onCommentChange}/>
+                        <button type={"submit"}>Post!</button>
                     </form>
-                </div> : null}
+                 : null}
             </div>;
         return (<div className={"main-post"}>
                 <SimplePost data={this.props.data}/>

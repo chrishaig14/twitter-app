@@ -568,6 +568,19 @@ hr {
   width: 100%
 }
 
+.quote-form {
+  display:flex;
+  flex-direction: row;
+  //align-self: stretch;
+  input {
+    flex-grow: 1;
+  }
+}
+
+.post-footer{
+  align-self: stretch;
+}
+
 .main-post {
   border: solid 1px gray;
   border-radius: 5px;

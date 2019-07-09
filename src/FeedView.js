@@ -68,8 +68,8 @@ class FeedView extends React.Component {
             <div className={"feed-view"}>
                 <NewPost token={this.token} onPost={this.addNewPost}/>
                 <div className={"post-container"}>
-                    {this.state.posts.map(data => <Post key={data.id} data={data} token={this.token}/>)}
-                    {this.state.shares.map(data => <Share key={data.post_id} data={data}/>)}
+                    {this.state.posts.map(data => <Post key={data.timestamp} data={data} token={this.token}/>)}
+                    {this.state.shares.map(data => <Share key={data.timestamp} data={data}/>)}
                 </div>
             </div>
         );
