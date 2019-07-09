@@ -57,27 +57,6 @@ class SimplePost extends React.Component {
         console.log("retweeting!");
     }
 
-    componentDidMount() {
-        let url = this.serverUrl + "/users/" + this.props.data.username + "/img";
-        console.log(" SIMPLE USER IMAGE URL:", url);
-        let start = new Date();
-        fetch(url, {
-            method: "GET"
-        }).then(
-            res => {
-                console.log("HERE");
-                return res.text();
-            }
-        ).then(
-            res => {
-                let end = new Date();
-                console.log("TOOK ", end - start);
-                console.log(`GOT USER ${this.props.data.username} POSTS:`, res);
-                this.setState({"userpic": res});
-            }
-        );
-    }
-
     openCommentSection() {
         console.log("opening comment section for post");
         fetch(this.serverUrl + "/posts/" + this.props.data.id + "/comments", {
@@ -102,7 +81,6 @@ class SimplePost extends React.Component {
     }
 
     render() {
-        console.log("RENDERING SIMPLEPOST: ", this.props.data);
         let date = (new Date(this.props.data.timestamp));
         return (
             <div className={"simple-post"}>

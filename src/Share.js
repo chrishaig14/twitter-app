@@ -14,7 +14,6 @@ class Share extends React.Component {
 
 
     componentDidMount() {
-        console.log("GETTING SHARED POST: ", this.props.data.post_id);
         fetch(this.serverUrl + "/posts/" + this.props.data.post_id, {method: "GET"}).then(
             res => res.json()
         ).then(

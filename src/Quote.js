@@ -22,37 +22,13 @@ class Quote extends React.Component {
         this.token = this.str_obj(document.cookie).token;
     }
 
-    componentDidMount() {
-        let url = this.serverUrl + "/users/" + this.props.data.username + "/img";
-        console.log(" QUOTE USER IMAGE URL:", url);
-        let start = new Date();
-        fetch(url, {
-            method: "GET"
-        }).then(
-            res => {
-                console.log("HERE");
-                return res.text();
-            }
-        ).then(
-            res => {
-                let end = new Date();
-                console.log("TOOK ", end - start);
-                console.log(`GOT USER ${this.props.data.username} POSTS:`, res);
-                this.setState({"userpic": res});
-            }
-        );
-    }
-
     render() {
         return (
             <div className={"quote"}>
-                {/*Quote*/}
                 <div className={"post-header"}>
-                    {/*<img src={this.state.userpic} className={"post-user-pic"}/>*/}
                     <UserPic username={this.props.data.username}/>
                     <NavLink to={{pathname: "/users/" + this.props.data.username, state: {token: this.props.token}}}
                              className={"post-user"}>{this.props.data.username}</NavLink>
-                    {/*<span className="post-time">{this.dateToString(date)}</span>*/}
                 </div>
                 <div className={"post-content"}>{this.props.data.content}</div>
 

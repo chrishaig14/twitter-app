@@ -11,20 +11,14 @@ class UserPic extends React.Component {
 
     componentDidMount() {
         let url = this.serverUrl + "/users/" + this.props.username + "/img";
-        console.log("USER IMAGE URL:", url);
-        let start = new Date();
         fetch(url, {
             method: "GET"
         }).then(
             res => {
-                console.log("HERE");
                 return res.text();
             }
         ).then(
             res => {
-                let end = new Date();
-                console.log("TOOK ", end - start);
-                console.log(`GOT USER ${this.props.username} POSTS:`, res);
                 this.setState({"userpic": res});
             }
         );
