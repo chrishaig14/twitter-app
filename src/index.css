@@ -356,4 +356,13 @@ hr {
     border: none;
     margin-bottom: 0; }
 
+.user-tag {
+  text-decoration: none;
+  font-weight: bold;
+  color: black; }
+  .user-tag:visited {
+    color: inherit; }
+  .user-tag:hover {
+    text-decoration: underline; }
+
 /*# sourceMappingURL=index.css.map */

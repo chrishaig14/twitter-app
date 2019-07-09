@@ -588,3 +588,17 @@ hr {
 
  }
 }
+
+.user-tag {
+  text-decoration: none;
+  font-weight: bold;
+  color:black;
+    &:visited {
+      color: inherit;
+    }
+
+    &:hover {
+      //color: blueviolet
+      text-decoration: underline;
+    }
+}

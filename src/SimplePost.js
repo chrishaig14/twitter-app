@@ -3,6 +3,7 @@ import {NavLink} from "react-router-dom";
 import Comment from "./Comment";
 import NewComment from "./NewComment";
 import UserPic from "./UserPic";
+import PostContent from "./PostContent";
 
 class SimplePost extends React.Component {
     serverUrl = "http://localhost:8888";
@@ -113,7 +114,8 @@ class SimplePost extends React.Component {
                              className={"post-user"}>{this.props.data.username}</NavLink>
                     <span className="post-time">{this.dateToString(date)}</span>
                 </div>
-                <div className={"post-content"}>{this.props.data.content}</div>
+                {/*<div className={"post-content"}>{this.props.data.content}</div>*/}
+                <PostContent content={this.props.data.content}/>
                 <div className={"post-footer"}>
                     {/*<button onClick={this.openCommentSection}>Reply</button>*/}
                     {/*<button onClick={this.retweet}>Retweet</button>*/}
