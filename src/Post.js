@@ -3,6 +3,7 @@ import {NavLink} from "react-router-dom";
 import Comment from "./Comment";
 import NewComment from "./NewComment";
 import SimplePost from "./SimplePost";
+import Quote from "./Quote";
 // import RetweetWithoutComment from "./RetweetWithoutComment";
 // import RetweetWithComment from "./RetweetWithComment";
 // import Retweet from "./Retweet";
@@ -23,9 +24,16 @@ class Post extends React.Component {
     constructor(props) {
         super(props);
         this.openCommentSection = this.openCommentSection.bind(this);
-        this.state = {commentSection: false, comments: [], retweetingWithComment: false, retweetValue: ""};
+        this.state = {
+            commentSection: false,
+            comments: [],
+            retweetingWithComment: false,
+            retweetValue: "",
+            quoteVal: null
+        };
         this.onNewComment = this.onNewComment.bind(this);
         this.token = this.str_obj(document.cookie).token;
+        this.onSubmitRetweet = this.onSubmitRetweet.bind(this);
         this.share = this.share.bind(this);
         this.quote = this.quote.bind(this);
         this.onCommentChange = this.onCommentChange.bind(this);
@@ -37,11 +45,15 @@ class Post extends React.Component {
 
 
     quote() {
+        this.setState({retweetingWithComment: true});
+    }
+
+    onSubmitRetweet(event) {
         fetch(this.serverUrl + "/posts",
             {
                 method: "POST",
                 headers: {"Authorization": this.token},
-                body: JSON.stringify({content: this.state.content, quote: this.props.data.id})
+                body: JSON.stringify({content: this.state.retweetValue, retweet: this.props.data.id})
             }
         ).then(
             res => {
@@ -53,7 +65,7 @@ class Post extends React.Component {
             }
         );
 
-        // event.preventDefault();
+        event.preventDefault();
     }
 
     share() {
@@ -88,6 +100,19 @@ class Post extends React.Component {
     }
 
     componentDidMount() {
+        fetch(this.serverUrl + "/posts/" + this.props.data.retweet,
+            {
+                method: "GET",
+                headers: {"Authorization": this.token}
+            }
+        ).then(
+            res =>
+                res.json()
+        ).then(res => {
+            this.setState({quoteVal: res});
+        });
+
+        // event.preventDefault();
     }
 
     openCommentSection() {
@@ -115,26 +140,31 @@ class Post extends React.Component {
                 </div> : null}
             </div>;
         return (<div className={"main-post"}>
-            <SimplePost data={this.props.data}/>
-            {footer}
-        </div>);
+                <SimplePost data={this.props.data}/>
+                {this.state.quoteVal ? <Quote data={this.state.quoteVal}/> : null}
+                {footer}
+            </div>
+        );
 
-        // return (
+        // // return (
+        // //
         //     <div className={"post"}>
-        //         {header}
-        //         <div className={"post-content"}>{this.props.data.content}</div>
-        //         <div className={"post-footer"}>
-        //             <button onClick={this.openCommentSection}>Reply</button>
-        //             <button onClick={this.retweet}>Retweet</button>
-        //         </div>
-        //
-        //         {this.state.commentSection ? (<div>
-        //             <NewComment onSubmit={this.onNewComment} postId={this.props.data.id}/>
-        //             {this.state.comments.map(comment => <Comment data={comment} key={comment.id}/>)}
-        //         </div>) : null}
-        //     </div>
-        // );
-        // }
+        //         // {header}
+        //         // <div className={"post-content"}>{this.props.data.content}</div>
+        //         // <div className={"post-footer"}>
+        //         // <button onClick={this.openCommentSection}>Reply</button>
+        //         // <button onClick={this.retweet}>Retweet</button>
+        //         // </div>
+        //         //
+        //         // {this.state.commentSection ? (<div>
+        //         // <NewComment onSubmit={this.onNewComment} postId={this.props.data.id}/>
+        //         // {this.state.comments.map(comment => <Comment data={comment} key={comment.id}/>)}
+        //         // </div>) : null}
+        //         // </div>;
+        // ;
+        // ;
+        // // );
+        // // }
     }
 }
 
