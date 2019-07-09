@@ -10,9 +10,9 @@ class LoginView extends React.Component {
 
     str_obj(str) {
         str = str.split("; ");
-        var result = {};
-        for (var i = 0; i < str.length; i++) {
-            var cur = str[i].split("=");
+        const result = {};
+        for (let i = 0; i < str.length; i++) {
+            const cur = str[i].split("=");
             result[cur[0]] = cur[1];
         }
         return result;

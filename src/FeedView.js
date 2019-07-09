@@ -1,9 +1,6 @@
 import React from "react";
 import Post from "./Post";
-import {NavLink, Redirect} from "react-router-dom";
-import SearchBox from "./SearchBox";
 import NewPost from "./NewPost";
-import Header from "./Header";
 import Share from "./Share";
 
 class FeedView extends React.Component {
@@ -14,9 +11,9 @@ class FeedView extends React.Component {
 
     str_obj(str) {
         str = str.split("; ");
-        var result = {};
-        for (var i = 0; i < str.length; i++) {
-            var cur = str[i].split("=");
+        const result = {};
+        for (let i = 0; i < str.length; i++) {
+            const cur = str[i].split("=");
             result[cur[0]] = cur[1];
         }
         return result;

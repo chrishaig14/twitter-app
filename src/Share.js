@@ -1,7 +1,5 @@
 import React from "react";
-import SimplePost from "./SimplePost";
 import {NavLink} from "react-router-dom";
-import UserPic from "./UserPic";
 import Post from "./Post";
 
 class Share extends React.Component {

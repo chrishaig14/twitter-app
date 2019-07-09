@@ -1,14 +1,13 @@
 import React from "react";
-import Header from "./Header";
 
 class EditProfile extends React.Component {
     serverUrl = "http://localhost:8888";
 
     str_obj(str) {
         str = str.split("; ");
-        var result = {};
-        for (var i = 0; i < str.length; i++) {
-            var cur = str[i].split("=");
+        const result = {};
+        for (let i = 0; i < str.length; i++) {
+            const cur = str[i].split("=");
             result[cur[0]] = cur[1];
         }
         return result;
@@ -44,7 +43,7 @@ class EditProfile extends React.Component {
     }
 
     encodeImageFileAsURL(file, callback) {
-        var reader = new FileReader();
+        const reader = new FileReader();
         reader.onloadend = function () {
             callback(reader.result);
         };
