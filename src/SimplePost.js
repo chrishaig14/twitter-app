@@ -84,21 +84,18 @@ class SimplePost extends React.Component {
         let date = (new Date(this.props.data.timestamp));
         return (
             <div className={"simple-post"}>
-                {/*Simple Post*/}
+
                 <div className={"post-header"}>
-                    {/*<img src={this.state.userpic} className={"post-user-pic"}/>*/}
+
                     <UserPic username={this.props.data.username}/>
                     <NavLink to={{pathname: "/users/" + this.props.data.username, state: {token: this.props.token}}}
                              className={"post-user"}>{this.props.data.username}</NavLink>
                     <span className="post-time">{this.dateToString(date)}</span>
                 </div>
 
-                {/*<div className={"post-content"}>{this.props.data.content}</div>*/}
+
                 <PostContent content={this.props.data.content}/>
-                <div className={"post-footer"}>
-                    {/*<button onClick={this.openCommentSection}>Reply</button>*/}
-                    {/*<button onClick={this.retweet}>Retweet</button>*/}
-                </div>
+
 
                 {this.state.commentSection ? (<div>
                     <NewComment onSubmit={this.onNewComment} postId={this.props.data.id}/>

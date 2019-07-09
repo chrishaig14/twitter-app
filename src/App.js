@@ -21,21 +21,12 @@ class App extends React.Component {
                     <Route component={Header}/>
                 </Switch>
 
-                {/*<Route path={"/post"} component={Post}/>*/}
-                {/*<Route path={"/comment"} component={Comment}/>*/}
-                {/*<Route path={"/newpost"} component={NewPost}/>*/}
-
                 <Route path={"/feed"} component={FeedView}/>
                 <Route path={"/users/:id"} component={UserView}/>
                 <Route path={"/search"} component={SearchResultsView}/>
                 <Route path={"/editProfile"} component={EditProfile}/>
                 <Route path={"/following"} component={FollowingView}/>
 
-                {/*<LoginView/>*/}
-                {/*<SignupView/>*/}
-                {/*<Post/>*/}
-                {/*<Comment/>*/}
-                {/*<NewPost/>*/}
             </div>
         );
     }

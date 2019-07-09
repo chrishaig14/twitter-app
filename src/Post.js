@@ -80,11 +80,6 @@ class Post extends React.Component {
             }
         );
     }
-
-    retweetWithComment() {
-        this.setState({retweetingWithComment: true});
-    }
-
     onNewComment(comment) {
         console.log("ON NEW COMMENT!°");
         this.setState((state) => {

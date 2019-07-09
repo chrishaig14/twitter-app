@@ -21,11 +21,11 @@ class FeedView extends React.Component {
 
     constructor(props) {
         super(props);
-        // this.logout = this.logout.bind(this);
+
         this.state = {"posts": [], toHome: false, shares:[]};
         this.token = this.str_obj(document.cookie).token;
         console.log("TOKEN : ", this.token);
-        // this.token = this.props.location.state.token;
+
         this.addNewPost = this.addNewPost.bind(this);
     }
 

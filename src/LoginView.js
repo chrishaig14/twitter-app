@@ -64,8 +64,7 @@ class LoginView extends React.Component {
                     this.token = res.headers.get("Authorization");
                     document.cookie = `token=${this.token};path=/`;
                     console.log("TOKEN ;: ", this.token);
-                    // console.log("HEADERS: ", res.headers.get("Authorization"));
-                    // return res.json();
+
                     this.setState({toFeed: true});
                 }
             }
@@ -85,7 +84,7 @@ class LoginView extends React.Component {
         }
         return (
             <div id={"login-view"}>
-                {/*<h1>Login View</h1>*/}
+
                 <form onSubmit={this.submitLogin}>
                     <label>USERNAME<input type="text" value={this.state.username}
                                           onChange={this.onUsernameChange}/></label>

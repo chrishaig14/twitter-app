@@ -6,8 +6,6 @@ class Header extends React.Component {
 
     serverUrl = "http://localhost:8888";
 
-    // username = "";
-
     str_obj(str) {
         str = str.split("; ");
         const result = {};

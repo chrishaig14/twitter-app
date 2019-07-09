@@ -19,7 +19,7 @@ class UserView extends React.Component {
         super(props);
         console.log("username: ", this.props.match.params.id);
         this.username = this.props.match.params.id;
-        // this.token = this.props.location.state.token;
+
         this.token = this.str_obj(document.cookie).token;
         console.log("USER VIEW TOKEN : ", this.token);
         console.log("my token is: ", this.token);
@@ -104,9 +104,6 @@ class UserView extends React.Component {
                         <img className={"other-user-pic"} src={this.state.pic}></img>
                         <span className={"username"}>{this.username}</span>
 
-                        {/*<p className={"other-user-info"}>*/}
-                        {/*    Lorem ipsum dolor sit amet...*/}
-                        {/*</p>*/}
                         {this.state.followed ?
                             (<button onClick={this.unfollow}>Unfollow</button>) :
                             (<button onClick={this.follow}>Follow</button>)

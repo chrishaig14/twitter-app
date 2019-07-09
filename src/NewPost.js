@@ -43,7 +43,7 @@ class NewPost extends React.Component {
     render() {
         return (
             <div className={"new-post"}>
-                {/*<h1>New post</h1>*/}
+
                 <form onSubmit={this.onSubmit}>
                     <input className={"new-post-text"} required={true} value={this.state.post} type={"text"}
                            onChange={this.onContentChange}/>

@@ -85,11 +85,7 @@ class EditProfile extends React.Component {
     render() {
         return (
             <div className={"profile"}>
-                {/*<Header/>*/}
-                {/*<div >*/}
-                {/*<form className={"profile-form"} onSubmit={this.profileSubmit}>*/}
 
-                {/*<div className={"profile-pic"}></div>*/}
                 <h1>Edit your profile</h1>
                 <div className={"profile-form"}>
                     <img className={"profile-pic"} src={this.state.pic}/>
@@ -99,8 +95,7 @@ class EditProfile extends React.Component {
                     <label>Info:<input className={"profile-info"} type={"text"}/></label>
                     <button onClick={this.onInfoSave}>Save</button>
                 </div>
-                {/*</form>*/}
-                {/*</div>*/}
+
             </div>
         );
     }

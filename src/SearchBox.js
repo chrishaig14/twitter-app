@@ -14,21 +14,6 @@ class SearchBox extends React.Component {
     onSearch(event) {
         console.log("SUBMITTING SEARCGH");
         this.setState({toResult: true});
-
-        //
-        // fetch(this.serverUrl + "/search", {
-        //     method: "POST",
-        //     body: JSON.stringify({search_term: this.state.searchTerm})
-        // }).then(
-        //     res => {
-        //         // console.log("RESULT::: ", res);
-        //         return res.json();
-        //     }
-        // ).then(
-        //     res => {
-        //         console.log("SEARCH RESULT: ", res);
-        //     }
-        // );
         event.preventDefault();
     }
 

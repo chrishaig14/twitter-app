@@ -7,10 +7,6 @@ class PostContent extends React.Component {
         this.strings = this.props.content.split(" ");
     }
 
-    // makeStrings(){
-    //
-    // }
-
     render() {
         return (
             <p>

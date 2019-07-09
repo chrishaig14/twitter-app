@@ -31,12 +31,11 @@ class SearchResultsView extends React.Component {
             this.setState({users: res.map(a => a.username)});
         });
         console.log(x);
-        // this.setState(prevState => (prevState.users = [x.term]));
 
     }
 
     componentDidMount() {
-        // console.log("component mounted");
+
         this.search();
     }
 
@@ -51,7 +50,6 @@ class SearchResultsView extends React.Component {
         return (
             <div>
                 {this.state.users.length} results for "{this.term}"
-                {/*{this.state.users.map(user => <div key={user}>{user}</div>)}*/}
                 <div className={"search-results"}>
                     {this.state.users.map(username => <UserCard key={username} onUnfollow={this.onUnfollow}
                                                                 username={username}/>)}
