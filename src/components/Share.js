@@ -1,6 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import Post from "./Post";
+import PostComponent from "./PostComponent";
 
 class Share extends React.Component {
     serverUrl = "http://localhost:8888";
@@ -30,7 +30,7 @@ class Share extends React.Component {
                                    to={"/users/" + this.props.data.username}>{this.props.data.username}</NavLink> shared</span>
                 </div>
                 <hr/>
-                {this.state.post_data ? <Post data={this.state.post_data}/> : null}
+                {this.state.post_data ? <PostComponent data={this.state.post_data}/> : null}
             </div>
         );
     }

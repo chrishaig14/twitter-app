@@ -2,7 +2,7 @@ import React from "react";
 import SimplePost from "./SimplePost";
 import Quote from "./Quote";
 
-class Post extends React.Component {
+class PostComponent extends React.Component {
     serverUrl = "http://localhost:8888";
 
     str_obj(str) {
@@ -158,4 +158,4 @@ class Post extends React.Component {
     }
 }
 
-export default Post;
+export default PostComponent;

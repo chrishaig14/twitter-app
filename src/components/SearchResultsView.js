@@ -1,7 +1,7 @@
 import React from "react";
 // import FollowedUser from "./FollowedUser";
 
-import {parse} from "query-string";
+import {parse} from "query-string/index";
 import UserCard from "./UserCard";
 
 class SearchResultsView extends React.Component {

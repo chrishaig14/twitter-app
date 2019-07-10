@@ -1,5 +1,5 @@
 import React from "react";
-import Post from "./Post";
+import PostComponent from "./PostComponent";
 
 class UserView extends React.Component {
     serverUrl = "http://localhost:8888";
@@ -114,7 +114,7 @@ class UserView extends React.Component {
                         <h4 className={"user-posts-title"}>{this.username}'s posts</h4>
                         <div className={"post-container"}>
 
-                            {this.state.posts.map(data => <Post key={data.id} data={data}/>)}
+                            {this.state.posts.map(data => <PostComponent key={data.id} data={data}/>)}
                         </div>
                     </div>
                 </div>
