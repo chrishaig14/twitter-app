@@ -62,7 +62,7 @@ class FeedViewComponent extends React.Component {
     // }
 
     render() {
-
+        console.log("POSTLIST: ", this.props.postList);
         return (
 
             <div className={"feed-view"}>

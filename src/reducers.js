@@ -1,8 +1,7 @@
-import {applyMiddleware as dispatch} from "redux";
+import {combineReducers} from "redux";
+import {connectRouter} from "connected-react-router";
 
-const serverUrl = "http://localhost:8888";
-
-export default function (state = {}, action) {
+function reducer(state = {}, action) {
     console.log("REDUCER CALLED WITH ACTION: ", action);
     let new_state = Object.assign({}, state);
     switch (action.type) {
@@ -11,6 +10,16 @@ export default function (state = {}, action) {
         case "RECEIVE FEED":
             new_state.postList = action.data.posts;
             break;
+        case "RECEIVE TOKEN":
+            new_state.token = action.token;
+            console.log("RECEIVED TOKEN: ", new_state.token);
+            // new_state.redirect = "/feed";
+            console.log(new_state);
+            break;
+        case "LOGIN ERROR":
+            new_state.loginError = action.loginError;
+            console.log("LOGIN ERROR", action.loginError);
+            break;
         default:
             new_state.postList = [];
             break;
@@ -18,3 +27,10 @@ export default function (state = {}, action) {
 
     return new_state;
 }
+
+export default (history) => combineReducers(
+    {
+        router: connectRouter(history), main: reducer
+    }
+);
+

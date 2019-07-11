@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import LoginView from "./LoginView";
+import LoginViewComponent from "./LoginViewComponent";
 import SignupView from "./SignupView";
 import {Route, Switch} from "react-router-dom";
 import FeedViewComponent from "./FeedViewComponent";
@@ -10,6 +10,7 @@ import FollowingView from "./FollowingView";
 import Header from "./Header";
 import SearchResultsView from "./SearchResultsView";
 import FeedViewContainer from "../containers/FeedViewContainer";
+import LoginViewContainer from "../containers/LoginViewContainer";
 
 
 class App extends React.Component {
@@ -17,7 +18,7 @@ class App extends React.Component {
         return (
             <div>
                 <Switch>
-                    <Route exact path={"/"} component={LoginView}/>
+                    <Route exact path={"/"} component={LoginViewContainer}/>
                     {/*<Route path={"/signup"} component={SignupView}/>*/}
                     {/*<Route component={Header}/>*/}
                 </Switch>

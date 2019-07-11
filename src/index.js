@@ -3,19 +3,34 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
-import {BrowserRouter} from "react-router-dom";
-import {applyMiddleware, createStore} from "redux";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {applyMiddleware, compose, createStore} from "redux";
 import {Provider} from "react-redux";
-import rootReducer from "./reducers";
+import createRootReducer from "./reducers";
 import thunk from "redux-thunk";
+import {createBrowserHistory} from "history";
+import {routerMiddleware, ConnectedRouter} from "connected-react-router";
+import LoginViewContainer from "./containers/LoginViewContainer";
+import FeedViewContainer from "./containers/FeedViewContainer";
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const history = createBrowserHistory();
+
+const store = createStore(createRootReducer(history), compose(applyMiddleware(routerMiddleware(history), thunk)));
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
-            <App/>
-        </BrowserRouter>
+        <ConnectedRouter history={history}>
+            {/*<BrowserRouter>*/}
+                {/*<App/>*/}
+                <Switch>
+                    <Route exact path={"/"} component={LoginViewContainer}/>
+                    {/*<Route path={"/signup"} component={SignupView}/>*/}
+                    {/*<Route component={Header}/>*/}
+                </Switch>
+
+                <Route path={"/feed"} component={FeedViewContainer}/>
+            {/*</BrowserRouter>*/}
+        </ConnectedRouter>
     </Provider>
     , document.getElementById("root"));
 
