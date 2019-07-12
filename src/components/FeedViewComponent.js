@@ -1,7 +1,6 @@
 import React from "react";
 import PostComponent from "./PostComponent";
-import NewPost from "./NewPost";
-import Share from "./Share";
+import NewPostContainer from "../containers/NewPostContainer";
 
 class FeedViewComponent extends React.Component {
 
@@ -66,7 +65,7 @@ class FeedViewComponent extends React.Component {
         return (
 
             <div className={"feed-view"}>
-                <NewPost onPost={this.props.addNewPost}/>
+                <NewPostContainer/>
                 <div className={"post-container"}>
                     {this.props.postList.map(data => <PostComponent key={data.timestamp} data={data}/>)}
                 </div>

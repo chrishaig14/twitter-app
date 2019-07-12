@@ -61,3 +61,34 @@ export const fetchLogin = (username, password) => {
         });
     };
 };
+
+const receiveNewPost = postData => (
+    {
+        type: "RECEIVE NEW POST",
+        postData
+    }
+);
+
+export const newPost = (postContent) => {
+    return (dispatch, getState) => {
+        // dispatch()
+        fetch(serverUrl + "/posts",
+            {
+                method: "POST",
+                body: JSON.stringify({content: postContent}),
+                headers: {"Authorization": getState().main.token}
+            }
+        )
+            .then(
+                res => {
+                    if (res.ok) {
+                        return res.json();
+                    }
+                }
+            ).then(
+            res => {
+                dispatch(receiveNewPost(res));
+            }
+        );
+    };
+};
