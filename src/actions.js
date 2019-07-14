@@ -139,49 +139,63 @@ export const fetchUserPosts = (username) => {
         ).then(
             res => {
                 console.log(`GOT USER ${username} POSTS:`, res);
-                dispatch(receiveFeed({posts:res}));
+                dispatch(receiveFeed({posts: res}));
             }
         );
     };
 };
 
+const setUserFollowed = followed => ({
+    type: "SET FOLLOWED",
+    followed: followed
+});
+
 export const checkFollowed = (username) => {
-    fetch(this.serverUrl + "/users/me/followees/" + username, {
-        method: "GET", headers: {"Authorization": this.token}
-    }).then(
-        res => {
-            console.log("RES.STATUS: ", res.status);
-            if (res.status === 200) {
-
-            } else {
-
+    return (dispatch, getState) => {
+        fetch(serverUrl + "/users/me/followees/" + username, {
+            method: "GET", headers: {"Authorization": getState().main.token}
+        }).then(
+            res => {
+                console.log("RES.STATUS: ", res.status);
+                if (res.status === 200) {
+                    dispatch(setUserFollowed(true));
+                } else {
+                    dispatch(setUserFollowed(false));
+                }
             }
-        }
-    );
+        );
+    };
 };
 
 export const follow = (username) => {
-    fetch(serverUrl + "/users/me/followees/" + this.username, {
-        method: "PUT", headers: {"Authorization": this.token}
-    }).then(
-        res => {
-            if (res.ok) {
-                console.log("NOW FOLLOWING USER: ", this.username);
-                this.setState({followed: true});
+    return (dispatch, getState) => {
+        fetch(serverUrl + "/users/me/followees/" + username, {
+            method: "PUT", headers: {"Authorization": getState().main.token}
+        }).then(
+            res => {
+                if (res.ok) {
+                    console.log("NOW FOLLOWING USER: ", username);
+                    // this.setState({followed: true});
+                    dispatch(setUserFollowed(true));
+
+                }
             }
-        }
-    );
+        );
+    };
 };
 
-export const unfollow = () => {
-    fetch(serverUrl + "/users/me/followees/" + this.username, {
-        method: "DELETE", headers: {"Authorization": this.token}
-    }).then(
-        res => {
-            if (res.ok) {
-                console.log("STOPPED FOLLOWING USER: ", this.username);
-                this.setState({followed: false});
+export const unfollow = (username) => {
+    return (dispatch, getState) => {
+        fetch(serverUrl + "/users/me/followees/" + username, {
+            method: "DELETE", headers: {"Authorization": getState().main.token}
+        }).then(
+            res => {
+                if (res.ok) {
+                    console.log("STOPPED FOLLOWING USER: ", username);
+                    // this.setState({followed: false});
+                    dispatch(setUserFollowed(false));
+                }
             }
-        }
-    );
+        );
+    };
 };

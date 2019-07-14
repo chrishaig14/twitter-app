@@ -1,12 +1,13 @@
 import UserViewComponent from "../components/UserViewComponent";
 import {connect} from "react-redux";
-import {fetchUserPosts, follow, unfollow} from "../actions";
+import {checkFollowed, fetchUserPosts, follow, unfollow} from "../actions";
 
 const mapStateToProps = (state, ownProps) => {
     console.log("STATE NEW: ", state);
     return ({
         username: ownProps.match.params.id,
-        posts: state.main.postList
+        posts: state.main.postList,
+        followed: state.main.userFollowed
     });
 };
 const mapDispatchToProps = dispatch => {
@@ -15,6 +16,7 @@ const mapDispatchToProps = dispatch => {
         follow: (id) => dispatch(follow(id)),
         unfollow: (id) => dispatch(unfollow(id)),
         onMount: (id) => {
+            dispatch(checkFollowed(id));
             dispatch(fetchUserPosts(id));
         }
     });

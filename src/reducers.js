@@ -25,6 +25,9 @@ function reducer(state = {}, action) {
             new_state.postList.push(action.postData);
             console.log("NEW POST LIST: ", new_state.postList);
             break;
+        case "SET FOLLOWED":
+            new_state.userFollowed = action.followed;
+            break;
         default:
             new_state.postList = [];
             break;
