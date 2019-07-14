@@ -92,3 +92,96 @@ export const newPost = (postContent) => {
         );
     };
 };
+
+export const followUser = (id) => {
+    return (dispatch, getState) => {
+        // dispatch()
+        fetch(serverUrl + "/users/me/followees/" + id,
+            {
+                method: "PUT",
+                headers: {"Authorization": getState().main.token}
+            }
+        )
+            .then(
+                res => {
+                    if (res.ok) {
+                        return res.json();
+                    }
+                }
+            ).then(
+            res => {
+                dispatch({type: "OK"});
+            }
+        );
+    };
+};
+
+export const fetchUser = () => {
+    console.log("SENDING REQUEST TO GET USER POSTS");
+    fetch(this.serverUrl + "/users/" + this.username, {
+        method: "GET"
+    }).then(
+        res => res.json()
+    ).then(
+        res => {
+            console.log(`GOT USER ${this.username} POSTS:`, res);
+            this.setState({"pic": res.pic});
+        }
+    );
+};
+
+export const fetchUserPosts = (username) => {
+    return (dispatch) => {
+        fetch(serverUrl + "/users/" + username + "/posts", {
+            method: "GET"
+        }).then(
+            res => res.json()
+        ).then(
+            res => {
+                console.log(`GOT USER ${username} POSTS:`, res);
+                dispatch(receiveFeed({posts:res}));
+            }
+        );
+    };
+};
+
+export const checkFollowed = (username) => {
+    fetch(this.serverUrl + "/users/me/followees/" + username, {
+        method: "GET", headers: {"Authorization": this.token}
+    }).then(
+        res => {
+            console.log("RES.STATUS: ", res.status);
+            if (res.status === 200) {
+
+            } else {
+
+            }
+        }
+    );
+};
+
+export const follow = (username) => {
+    fetch(serverUrl + "/users/me/followees/" + this.username, {
+        method: "PUT", headers: {"Authorization": this.token}
+    }).then(
+        res => {
+            if (res.ok) {
+                console.log("NOW FOLLOWING USER: ", this.username);
+                this.setState({followed: true});
+            }
+        }
+    );
+};
+
+export const unfollow = () => {
+    fetch(serverUrl + "/users/me/followees/" + this.username, {
+        method: "DELETE", headers: {"Authorization": this.token}
+    }).then(
+        res => {
+            if (res.ok) {
+                console.log("STOPPED FOLLOWING USER: ", this.username);
+                this.setState({followed: false});
+            }
+        }
+    );
+};

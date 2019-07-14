@@ -12,6 +12,7 @@ import {createBrowserHistory} from "history";
 import {routerMiddleware, ConnectedRouter} from "connected-react-router";
 import LoginViewContainer from "./containers/LoginViewContainer";
 import FeedViewContainer from "./containers/FeedViewContainer";
+import UserViewContainer from "./containers/UserViewContainer";
 
 const history = createBrowserHistory();
 
@@ -21,14 +22,15 @@ ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
             {/*<BrowserRouter>*/}
-                {/*<App/>*/}
-                <Switch>
-                    <Route exact path={"/"} component={LoginViewContainer}/>
-                    {/*<Route path={"/signup"} component={SignupView}/>*/}
-                    {/*<Route component={Header}/>*/}
-                </Switch>
+            {/*<App/>*/}
+            <Switch>
+                <Route exact path={"/"} component={LoginViewContainer}/>
+                {/*<Route path={"/signup"} component={SignupView}/>*/}
+                {/*<Route component={Header}/>*/}
+            </Switch>
 
-                <Route path={"/feed"} component={FeedViewContainer}/>
+            <Route path={"/feed"} component={FeedViewContainer}/>
+            <Route path={"/users/:id"} component={UserViewContainer}/>
             {/*</BrowserRouter>*/}
         </ConnectedRouter>
     </Provider>
