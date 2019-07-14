@@ -184,6 +184,12 @@ export const follow = (username) => {
     };
 };
 
+export const logout = () => {
+    return (dispatch, getState) => {
+
+    };
+};
+
 export const unfollow = (username) => {
     return (dispatch, getState) => {
         fetch(serverUrl + "/users/me/followees/" + username, {
