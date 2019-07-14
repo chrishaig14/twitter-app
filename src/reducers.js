@@ -22,7 +22,7 @@ function reducer(state = {}, action) {
             break;
         case "RECEIVE NEW POST":
             console.log("RECEIVED NEW POST");
-            new_state.postList.push(action.postData);
+            new_state.postList.unshift(action.postData);
             console.log("NEW POST LIST: ", new_state.postList);
             break;
         case "SET FOLLOWED":
