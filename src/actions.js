@@ -1,4 +1,5 @@
 import {push} from "connected-react-router";
+import {parse} from "query-string";
 
 const serverUrl = "http://localhost:8888";
 
@@ -203,5 +204,23 @@ export const unfollow = (username) => {
                 }
             }
         );
+    };
+};
+
+export const receiveSearch = data => ({
+    type: "RECEIVE SEARCH",
+    data: data
+});
+
+export const fetchSearch = (query) => {
+    return (dispatch, getState) => {
+        let url = serverUrl + "/search" + query;
+        fetch(url, {method: "GET"}).then(
+            res => {
+                return res.json();
+            }
+        ).then(res => {
+            dispatch(receiveSearch(res.map(a => a.username)));
+        });
     };
 };

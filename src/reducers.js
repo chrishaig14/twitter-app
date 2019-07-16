@@ -28,8 +28,13 @@ function reducer(state = {}, action) {
         case "SET FOLLOWED":
             new_state.userFollowed = action.followed;
             break;
+        case "RECEIVE SEARCH":
+            new_state.searchResults = action.data;
+            console.log("RECEIVED SEARCH RESULTS: ", action.data);
+            break;
         default:
             new_state.postList = [];
+            new_state.searchResults = [];
             break;
     }
 
