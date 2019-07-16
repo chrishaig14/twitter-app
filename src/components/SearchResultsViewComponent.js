@@ -1,8 +1,5 @@
 import React from "react";
-// import FollowedUser from "./FollowedUser";
-
-import {parse} from "query-string/index";
-import UserCard from "./UserCard";
+import UserCardContainer from "../containers/UserCardContainer";
 
 class SearchResultsViewComponent extends React.Component {
     componentDidMount() {
@@ -20,8 +17,7 @@ class SearchResultsViewComponent extends React.Component {
             <div>
                 {this.props.users.length} results for "{this.props.location.search}"
                 <div className={"search-results"}>
-                    {this.props.users.map(username => <UserCard key={username} onUnfollow={this.onUnfollow}
-                                                                username={username}/>)}
+                    {this.props.users.map(username => <UserCardContainer key={username} username={username}/>)}
                 </div>
             </div>
         );

@@ -146,8 +146,9 @@ export const fetchUserPosts = (username) => {
     };
 };
 
-const setUserFollowed = followed => ({
+const setUserFollowed = (username, followed) => ({
     type: "SET FOLLOWED",
+    username: username,
     followed: followed
 });
 
@@ -159,9 +160,9 @@ export const checkFollowed = (username) => {
             res => {
                 console.log("RES.STATUS: ", res.status);
                 if (res.status === 200) {
-                    dispatch(setUserFollowed(true));
+                    dispatch(setUserFollowed(username, true));
                 } else {
-                    dispatch(setUserFollowed(false));
+                    dispatch(setUserFollowed(username, false));
                 }
             }
         );
@@ -177,7 +178,7 @@ export const follow = (username) => {
                 if (res.ok) {
                     console.log("NOW FOLLOWING USER: ", username);
                     // this.setState({followed: true});
-                    dispatch(setUserFollowed(true));
+                    dispatch(setUserFollowed(username, true));
 
                 }
             }
@@ -200,7 +201,7 @@ export const unfollow = (username) => {
                 if (res.ok) {
                     console.log("STOPPED FOLLOWING USER: ", username);
                     // this.setState({followed: false});
-                    dispatch(setUserFollowed(false));
+                    dispatch(setUserFollowed(username, false));
                 }
             }
         );
@@ -224,3 +225,73 @@ export const fetchSearch = (query) => {
         });
     };
 };
+
+export const receiveFollowing = (following) => ({
+    type: "RECEIVE FOLLOWING",
+    following
+});
+
+export const fetchFollowing = () => {
+    return (dispatch, getState) => {
+        fetch(serverUrl + "/users/me/followees", {
+            method: "GET",
+            headers: {"Authorization": getState().main.token}
+        }).then(
+            res => res.json()
+        ).then(
+            res => {
+                dispatch(receiveFollowing(res.map(x => x.followee)));
+            }
+        );
+    };
+};
+
+//
+// componentDidMount() {
+//     fetch(this.serverUrl + "/users/" + this.props.username + "/img",
+//         {method: "GET"}
+//     ).then(res => res.text()
+//     ).then(res => {
+//         this.setState({pic: res});
+//     });
+//     fetch(this.serverUrl + "/users/me/followees/" + this.props.username, {
+//         method: "GET", headers: {"Authorization": this.token}
+//     }).then(
+//         res => {
+//             console.log("RES.STATUS: ", res.status);
+//             if (res.status === 200) {
+//                 this.setState({followed: true});
+//             } else {
+//                 this.setState({followed: false});
+//             }
+//         }
+//     );
+// }
+//
+//
+//
+// follow() {
+//     fetch(this.serverUrl + "/users/me/followees/" + this.props.username, {
+//         method: "PUT", headers: {"Authorization": this.token}
+//     }).then(
+//         res => {
+//             if (res.ok) {
+//                 console.log("NOW FOLLOWING USER: ", this.props.username);
+//                 this.setState({followed: true});
+//             }
+//         }
+//     );
+// }
+//
+// unfollow() {
+//     fetch(this.serverUrl + "/users/me/followees/" + this.props.username, {
+//         method: "DELETE", headers: {"Authorization": this.token}
+//     }).then(
+//         res => {
+//             if (res.ok) {
+//                 console.log("STOPPED FOLLOWING USER: ", this.props.username);
+//                 this.setState({followed: false});
+//             }
+//         }
+//     );
+// }

@@ -16,6 +16,7 @@ import UserViewContainer from "./containers/UserViewContainer";
 // import HeaderComponent from "./components/Header";
 import HeaderContainer from "./containers/HeaderContainer";
 import SearchResultsViewContainer from "./containers/SearchResultsViewContainer";
+import FollowingViewContainer from "./containers/FollowingViewContainer";
 
 const history = createBrowserHistory();
 
@@ -33,6 +34,7 @@ ReactDOM.render(
             </Switch>
 
             <Route path={"/feed"} component={FeedViewContainer}/>
+            <Route path={"/following"} component={FollowingViewContainer}/>
             <Route path={"/users/:id"} component={UserViewContainer}/>
             <Route path={"/search"} component={SearchResultsViewContainer}/>
             {/*</BrowserRouter>*/}
