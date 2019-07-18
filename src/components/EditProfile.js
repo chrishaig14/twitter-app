@@ -1,19 +1,6 @@
 import React from "react";
 
 class EditProfile extends React.Component {
-    serverUrl = "http://localhost:8888";
-
-    str_obj(str) {
-        str = str.split("; ");
-        const result = {};
-        for (let i = 0; i < str.length; i++) {
-            const cur = str[i].split("=");
-            result[cur[0]] = cur[1];
-        }
-        return result;
-    }
-
-
     constructor(props) {
         super(props);
         this.profileSubmit = this.profileSubmit.bind(this);
@@ -25,22 +12,6 @@ class EditProfile extends React.Component {
         };
     }
 
-    componentDidMount() {
-        fetch(this.serverUrl + "/users/me", {
-            method: "GET",
-            headers: {"Authorization": this.token}
-        }).then(
-            res => {
-                if (res.ok) {
-                    return res.json();
-                }
-            }
-        ).then(
-            res => {
-                this.setState({pic: res.pic, info: res.info});
-            }
-        );
-    }
 
     encodeImageFileAsURL(file, callback) {
         const reader = new FileReader();
@@ -50,25 +21,7 @@ class EditProfile extends React.Component {
         reader.readAsDataURL(file);
     }
 
-    updateImage(result) {
-        fetch(this.serverUrl + "/users/me/img", {
-            method: "PUT",
-            headers: {
-                "Authorization": this.token
-            },
-            body: result
-        }).then(
-            res => {
-                if (res.ok) {
-                    this.setState({pic: result}, () => {
-                        console.log("new state: ", this.state.pic.slice(30, 50));
-                    });
-                } else {
-                    console.log("COULD NOT UPDATE IMAGE!");
-                }
-            }
-        );
-    }
+
 
     onImageSelect() {
         console.log("IMAGE SELECTED!");

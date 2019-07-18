@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import {checkFollowed, fetchUserPosts, follow, unfollow} from "../actions";
 
 const mapStateToProps = (state, ownProps) => {
-    console.log("STATE NEW: ", state);
     return ({
         username: ownProps.match.params.id,
         posts: state.main.postList,

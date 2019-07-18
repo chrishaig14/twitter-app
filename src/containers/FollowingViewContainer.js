@@ -3,7 +3,6 @@ import FollowingViewComponent from "../components/FollowingViewComponent";
 import {fetchFollowing} from "../actions";
 
 const mapStateToProps = state => {
-    console.log("STATE:", state);
     let users = [];
     for (let user in state.main.userFollowed) {
         if (state.main.userFollowed[user]) {

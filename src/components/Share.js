@@ -10,17 +10,6 @@ class Share extends React.Component {
         this.state = {post_data: null};
     }
 
-
-    componentDidMount() {
-        fetch(this.serverUrl + "/posts/" + this.props.data.post_id, {method: "GET"}).then(
-            res => res.json()
-        ).then(
-            res => {
-                this.setState({post_data: res});
-            }
-        );
-    }
-
     render() {
         return (
             <div className={"share"}>

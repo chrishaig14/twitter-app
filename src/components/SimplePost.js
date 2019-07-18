@@ -1,9 +1,9 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import Comment from "./Comment";
-import NewComment from "./NewComment";
 import UserPic from "./UserPic";
 import PostContent from "./PostContent";
+import NewCommentComponent from "./NewCommentComponent";
 
 class SimplePost extends React.Component {
     serverUrl = "http://localhost:8888";
@@ -21,7 +21,6 @@ class SimplePost extends React.Component {
 
     constructor(props) {
         super(props);
-        this.openCommentSection = this.openCommentSection.bind(this);
         this.state = {commentSection: false, userpic: "", comments: []};
         this.onNewComment = this.onNewComment.bind(this);
         this.retweet = this.retweet.bind(this);
@@ -57,18 +56,6 @@ class SimplePost extends React.Component {
         console.log("retweeting!");
     }
 
-    openCommentSection() {
-        console.log("opening comment section for post");
-        fetch(this.serverUrl + "/posts/" + this.props.data.id + "/comments", {
-            method: "GET"
-        }).then(res => res.json()).then(
-            res => {
-                this.setState({commentSection: true, comments: res});
-            }
-        );
-
-    }
-
     dateToString(date) {
         let now = new Date();
         let strDate = "";
@@ -98,7 +85,7 @@ class SimplePost extends React.Component {
 
 
                 {this.state.commentSection ? (<div>
-                    <NewComment onSubmit={this.onNewComment} postId={this.props.data.id}/>
+                    <NewCommentComponent onSubmit={this.onNewComment} postId={this.props.data.id}/>
                     {this.state.comments.map(comment => <Comment data={comment} key={comment.id}/>)}
                 </div>) : null}
             </div>

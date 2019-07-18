@@ -1,6 +1,6 @@
 import React from "react";
-import PostComponent from "./PostComponent";
 import NewPostContainer from "../containers/NewPostContainer";
+import PostContainer from "../containers/PostContainer";
 
 class FeedViewComponent extends React.Component {
     componentDidMount() {
@@ -14,7 +14,7 @@ class FeedViewComponent extends React.Component {
             <div className={"feed-view"}>
                 <NewPostContainer/>
                 <div className={"post-container"}>
-                    {this.props.postList.map(data => <PostComponent key={data.timestamp} data={data}/>)}
+                    {this.props.postList.map(data => <PostContainer key={data.id} data={data}/>)}
                 </div>
             </div>
         );

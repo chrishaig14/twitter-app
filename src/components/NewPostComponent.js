@@ -6,7 +6,6 @@ class NewPostComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {"post": ""};
-        // this.onSubmit = this.onSubmit.bind(this);
         this.onContentChange = this.onContentChange.bind(this);
     }
 

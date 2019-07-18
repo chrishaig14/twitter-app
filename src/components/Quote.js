@@ -1,21 +1,10 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import NewComment from "./NewComment";
 import Comment from "./Comment";
 import UserPic from "./UserPic";
+import NewCommentComponent from "./NewCommentComponent";
 
 class Quote extends React.Component {
-
-    str_obj(str) {
-        str = str.split("; ");
-        const result = {};
-        for (let i = 0; i < str.length; i++) {
-            const cur = str[i].split("=");
-            result[cur[0]] = cur[1];
-        }
-        return result;
-    }
-
     constructor(props) {
         super(props);
         this.state = {userpic: ""};
@@ -33,7 +22,7 @@ class Quote extends React.Component {
                 <div className={"post-content"}>{this.props.data.content}</div>
 
                 {this.state.commentSection ? (<div>
-                    <NewComment onSubmit={this.onNewComment} postId={this.props.data.id}/>
+                    <NewCommentComponent onSubmit={this.onNewComment} postId={this.props.data.id}/>
                     {this.state.comments.map(comment => <Comment data={comment} key={comment.id}/>)}
                 </div>) : null}
             </div>

@@ -17,6 +17,7 @@ import UserViewContainer from "./containers/UserViewContainer";
 import HeaderContainer from "./containers/HeaderContainer";
 import SearchResultsViewContainer from "./containers/SearchResultsViewContainer";
 import FollowingViewContainer from "./containers/FollowingViewContainer";
+import SignupViewContainer from "./containers/SignupViewContainer";
 
 const history = createBrowserHistory();
 
@@ -29,7 +30,7 @@ ReactDOM.render(
             {/*<App/>*/}
             <Switch>
                 <Route exact path={"/"} component={LoginViewContainer}/>
-                {/*<Route path={"/signup"} component={SignupView}/>*/}
+                <Route path={"/signup"} component={SignupViewContainer}/>
                 <Route component={HeaderContainer}/>
             </Switch>
 

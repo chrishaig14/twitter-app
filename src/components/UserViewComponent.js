@@ -5,7 +5,6 @@ import UserPic from "./UserPic";
 class UserViewComponent extends React.Component {
 
     componentDidMount() {
-
         this.props.onMount(this.props.username);
     }
 

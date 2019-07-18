@@ -1,8 +1,8 @@
 import React from "react";
 
-// import "./SignupView.css"
+// import "./SignupViewComponent.css"
 
-class SignupView extends React.Component {
+class SignupViewComponent extends React.Component {
     serverUrl = "http://localhost:8888";
 
     constructor(props) {
@@ -10,7 +10,6 @@ class SignupView extends React.Component {
         this.onUsernameChange = this.onUsernameChange.bind(this);
         this.onPasswordChange = this.onPasswordChange.bind(this);
         this.onConfirmPasswordChange = this.onConfirmPasswordChange.bind(this);
-        this.onSignup = this.onSignup.bind(this);
         this.state = {username: "", password: "", confirmPassword: "", signup: false};
     }
 
@@ -26,31 +25,11 @@ class SignupView extends React.Component {
         this.setState({confirmPassword: event.target.value});
     }
 
-    onSignup(event) {
-        console.log(`Signing up username=${this.state.username} password=${this.state.password} confirmPassword=${this.state.confirmPassword}`);
-        fetch(this.serverUrl + "/users", {
-            method: "POST",
-            body: JSON.stringify({username: this.state.username, password: this.state.password})
-        }).then(
-            res => {
-                if (res.ok) {
-                    console.log("SIGNUP OK!");
-                    this.setState({signup: true});
-                } else {
-                    console.log("ERROR SIGNING UP!");
-                }
-            }
-        ).catch(e => {
-            console.log("ERRRRRRRRRRRRROR: ", e);
-        });
-
-    }
-
     render() {
         return (
             <div id={"signup-view"}>
                 <h1>Sign up View</h1>
-                <form onSubmit={this.onSignup}>
+                <form onSubmit={() => this.props.signup(this.state)}>
                     <label>USERNAME
                         <input type={"text"} value={this.state.username}
                                onChange={this.onUsernameChange}/>
@@ -70,4 +49,4 @@ class SignupView extends React.Component {
     }
 }
 
-export default SignupView;
+export default SignupViewComponent;

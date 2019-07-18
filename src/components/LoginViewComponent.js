@@ -20,9 +20,6 @@ class LoginViewComponent extends React.Component {
     }
 
     render() {
-        // if (this.props.redirect) {
-        //     return (<Redirect to={this.props.redirect}/>);
-        // }
         return (
             <div id={"login-view"}>
 
