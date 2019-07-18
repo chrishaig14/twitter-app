@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
     return ({
         username: ownProps.match.params.id,
         posts: posts,
-        followed: state.main.userFollowed
+        followed: state.main.userFollowed[ownProps.match.params.id]
     });
 };
 const mapDispatchToProps = dispatch => {

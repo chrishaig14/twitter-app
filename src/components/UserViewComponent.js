@@ -11,7 +11,7 @@ class UserViewComponent extends React.Component {
 
     render() {
         console.log("USER VIEW COMPONENT RENDERED");
-        console.log("POSTS", this.props.posts);
+        console.log("followed? :", this.props.followed);
         return (
             <div className={"other-user-view"}>
 
