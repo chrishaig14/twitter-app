@@ -12,25 +12,18 @@ function reducer(state = {}, action) {
             break;
         case "RECEIVE TOKEN":
             new_state.token = action.token;
-            // console.log("RECEIVED TOKEN: "
-            //     , new_state.token);
-            // console.log(new_state);
             break;
         case "LOGIN ERROR":
             new_state.loginError = action.loginError;
-            // console.log("LOGIN ERROR", action.loginError);
             break;
         case "RECEIVE NEW POST":
-            // console.log("RECEIVED NEW POST");
             new_state.postList.unshift(action.postData);
-            // console.log("NEW POST LIST: ", new_state.postList);
             break;
         case "SET FOLLOWED":
             new_state.userFollowed[action.username] = action.followed;
             break;
         case "RECEIVE SEARCH":
             new_state.searchResults = action.data;
-            // console.log("RECEIVED SEARCH RESULTS: ", action.data);
             break;
         case "RECEIVE FOLLOWING":
             for (let username of action.following) {
