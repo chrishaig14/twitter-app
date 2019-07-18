@@ -3,9 +3,13 @@ import {connect} from "react-redux";
 import {checkFollowed, fetchUserPosts, follow, unfollow} from "../actions";
 
 const mapStateToProps = (state, ownProps) => {
+    let posts = [];
+    for (const postId in state.main.posts) {
+        posts.push(state.main.posts[postId]);
+    }
     return ({
         username: ownProps.match.params.id,
-        posts: state.main.postList,
+        posts: posts,
         followed: state.main.userFollowed
     });
 };

@@ -130,6 +130,11 @@ export const fetchUser = () => {
     );
 };
 
+export const receiveUserPosts = (data) => ({
+    type: "RECEIVE USER POSTS",
+    data: data
+});
+
 export const fetchUserPosts = (username) => {
     return (dispatch) => {
         fetch(serverUrl + "/users/" + username + "/posts", {
@@ -139,7 +144,7 @@ export const fetchUserPosts = (username) => {
         ).then(
             res => {
                 console.log(`GOT USER ${username} POSTS:`, res);
-                dispatch(receiveFeed({posts: res}));
+                dispatch(receiveUserPosts(res));
             }
         );
     };
@@ -378,7 +383,6 @@ export const signup = (data) => {
         });
     };
 };
-
 
 export const getUserInfo = (username) => {
     return (dispatch, getState) => {

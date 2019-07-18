@@ -1,6 +1,7 @@
 import React from "react";
 import PostComponent from "./PostComponent";
 import UserPic from "./UserPic";
+import PostContainer from "../containers/PostContainer";
 
 class UserViewComponent extends React.Component {
 
@@ -29,7 +30,7 @@ class UserViewComponent extends React.Component {
                         <h4 className={"user-posts-title"}>{this.props.username}'s posts</h4>
                         <div className={"post-container"}>
 
-                            {this.props.posts.map(data => <PostComponent key={data.id} data={data}/>)}
+                            {this.props.posts.map(data => <PostContainer key={data.id} data={data}/>)}
                         </div>
                     </div>
                 </div>

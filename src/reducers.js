@@ -7,13 +7,23 @@ function reducer(state = {}, action) {
     switch (action.type) {
         case "REQUEST FEED":
             break;
-        case "RECEIVE FEED":
+        case "RECEIVE FEED": {
             let postList = {};
             for (let post of action.data.posts) {
-                post.comments = []
+                post.comments = [];
                 postList[post.id] = post;
             }
             new_state.posts = postList;
+        }
+            break;
+        case "RECEIVE USER POSTS": {
+            let postList = {};
+            for (let post of action.data) {
+                post.comments = [];
+                postList[post.id] = post;
+            }
+            new_state.posts = postList;
+        }
             break;
         case "RECEIVE TOKEN":
             new_state.token = action.token;
@@ -22,7 +32,9 @@ function reducer(state = {}, action) {
             new_state.loginError = action.loginError;
             break;
         case "RECEIVE NEW POST":
-            new_state.posts.unshift(action.postData);
+            let post = action.postData;
+            post.comments = [];
+            new_state.posts[post.id] = post;
             break;
         case "SET FOLLOWED":
             new_state.userFollowed[action.username] = action.followed;
