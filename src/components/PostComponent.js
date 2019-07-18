@@ -1,29 +1,17 @@
 import React from "react";
-import SimplePost from "./SimplePost";
-import Quote from "./Quote";
+import {NavLink} from "react-router-dom";
+import Comment from "./Comment";
+import UserPic from "./UserPic";
+import PostContent from "./PostContent";
+import NewCommentComponent from "./NewCommentComponent";
+import NewCommentContainer from "../containers/NewCommentContainer";
 
 class PostComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            commentSection: false,
-            comments: [],
-            retweetingWithComment: false,
-            retweetValue: "",
-            quoteVal: null
-        };
+        this.state = {commentSection: false, userpic: "", comments: []};
         this.onNewComment = this.onNewComment.bind(this);
-        this.quote = this.quote.bind(this);
-        this.onCommentChange = this.onCommentChange.bind(this);
-    }
-
-    onCommentChange(event) {
-        this.setState({retweetValue: event.target.value});
-    }
-
-
-    quote() {
-        this.setState({retweetingWithComment: true});
+        this.openCommentSection = this.openCommentSection.bind(this);
     }
 
     onNewComment(comment) {
@@ -34,26 +22,43 @@ class PostComponent extends React.Component {
         });
     }
 
+    static dateToString(date) {
+        let now = new Date();
+        let strDate = "";
+        if (date.toDateString() === now.toDateString()) {
+            strDate = date.toLocaleTimeString();
+        } else {
+            strDate = date.toDateString() + " at " + date.toLocaleTimeString();
+        }
+        return strDate;
+    }
+
+    openCommentSection() {
+        this.setState({commentSection: true});
+        this.props.fetchComments(this.props.data.id);
+    }
+
     render() {
-        let footer =
-            <div className={"post-footer"}>
-                <button onClick={() => this.props.share(this.props.id)}>Share</button>
-                <button onClick={this.quote}>Quote</button>
-                {this.state.retweetingWithComment ?
-                    <form onSubmit={(e) => {
-                        e.preventDefault();
-                        this.props.retweet({content: this.state.retweetValue});
-                    }} className={"quote-form"}>
-                        <input type={"text"} onChange={this.onCommentChange}/>
-                        <button type={"submit"}>Post!</button>
-                    </form>
-                    : null}
-            </div>;
-        return (<div className={"main-post"}>
-                <SimplePost data={this.props.data}/>
-                {this.state.quoteVal ? <Quote data={this.state.quoteVal}/> : null}
-                <hr/>
-                {footer}
+        let date = (new Date(this.props.data.timestamp));
+        return (
+            <div className={"simple-post"}>
+
+                <div className={"post-header"}>
+
+                    <UserPic username={this.props.data.username}/>
+                    <NavLink to={{pathname: "/users/" + this.props.data.username, state: {token: this.props.token}}}
+                             className={"post-user"}>{this.props.data.username}</NavLink>
+                    <span className="post-time">{PostComponent.dateToString(date)}</span>
+                </div>
+
+
+                <PostContent content={this.props.data.content}/>
+
+                <button onClick={this.openCommentSection}>Comments</button>
+                {this.state.commentSection ? (<div>
+                    <NewCommentContainer postId={this.props.data.id}/>
+                    {this.props.data.comments.map(comment => <Comment data={comment} key={comment.id}/>)}
+                </div>) : null}
             </div>
         );
     }

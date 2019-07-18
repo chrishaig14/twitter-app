@@ -14,7 +14,7 @@ class FeedViewComponent extends React.Component {
             <div className={"feed-view"}>
                 <NewPostContainer/>
                 <div className={"post-container"}>
-                    {this.props.postList.map(data => <PostContainer key={data.id} data={data}/>)}
+                    {this.props.posts.map(data => <PostContainer key={data.id} data={data}/>)}
                 </div>
             </div>
         );

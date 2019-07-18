@@ -6,7 +6,7 @@ class EditProfile extends React.Component {
         this.profileSubmit = this.profileSubmit.bind(this);
         this.onImageSelect = this.onImageSelect.bind(this);
         this.updateImage = this.updateImage.bind(this);
-        this.token = this.str_obj(document.cookie).token;
+        this.token = PostComponent.str_obj(document.cookie).token;
         this.state = {
             pic: ""
         };

@@ -322,13 +322,21 @@ export const updateImage = (result) => {
     };
 };
 
+export const receivePostComments = (postId, res) => ({
+    type: "RECEIVE COMMENTS",
+    postId: postId,
+    comments: res
+});
+
 export const fetchPostComments = (postId) => {
     return (dispatch, getState) => {
         fetch(serverUrl + "/posts/" + postId + "/comments", {
             method: "GET"
         }).then(res => res.json()).then(
             res => {
-                this.setState({commentSection: true, comments: res});
+                // this.setState({commentSection: true, comments: res});
+                // console.log("RECEIVED POST COMMENTS: ", res)
+                dispatch(receivePostComments(postId, res));
             }
         );
     };

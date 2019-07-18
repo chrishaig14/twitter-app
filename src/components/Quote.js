@@ -8,7 +8,7 @@ class Quote extends React.Component {
     constructor(props) {
         super(props);
         this.state = {userpic: ""};
-        this.token = this.str_obj(document.cookie).token;
+        // this.token = PostComponent.str_obj(document.cookie).token;
     }
 
     render() {

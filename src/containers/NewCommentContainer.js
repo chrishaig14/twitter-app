@@ -11,9 +11,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     submit: (data) => {
-        console.log("DISPATCHING NEW COMMENT");
+        console.log("DISPATCHING NEW COMMENT: ", data);
         dispatch(submitNewComment(data));
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewCommentComponent);
+export default connect(null, mapDispatchToProps)(NewCommentComponent);

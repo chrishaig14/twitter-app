@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import PostComponent from "../components/PostComponent";
-import {onSubmitRetweet, sharePost} from "../actions";
+import {fetchPostComments} from "../actions";
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -10,13 +10,9 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    share: (postId) => {
-        console.log("DISPATCHING POST SHARE");
-        dispatch(sharePost(postId));
-    },
-    retweet: (data) => {
-        dispatch(onSubmitRetweet(data));
+    fetchComments: (postId) => {
+        dispatch(fetchPostComments(postId));
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostComponent);
+export default connect(null, mapDispatchToProps)(PostComponent);

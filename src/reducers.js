@@ -8,7 +8,12 @@ function reducer(state = {}, action) {
         case "REQUEST FEED":
             break;
         case "RECEIVE FEED":
-            new_state.postList = action.data.posts;
+            let postList = {};
+            for (let post of action.data.posts) {
+                post.comments = []
+                postList[post.id] = post;
+            }
+            new_state.posts = postList;
             break;
         case "RECEIVE TOKEN":
             new_state.token = action.token;
@@ -17,7 +22,7 @@ function reducer(state = {}, action) {
             new_state.loginError = action.loginError;
             break;
         case "RECEIVE NEW POST":
-            new_state.postList.unshift(action.postData);
+            new_state.posts.unshift(action.postData);
             break;
         case "SET FOLLOWED":
             new_state.userFollowed[action.username] = action.followed;
@@ -31,8 +36,12 @@ function reducer(state = {}, action) {
             }
             console.log("RECEIVED FOLLOWING RESULTS: ", action.following);
             break;
+        case "RECEIVE COMMENTS":
+            console.log("RECEIVED COMMENTS:", action.comments);
+            new_state.posts[action.postId].comments = action.comments;
+            break;
         default:
-            new_state.postList = [];
+            new_state.posts = {};
             new_state.searchResults = [];
             new_state.following = [];
             new_state.userFollowed = {};
