@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "connected-react-router": "^6.5.0",
+    "history": "latest",
+    "js-cookie": "^2.2.0",
     "query-string": "^6.8.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -11,8 +13,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "redux": "latest",
-    "redux-thunk": "^2.3.0",
-    "history": "latest"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

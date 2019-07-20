@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
 import {applyMiddleware, compose, createStore} from "redux";
 import {Provider} from "react-redux";
 import createRootReducer from "./reducers";
@@ -19,15 +19,24 @@ import SearchResultsViewContainer from "./containers/SearchResultsViewContainer"
 import FollowingViewContainer from "./containers/FollowingViewContainer";
 import SignupViewContainer from "./containers/SignupViewContainer";
 
+import Cookies from "js-cookie";
+
 const history = createBrowserHistory();
 
-const store = createStore(createRootReducer(history), compose(applyMiddleware(routerMiddleware(history), thunk)));
+let initialState = {
+    main: {
+        token: Cookies.get("token")
+    }
+};
+
+const store = createStore(createRootReducer(history), initialState, compose(applyMiddleware(routerMiddleware(history), thunk)));
 
 ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
             {/*<BrowserRouter>*/}
             {/*<App/>*/}
+            {Cookies.get("token") ? <Redirect to={"/feed"}/> : null}
             <Switch>
                 <Route exact path={"/"} component={LoginViewContainer}/>
                 <Route path={"/signup"} component={SignupViewContainer}/>

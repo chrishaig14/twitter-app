@@ -1,8 +1,8 @@
 import {combineReducers} from "redux";
 import {connectRouter} from "connected-react-router";
-
+import Cookies from 'js-cookie'
 function reducer(state = {}, action) {
-    console.log("REDUCER CALLED WITH ACTION: ", action);
+    console.log("REDUCER CALLED WITH ACTION: ", action, "AND STATE IS: ", state);
     let new_state = JSON.parse(JSON.stringify(state));
     switch (action.type) {
         case "REQUEST FEED":
@@ -27,6 +27,7 @@ function reducer(state = {}, action) {
             break;
         case "RECEIVE TOKEN":
             new_state.token = action.token;
+            Cookies.set("token", action.token);
             break;
         case "LOGIN ERROR":
             new_state.loginError = action.loginError;

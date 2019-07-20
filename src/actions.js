@@ -1,5 +1,6 @@
-import {push} from "connected-react-router";
+import {push, replace} from "connected-react-router";
 import {parse} from "query-string";
+import Cookies from "js-cookie";
 
 const serverUrl = "http://localhost:8888";
 
@@ -54,7 +55,7 @@ export const fetchLogin = (username, password) => {
         ).then(res => {
             if (res.ok) {
                 dispatch(receiveToken(res.headers.get("Authorization")));
-                dispatch(push("/feed"));
+                dispatch(replace("/feed"));
             } else {
                 dispatch(loginError("ERROR"));
             }
@@ -192,7 +193,9 @@ export const follow = (username) => {
 
 export const logout = () => {
     return (dispatch, getState) => {
-
+        console.log("LOGGING OUT!");
+        Cookies.remove("token");
+        dispatch(push("/"));
     };
 };
 
