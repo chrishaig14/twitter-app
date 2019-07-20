@@ -195,7 +195,7 @@ export const logout = () => {
     return (dispatch, getState) => {
         console.log("LOGGING OUT!");
         Cookies.remove("token");
-        dispatch(push("/"));
+        dispatch(replace("/"));
     };
 };
 

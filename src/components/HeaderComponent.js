@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBox from "./SearchBox";
-import {NavLink, Redirect} from "react-router-dom";
+import {Link, NavLink, Redirect} from "react-router-dom";
 
 class HeaderComponent extends React.Component {
 
@@ -8,6 +8,7 @@ class HeaderComponent extends React.Component {
         return (
             <div className={"header"}>
                 <NavLink to={"/feed"}>Home</NavLink>
+                {/*// <Link to={{pathname: "feed", query: {'newState': 'something'}}}/>*/}
                 <NavLink to={"/following"}>Following</NavLink>
                 <SearchBox/>
                 <div className={"current-user-info"}>
