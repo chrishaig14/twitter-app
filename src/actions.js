@@ -293,6 +293,11 @@ export const onSubmitRetweet = (data) => {
     };
 };
 
+const receiveNewComment = (data) => ({
+    type: "NEW COMMENT",
+    data: data
+});
+
 export const submitNewComment = (data) => {
     return (dispatch, getState) => {
         fetch(serverUrl + "/posts/" + data.postId + "/comments", {
@@ -304,6 +309,7 @@ export const submitNewComment = (data) => {
         ).then(
             res => {
                 // this.props.onSubmit(res);
+                dispatch(receiveNewComment(res));
                 console.log("NEW COMMENT POSTED: ", res);
             }
         );

@@ -53,6 +53,10 @@ function reducer(state = {}, action) {
             console.log("RECEIVED COMMENTS:", action.comments);
             new_state.posts[action.postId].comments = action.comments;
             break;
+        case "NEW COMMENT":
+            console.log("RECEIVED NEW COMMENT: ", action.data);
+            new_state.posts[action.data.post].comments.push(action.data)
+            break;
         default:
             new_state.posts = {};
             new_state.searchResults = [];
