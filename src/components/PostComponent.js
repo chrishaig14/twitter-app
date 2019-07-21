@@ -41,7 +41,7 @@ class PostComponent extends React.Component {
 
     render() {
         let date = (new Date(this.props.data.timestamp));
-        console.log("this.props.data", this.props.data);
+        // console.log("this.props.data", this.props.data);
         return (
             <div className={"simple-post"}>
                 {this.props.data.shares.length !== 0 ?
