@@ -56,8 +56,9 @@ class PostComponent extends React.Component {
 
                 <button onClick={this.openCommentSection}>Comments</button>
                 {this.state.commentSection ? (<div>
-                    <NewCommentContainer postId={this.props.data.id}/>
+
                     {this.props.data.comments.map(comment => <Comment data={comment} key={comment.id}/>)}
+                    <NewCommentContainer postId={this.props.data.id}/>
                 </div>) : null}
             </div>
         );
