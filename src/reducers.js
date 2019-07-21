@@ -3,9 +3,9 @@ import {connectRouter} from "connected-react-router";
 import Cookies from "js-cookie";
 
 function reducer(state = {}, action) {
-    console.log("REDUCER CALLED WITH ACTION: ", action, "AND STATE IS: ", state);
+    // console.log("REDUCER CALLED WITH ACTION: ", action, "AND STATE IS: ", state);
     let new_state = JSON.parse(JSON.stringify(state));
-    console.log("RECEVED USER IMAGE:", new_state);
+    // console.log("RECEVED USER IMAGE:", new_state);
     switch (action.type) {
         case "REQUEST FEED":
             break;
@@ -73,7 +73,7 @@ function reducer(state = {}, action) {
             break;
         case "RECEIVE USER IMAGE":
             new_state.userImages[action.username] = action.img;
-            console.log("RECEVED USER IMAGE:", new_state);
+            // console.log("RECEVED USER IMAGE:", new_state);
             break;
         default:
             new_state.userImages = {};

@@ -3,7 +3,7 @@ import FeedViewComponent from "../components/FeedViewComponent";
 import {fetchFeed} from "../actions";
 
 const mapStateToProps = state => {
-    console.log("POST LIST: ", state.main.posts);
+    // console.log("POST LIST: ", state.main.posts);
     let posts = [];
     for (const postId in state.main.posts) {
         posts.push(state.main.posts[postId]);
