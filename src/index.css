@@ -8,11 +8,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace; }
 
 button, .profile-pic-label {
-  background-color: aliceblue;
-  border-radius: 5px;
+  background-color: #0099cc;
+  color: white;
+  border-radius: 1em;
   border: none;
   padding: 5px;
-  box-shadow: black 0px 0px 2px 0px;
+  box-shadow: black 0px 1px 2px 0px;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 0.8em; }
@@ -26,7 +27,7 @@ button, .profile-pic-label {
 
 input[type="text"], input[type="password"] {
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 1em;
   border: solid 2px lightblue; }
 
 input[type="text"]:focus, input[type="password"]:focus {
