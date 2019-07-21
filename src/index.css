@@ -352,7 +352,8 @@ hr {
 
 .quote-form {
   display: flex;
-  flex-direction: row; }
+  flex-direction: row;
+  margin-top: 10px; }
   .quote-form input {
     flex-grow: 1; }
 

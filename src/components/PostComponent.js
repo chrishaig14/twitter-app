@@ -10,9 +10,12 @@ import UserPicContainer from "../containers/UserPicContainer";
 class PostComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {commentSection: false, userpic: "", comments: []};
+        this.state = {commentSection: false, userpic: "", comments: [], quoting: false, quoteContent: ""};
         this.onNewComment = this.onNewComment.bind(this);
         this.openCommentSection = this.openCommentSection.bind(this);
+        this.onQuoteSubmit = this.onQuoteSubmit.bind(this);
+        this.quote = this.quote.bind(this);
+        this.onQuoteInputChange = this.onQuoteInputChange.bind(this);
     }
 
     onNewComment(comment) {
@@ -37,6 +40,19 @@ class PostComponent extends React.Component {
     openCommentSection() {
         this.setState({commentSection: true});
         this.props.fetchComments(this.props.data.id);
+    }
+
+    quote() {
+        this.setState({quoting: true});
+    }
+
+    onQuoteInputChange(e) {
+        this.setState({quoteContent: e.target.value});
+    }
+
+    onQuoteSubmit(e) {
+        e.preventDefault();
+        this.props.quote(this.props.data.id, this.state.quoteContent);
     }
 
     render() {
@@ -73,9 +89,16 @@ class PostComponent extends React.Component {
                     null
                 }
                 <div className={"post-footer"}>
-                <button onClick={this.openCommentSection}>Comments</button>
-                <button onClick={() => this.props.share(this.props.data.id)}>Share</button>
+                    <button onClick={this.openCommentSection}>Comments</button>
+                    <button onClick={() => this.props.share(this.props.data.id)}>Share</button>
+                    <button onClick={this.quote}>Quote</button>
                 </div>
+                {this.state.quoting ? <div>
+                    <form className={"quote-form"} onSubmit={this.onQuoteSubmit}>
+                        <input type={"text"} onChange={this.onQuoteInputChange}/>
+                        <button type={"submit"}>Quote!</button>
+                    </form>
+                </div> : null}
                 {this.state.commentSection ? (<div>
 
                     {this.props.data.comments.map(comment => <Comment data={comment} key={comment.id}/>)}

@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import PostComponent from "../components/PostComponent";
-import {fetchPostComments, sharePost} from "../actions";
+import {fetchPostComments, quote, sharePost} from "../actions";
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -14,8 +14,11 @@ const mapDispatchToProps = dispatch => ({
         dispatch(fetchPostComments(postId));
     },
     share: (postId) => {
-        console.log("SHARNI POST!")
+        console.log("SHARNI POST!");
         dispatch(sharePost(postId));
+    },
+    quote: (postId, quoteContent) => {
+        dispatch(quote(postId, quoteContent));
     }
 });
 

@@ -25,7 +25,7 @@ export const fetchFeed = () => {
         ).then(res => res.json()
         ).then(
             res => {
-                for(let post of res.posts) {
+                for (let post of res.posts) {
                     console.log("RECEIVED FEED DATA: ", post);
                 }
                 dispatch(receiveFeed(res));
@@ -285,21 +285,26 @@ export const sharePost = (postId) => {
     };
 };
 
-export const onSubmitRetweet = (data) => {
+export const quote = (postId, quoteContent) => {
     return (dispatch, getState) => {
         fetch(serverUrl + "/posts",
             {
                 method: "POST",
                 headers: {"Authorization": getState().main.token},
-                body: JSON.stringify({content: data.retweetValue, retweet: data.id})
+                body: JSON.stringify({content: quoteContent, retweet: postId})
             }
         ).then(
             res => {
                 if (res.ok) {
                     console.log("RETWEETED OK!");
+                    return res.json();
                 } else {
                     console.log("COULD NOT RETWEET!");
                 }
+            }
+        ).then(
+            res => {
+                dispatch(receiveNewPost(res));
             }
         );
     };
