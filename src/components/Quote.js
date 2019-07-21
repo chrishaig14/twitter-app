@@ -1,8 +1,9 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import Comment from "./Comment";
-import UserPic from "./UserPic";
+// import UserPicComponent from "./UserPic";
 import NewCommentComponent from "./NewCommentComponent";
+import UserPicContainer from "../containers/UserPicContainer";
 
 class Quote extends React.Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class Quote extends React.Component {
         return (
             <div className={"quote"}>
                 <div className={"post-header"}>
-                    <UserPic username={this.props.data.username}/>
+                    <UserPicContainer username={this.props.data.username}/>
                     <NavLink to={{pathname: "/users/" + this.props.data.username, state: {token: this.props.token}}}
                              className={"post-user"}>{this.props.data.username}</NavLink>
                 </div>

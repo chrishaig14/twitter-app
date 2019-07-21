@@ -1,10 +1,11 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import Comment from "./Comment";
-import UserPic from "./UserPic";
+// import UserPicComponent from "./UserPic";
 import PostContent from "./PostContent";
 import NewCommentComponent from "./NewCommentComponent";
 import NewCommentContainer from "../containers/NewCommentContainer";
+import UserPicContainer from "../containers/UserPicContainer";
 
 class PostComponent extends React.Component {
     constructor(props) {
@@ -45,7 +46,7 @@ class PostComponent extends React.Component {
 
                 <div className={"post-header"}>
 
-                    <UserPic username={this.props.data.username}/>
+                    <UserPicContainer username={this.props.data.username}/>
                     <NavLink to={{pathname: "/users/" + this.props.data.username, state: {token: this.props.token}}}
                              className={"post-user"}>{this.props.data.username}</NavLink>
                     <span className="post-time">{PostComponent.dateToString(date)}</span>

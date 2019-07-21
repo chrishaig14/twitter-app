@@ -1,9 +1,11 @@
 import {combineReducers} from "redux";
 import {connectRouter} from "connected-react-router";
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
+
 function reducer(state = {}, action) {
     console.log("REDUCER CALLED WITH ACTION: ", action, "AND STATE IS: ", state);
     let new_state = JSON.parse(JSON.stringify(state));
+    console.log("RECEVED USER IMAGE:", new_state);
     switch (action.type) {
         case "REQUEST FEED":
             break;
@@ -55,9 +57,14 @@ function reducer(state = {}, action) {
             break;
         case "NEW COMMENT":
             console.log("RECEIVED NEW COMMENT: ", action.data);
-            new_state.posts[action.data.post].comments.push(action.data)
+            new_state.posts[action.data.post].comments.push(action.data);
+            break;
+        case "RECEIVE USER IMAGE":
+            new_state.userImages[action.username] = action.img;
+            console.log("RECEVED USER IMAGE:", new_state);
             break;
         default:
+            new_state.userImages = {};
             new_state.posts = {};
             new_state.searchResults = [];
             new_state.following = [];

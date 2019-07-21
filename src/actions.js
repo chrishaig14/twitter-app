@@ -356,8 +356,21 @@ export const fetchPostComments = (postId) => {
     };
 };
 
+const receiveUserImage = (username, img) => ({
+    type: "RECEIVE USER IMAGE",
+    username,
+    img
+});
+
 export const getUserImage = (username) => {
     return (dispatch, getState) => {
+        console.log("CGETTING USER IMAGE");
+        if (getState().main.userImages.hasOwnProperty(username)) {
+            console.log("NOT FETCHING IMAGE BECAUSE I ALREADY HAVE IT!");
+            return;
+        } else {
+            console.log("FETCHING IMAGE BECAUSE I DONT HAVE IT!");
+        }
         let url = serverUrl + "/users/" + username + "/img";
         fetch(url, {
             method: "GET"
@@ -367,6 +380,7 @@ export const getUserImage = (username) => {
             }
         ).then(
             res => {
+                dispatch(receiveUserImage(username, res));
                 console.log("RECEIVED USER IMAGE ", username);
             }
         );

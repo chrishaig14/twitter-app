@@ -1,7 +1,8 @@
 import React from "react";
 import PostComponent from "./PostComponent";
-import UserPic from "./UserPic";
+// import UserPicComponent from "./UserPic";
 import PostContainer from "../containers/PostContainer";
+import UserPicContainer from "../containers/UserPicContainer";
 
 class UserViewComponent extends React.Component {
 
@@ -18,7 +19,7 @@ class UserViewComponent extends React.Component {
                 <div className={"other-user-view-main"}>
                     <div className={"other-user-info"}>
                         {/*<img className={"other-user-pic"} src={this.state.pic}></img>*/}
-                        <UserPic username={this.props.username}/>
+                        <UserPicContainer username={this.props.username}/>
                         <span className={"username"}>{this.props.username}</span>
                         {this.props.followed ?
                             (<button onClick={() => this.props.unfollow(this.props.username)}>Unfollow</button>) :
