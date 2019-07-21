@@ -25,8 +25,9 @@ export const fetchFeed = () => {
         ).then(res => res.json()
         ).then(
             res => {
-
-                console.log("RECEIVED FEED DATA: ", res);
+                for(let post of res.posts) {
+                    console.log("RECEIVED FEED DATA: ", post);
+                }
                 dispatch(receiveFeed(res));
             });
     };

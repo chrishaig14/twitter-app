@@ -40,6 +40,7 @@ class PostComponent extends React.Component {
     }
 
     render() {
+        console.log("DATA:", this.props.data);
         let date = (new Date(this.props.data.timestamp));
         // console.log("this.props.data", this.props.data);
         return (
@@ -55,15 +56,22 @@ class PostComponent extends React.Component {
                 <div className={"post-header"}>
 
                     <UserPicContainer username={this.props.data.username}/>
-                    <NavLink to={{pathname: "/users/" + this.props.data.username, state: {token: this.props.token}}}
+                    <NavLink to={{pathname: "/users/" + this.props.data.username}}
                              className={"post-user"}>{this.props.data.username}</NavLink>
                     <span className="post-time">{PostComponent.dateToString(date)}</span>
                 </div>
 
 
                 <PostContent content={this.props.data.content}/>
-
-
+                {this.props.data.retweet !== null ?
+                    <div className={"quote"}>
+                        <UserPicContainer username={this.props.data.retweet.username}/>
+                        <NavLink to={{pathname: "/users/" + this.props.data.retweet.username}}
+                                 className={"post-user"}>{this.props.data.retweet.username}</NavLink>
+                        {this.props.data.retweet.content}
+                    </div> :
+                    null
+                }
                 <button onClick={this.openCommentSection}>Comments</button>
                 <button onClick={() => this.props.share(this.props.data.id)}>Share</button>
                 {this.state.commentSection ? (<div>
