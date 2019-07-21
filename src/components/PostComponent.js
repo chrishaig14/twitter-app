@@ -72,8 +72,10 @@ class PostComponent extends React.Component {
                     </div> :
                     null
                 }
+                <div className={"post-footer"}>
                 <button onClick={this.openCommentSection}>Comments</button>
                 <button onClick={() => this.props.share(this.props.data.id)}>Share</button>
+                </div>
                 {this.state.commentSection ? (<div>
 
                     {this.props.data.comments.map(comment => <Comment data={comment} key={comment.id}/>)}
