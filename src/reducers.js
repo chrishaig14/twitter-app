@@ -13,8 +13,14 @@ function reducer(state = {}, action) {
             let postList = {};
             for (let post of action.data.posts) {
                 post.comments = [];
+                // post.shares = [];
                 postList[post.id] = post;
             }
+            // for (let post of action.data.posts) {
+            //     post.comments = [];
+            //     // post.shares = [];
+            //     postList[post.id] = post;
+            // }
             new_state.posts = postList;
         }
             break;
@@ -22,6 +28,7 @@ function reducer(state = {}, action) {
             let postList = {};
             for (let post of action.data) {
                 post.comments = [];
+                // post.shares = [];
                 postList[post.id] = post;
             }
             new_state.posts = postList;
@@ -37,7 +44,12 @@ function reducer(state = {}, action) {
         case "RECEIVE NEW POST":
             let post = action.postData;
             post.comments = [];
+            // post.shares = [];
             new_state.posts[post.id] = post;
+            break;
+        case "RECEIVE SHARED POST":
+            console.log("SHARE RECEIVED: post = ", action.postId);
+            new_state.posts[action.postId].shares.push(action.username);
             break;
         case "SET FOLLOWED":
             new_state.userFollowed[action.username] = action.followed;

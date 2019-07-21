@@ -41,9 +41,17 @@ class PostComponent extends React.Component {
 
     render() {
         let date = (new Date(this.props.data.timestamp));
+        console.log("this.props.data", this.props.data);
         return (
             <div className={"simple-post"}>
-
+                {this.props.data.shares.length !== 0 ?
+                    <div>
+                        Shared by {this.props.data.shares.join(", ")}
+                    </div>
+                    :
+                    null
+                }
+                {this.props.data.shares.length !== 0 ? <hr/> : null}
                 <div className={"post-header"}>
 
                     <UserPicContainer username={this.props.data.username}/>
@@ -55,7 +63,9 @@ class PostComponent extends React.Component {
 
                 <PostContent content={this.props.data.content}/>
 
+
                 <button onClick={this.openCommentSection}>Comments</button>
+                <button onClick={() => this.props.share(this.props.data.id)}>Share</button>
                 {this.state.commentSection ? (<div>
 
                     {this.props.data.comments.map(comment => <Comment data={comment} key={comment.id}/>)}

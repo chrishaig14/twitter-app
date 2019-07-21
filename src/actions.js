@@ -253,8 +253,15 @@ export const fetchFollowing = () => {
     };
 };
 
+const receiveSharedPost = shareData => ({
+    type: "RECEIVE SHARED POST",
+    username: shareData.username,
+    postId: shareData.post_id
+});
+
 export const sharePost = (postId) => {
     return (dispatch, getState) => {
+        console.log("SHARING POST: ", postId);
         fetch(serverUrl + "/shares",
             {
                 method: "POST",
@@ -265,11 +272,15 @@ export const sharePost = (postId) => {
             res => {
                 if (res.ok) {
                     console.log("SHARED POST OK!");
+                    return res.json();
                 } else {
                     console.log("COULD NOT SHARE POST!");
                 }
             }
-        );
+        ).then(res => {
+            console.log("SHARED POST: ", res);
+            dispatch(receiveSharedPost(res));
+        });
     };
 };
 
