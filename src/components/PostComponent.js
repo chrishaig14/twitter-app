@@ -56,7 +56,7 @@ class PostComponent extends React.Component {
     }
 
     render() {
-        console.log("DATA:", this.props.data);
+        // console.log("DATA:", this.props.data);
         let date = (new Date(this.props.data.timestamp));
         // console.log("this.props.data", this.props.data);
         return (

@@ -11,7 +11,7 @@ const mapStateToProps = state => {
     posts.sort(function (a, b) {
         return (new Date(b.timestamp).getTime()) - (new Date(a.timestamp)).getTime();
     });
-    console.log(posts);
+    // console.log(posts);
     return {
         posts: posts
     };
