@@ -8,6 +8,10 @@ const mapStateToProps = state => {
     for (const postId in state.main.posts) {
         posts.push(state.main.posts[postId]);
     }
+    posts.sort(function (a, b) {
+        return (new Date(b.timestamp).getTime()) - (new Date(a.timestamp)).getTime();
+    });
+    console.log(posts);
     return {
         posts: posts
     };
