@@ -442,3 +442,8 @@ export const getUserInfo = (username) => {
         );
     };
 };
+
+export const changeCommentContent = (content) => ({
+    type: "CHANGE COMMENT CONTENT",
+    commentContent: content
+});

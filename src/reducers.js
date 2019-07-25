@@ -69,13 +69,19 @@ function reducer(state = {}, action) {
             break;
         case "NEW COMMENT":
             console.log("RECEIVED NEW COMMENT: ", action.data);
+            new_state.commentContent = "";
             new_state.posts[action.data.post].comments.push(action.data);
+            console.log("new_state: ", new_state);
             break;
         case "RECEIVE USER IMAGE":
             new_state.userImages[action.username] = action.img;
             // console.log("RECEVED USER IMAGE:", new_state);
             break;
+        case "CHANGE COMMENT CONTENT":
+            new_state.commentContent = action.commentContent;
+            break;
         default:
+            new_state.newCommentOk = false;
             new_state.userImages = {};
             new_state.posts = {};
             new_state.searchResults = [];
