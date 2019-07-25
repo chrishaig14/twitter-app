@@ -26,7 +26,7 @@ function reducer(state = {}, action) {
             break;
         case "RECEIVE USER POSTS": {
             let postList = {};
-            for (let post of action.data) {
+            for (let post of action.data.posts) {
                 post.comments = [];
                 // post.shares = [];
                 postList[post.id] = post;
