@@ -5,7 +5,10 @@ import {checkFollowed, fetchUserPosts, follow, unfollow} from "../actions";
 const mapStateToProps = (state, ownProps) => {
     let posts = [];
     for (const postId in state.main.posts) {
-        posts.push(state.main.posts[postId]);
+        let post = state.main.posts[postId];
+        if (post.username === ownProps.match.params.id) {
+            posts.push(post);
+        }
     }
     return ({
         username: ownProps.match.params.id,
