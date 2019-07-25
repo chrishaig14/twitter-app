@@ -63,7 +63,8 @@ class PostComponent extends React.Component {
             <div className={"simple-post"}>
                 {this.props.data.shares.length !== 0 ?
                     <div>
-                        Shared by {this.props.data.shares.join(", ")}
+                        Shared by {[...new Set(this.props.data.shares)].join(",")}
+                        {/*Shared by {this.props.data.shares.join(", ")}*/}
                     </div>
                     :
                     null
