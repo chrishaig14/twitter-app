@@ -16,7 +16,6 @@ class NewPostComponent extends React.Component {
     render() {
         return (
             <div className={"new-post"}>
-
                 <form onSubmit={(e) => {
                     e.preventDefault();
                     this.props.onSubmit(this.state.post);
