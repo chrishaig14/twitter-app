@@ -1,18 +1,13 @@
 import UserViewComponent from "../components/UserViewComponent";
 import {connect} from "react-redux";
 import {checkFollowed, fetchUserPosts, follow, unfollow} from "../actions";
+import {selectUserPosts} from "../selectors";
 
 const mapStateToProps = (state, ownProps) => {
-    let posts = [];
-    for (const postId in state.main.posts) {
-        let post = state.main.posts[postId];
-        if (post.username === ownProps.match.params.id) {
-            posts.push(post);
-        }
-    }
+    let username = ownProps.match.params.id;
     return ({
-        username: ownProps.match.params.id,
-        posts: posts,
+        username: username,
+        posts: selectUserPosts(state, username),
         followed: state.main.userFollowed[ownProps.match.params.id]
     });
 };
