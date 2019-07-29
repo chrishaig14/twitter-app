@@ -20,6 +20,7 @@ import FollowingViewContainer from "./containers/FollowingViewContainer";
 import SignupViewContainer from "./containers/SignupViewContainer";
 
 import Cookies from "js-cookie";
+import ModalContainer from "./containers/ModalContainer";
 
 const history = createBrowserHistory();
 
@@ -37,12 +38,13 @@ ReactDOM.render(
             {/*<BrowserRouter>*/}
             {/*<App/>*/}
             {Cookies.get("token") ? <Redirect to={"/feed"}/> : null}
+
             <Switch>
                 <Route exact path={"/"} component={LoginViewContainer}/>
                 <Route path={"/signup"} component={SignupViewContainer}/>
                 <Route component={HeaderContainer}/>
             </Switch>
-
+            <ModalContainer/>
             <Route path={"/feed"} component={FeedViewContainer}/>
             <Route path={"/following"} component={FollowingViewContainer}/>
             <Route path={"/users/:id"} component={UserViewContainer}/>

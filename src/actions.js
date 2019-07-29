@@ -90,6 +90,7 @@ export const newPost = (postContent) => {
             ).then(
             res => {
                 dispatch(receiveNewPost(res));
+                dispatch(showModal("POSTED OK!"));
             }
         );
     };
@@ -260,9 +261,18 @@ const receiveSharedPost = shareData => ({
     postId: shareData.post_id
 });
 
+const showModal = text => ({
+    type: "SHOW MODAL",
+    text: text
+});
+
+export const hideModal = () => ({
+    type: "HIDE MODAL"
+});
+
 export const sharePost = (postId) => {
     return (dispatch, getState) => {
-        console.log("SHARING POST: ", postId);
+        // console.log("SHARING POST: ", postId);
         fetch(serverUrl + "/shares",
             {
                 method: "POST",
@@ -272,15 +282,16 @@ export const sharePost = (postId) => {
         ).then(
             res => {
                 if (res.ok) {
-                    console.log("SHARED POST OK!");
+                    // console.log("SHARED POST OK!");
                     return res.json();
                 } else {
-                    console.log("COULD NOT SHARE POST!");
+                    // console.log("COULD NOT SHARE POST!");
                 }
             }
         ).then(res => {
-            console.log("SHARED POST: ", res);
+            // console.log("SHARED POST: ", res);
             dispatch(receiveSharedPost(res));
+            dispatch(showModal("SHARED POST!"));
         });
     };
 };
@@ -305,6 +316,7 @@ export const quote = (postId, quoteContent) => {
         ).then(
             res => {
                 dispatch(receiveNewPost(res));
+                dispatch(showModal("QUOTED POST!"));
             }
         );
     };
@@ -327,7 +339,7 @@ export const submitNewComment = (data) => {
             res => {
                 // this.props.onSubmit(res);
                 dispatch(receiveNewComment(res));
-                console.log("NEW COMMENT POSTED: ", res);
+                // console.log("NEW COMMENT POSTED: ", res);
             }
         );
     };
@@ -344,7 +356,8 @@ export const updateImage = (result) => {
         }).then(
             res => {
                 if (res.ok) {
-                    console.log("UPDATED IMAGE OK!");
+                    // console.log("UPDATED IMAGE OK!");
+                    dispatch(showModal("IMAGE UPDATED!"));
                 } else {
                     console.log("COULD NOT UPDATE IMAGE!");
                 }

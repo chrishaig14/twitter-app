@@ -48,7 +48,7 @@ function reducer(state = {}, action) {
             new_state.posts[post.id] = post;
             break;
         case "RECEIVE SHARED POST":
-            console.log("SHARE RECEIVED: post = ", action.postId);
+            // console.log("SHARE RECEIVED: post = ", action.postId);
             new_state.posts[action.postId].shares.push(action.username);
             break;
         case "SET FOLLOWED":
@@ -79,6 +79,13 @@ function reducer(state = {}, action) {
             break;
         case "CHANGE COMMENT CONTENT":
             new_state.commentContent = action.commentContent;
+            break;
+        case "SHOW MODAL":
+            // console.log("SHOWING MODAL: ", action.text);
+            new_state.modal = action.text;
+            break;
+        case "HIDE MODAL":
+            new_state.modal = "";
             break;
         default:
             new_state.newCommentOk = false;
