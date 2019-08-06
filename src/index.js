@@ -10,6 +10,7 @@ import createRootReducer from "./reducers";
 import thunk from "redux-thunk";
 import {createBrowserHistory} from "history";
 import {routerMiddleware, ConnectedRouter} from "connected-react-router";
+import EditProfile from "./components/EditProfile";
 import LoginViewContainer from "./containers/LoginViewContainer";
 import FeedViewContainer from "./containers/FeedViewContainer";
 import UserViewContainer from "./containers/UserViewContainer";
@@ -21,6 +22,7 @@ import SignupViewContainer from "./containers/SignupViewContainer";
 
 import Cookies from "js-cookie";
 import ModalContainer from "./containers/ModalContainer";
+import EditProfileContainer from "./containers/EditProfileContainer";
 
 const history = createBrowserHistory();
 
@@ -46,6 +48,7 @@ ReactDOM.render(
             </Switch>
             <ModalContainer/>
             <Route path={"/feed"} component={FeedViewContainer}/>
+            <Route path={"/editProfile"} component={EditProfileContainer}/>
             <Route path={"/following"} component={FollowingViewContainer}/>
             <Route path={"/users/:id"} component={UserViewContainer}/>
             <Route path={"/search"} component={SearchResultsViewContainer}/>

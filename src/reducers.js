@@ -24,6 +24,12 @@ function reducer(state = {}, action) {
             new_state.posts = postList;
         }
             break;
+        case "USER IMAGE SELECT":
+            new_state.currentUser.pic = action.pic;
+            break;
+        case "USER INFO CHANGE":
+            new_state.currentUser.info = action.info;
+            break;
         case "RECEIVE USER POSTS": {
             let postList = {};
             for (let post of action.data.posts) {
@@ -88,6 +94,7 @@ function reducer(state = {}, action) {
             new_state.modal = "";
             break;
         default:
+            new_state.currentUser = {pic: "", info: ""};
             new_state.newCommentOk = false;
             new_state.userImages = {};
             new_state.posts = {};

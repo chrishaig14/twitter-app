@@ -3,13 +3,7 @@ import React from "react";
 class EditProfile extends React.Component {
     constructor(props) {
         super(props);
-        this.profileSubmit = this.profileSubmit.bind(this);
         this.onImageSelect = this.onImageSelect.bind(this);
-        this.updateImage = this.updateImage.bind(this);
-        this.token = PostComponent.str_obj(document.cookie).token;
-        this.state = {
-            pic: ""
-        };
     }
 
 
@@ -22,12 +16,16 @@ class EditProfile extends React.Component {
     }
 
 
-
     onImageSelect() {
         console.log("IMAGE SELECTED!");
         let file = this.refs.pic.files[0];
-        this.encodeImageFileAsURL(file, this.updateImage);
-        console.log(this.refs.pic.files[0]);
+        this.encodeImageFileAsURL(file, this.props.onImageSelect);
+        // // this
+        // // this.setState({pic:})
+        // this.encodeImageFileAsURL(file, (pic) => {
+        //     this.setState({pic: pic});
+        // });
+        // this.props.onImageSelect(file);
     }
 
     profileSubmit(event) {
@@ -38,15 +36,15 @@ class EditProfile extends React.Component {
     render() {
         return (
             <div className={"profile"}>
-
                 <h1>Edit your profile</h1>
                 <div className={"profile-form"}>
-                    <img className={"profile-pic"} src={this.state.pic}/>
+                    <img className={"profile-pic"} src={this.props.pic}/>
                     <label className={"profile-pic-label"}>Change<input type={"file"} ref="pic"
                                                                         onChange={this.onImageSelect}
                                                                         className={"profile-pic-input"}/></label>
-                    <label>Info:<input className={"profile-info"} type={"text"}/></label>
-                    <button onClick={this.onInfoSave}>Save</button>
+                    <label>Info:<input className={"profile-info"} type={"text"} onChange={this.props.onInfoChange}
+                                       value={this.props.userInfo}/></label>
+                    <button onClick={() => this.props.onInfoSave(this.props.userInfo, this.props.pic)}>Save</button>
                 </div>
 
             </div>

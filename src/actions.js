@@ -460,3 +460,20 @@ export const changeCommentContent = (content) => ({
     type: "CHANGE COMMENT CONTENT",
     commentContent: content
 });
+
+export const userImageSelect = (pic) => ({
+    type: "USER IMAGE SELECT",
+    pic: pic
+});
+
+export const userInfoChange = (info) => ({
+    type: "USER INFO CHANGE",
+    info: info
+});
+
+export const userInfoSave = () => {
+    return (dispatch, getState) => {
+        dispatch(updateImage(getState().main.currentUser.pic));
+        dispatch(replace("/feed"));
+    };
+};
