@@ -14,7 +14,7 @@ class SearchResultsViewComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="search-results-view">
                 {this.props.users.length} results for "{this.props.location.search}"
                 <div className={"search-results"}>
                     {this.props.users.map(username => <UserCardContainer key={username} username={username}/>)}

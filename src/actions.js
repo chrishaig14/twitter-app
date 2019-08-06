@@ -3,7 +3,7 @@ import {parse} from "query-string";
 import Cookies from "js-cookie";
 
 const serverUrl = "http://localhost:8888";
-
+// const serverUrl = "https://chris-twitter-server.herokuapp.com";
 export const requestFeed = () => ({
     type: "REQUEST FEED"
 });

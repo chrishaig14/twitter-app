@@ -8,38 +8,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace; }
 
 .modal-show {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    /* Stay in place */
-    z-index: 10;
-    /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  /* Stay in place */
+  z-index: 10;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */ }
 
 .modal-hide {
-    display: none;
-    /* Hidden by default */
-}
+  display: none;
+  /* Hidden by default */ }
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: rgba(0, 153, 204, 0.8);
-    color: white;
-    box-shadow: black 0px 0px 5px 1px;
-    font-weight: bold;
-    border-radius: 1em;
-    padding: 1em;
-    border: solid 1px black;
-}
+  background-color: rgba(0, 153, 204, 0.8);
+  color: white;
+  box-shadow: black 0px 0px 5px 1px;
+  font-weight: bold;
+  border-radius: 1em;
+  padding: 1em;
+  border: solid 1px black; }
 
 button, .profile-pic-label {
   background-color: #0099cc;
@@ -175,11 +172,10 @@ input[type="text"]:focus, input[type="password"]:focus {
     flex-grow: 1; }
 
 .new-post {
-    padding: 1em;
-    border-radius: 1em;
-    border: solid 1px gray;
-    width: 490px;
-}
+  padding: 1em;
+  border-radius: 1em;
+  border: solid 1px gray;
+  width: 490px; }
   .new-post form {
     display: flex;
     flex-direction: row; }
@@ -220,9 +216,8 @@ input[type="text"]:focus, input[type="password"]:focus {
 .feed-view {
   display: flex;
   flex-direction: column;
-    align-items: center;
-    margin-top: 70px;
-}
+  align-items: center;
+  margin-top: 70px; }
   .feed-view .new-post {
     margin-bottom: 20px; }
 
@@ -329,6 +324,9 @@ input[type="text"]:focus, input[type="password"]:focus {
     margin-right: 10px; }
   .followed-user button {
     margin-left: 20px; }
+
+.search-results-view {
+  margin-top: 70px; }
 
 .search-results {
   display: flex;
