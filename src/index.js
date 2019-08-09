@@ -1,20 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
-import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import {applyMiddleware, compose, createStore} from "redux";
 import {Provider} from "react-redux";
 import createRootReducer from "./reducers";
 import thunk from "redux-thunk";
 import {createBrowserHistory} from "history";
 import {routerMiddleware, ConnectedRouter} from "connected-react-router";
-import EditProfile from "./components/EditProfile";
 import LoginViewContainer from "./containers/LoginViewContainer";
 import FeedViewContainer from "./containers/FeedViewContainer";
 import UserViewContainer from "./containers/UserViewContainer";
-// import HeaderComponent from "./components/Header";
 import HeaderContainer from "./containers/HeaderContainer";
 import SearchResultsViewContainer from "./containers/SearchResultsViewContainer";
 import FollowingViewContainer from "./containers/FollowingViewContainer";
@@ -37,8 +34,6 @@ const store = createStore(createRootReducer(history), initialState, compose(appl
 ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
-            {/*<BrowserRouter>*/}
-            {/*<App/>*/}
             {Cookies.get("token") ? <Redirect to={"/feed"}/> : null}
 
             <Switch>
@@ -52,7 +47,6 @@ ReactDOM.render(
             <Route path={"/following"} component={FollowingViewContainer}/>
             <Route path={"/users/:id"} component={UserViewContainer}/>
             <Route path={"/search"} component={SearchResultsViewContainer}/>
-            {/*</BrowserRouter>*/}
         </ConnectedRouter>
     </Provider>
     , document.getElementById("root"));

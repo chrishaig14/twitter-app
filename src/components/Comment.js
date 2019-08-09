@@ -1,6 +1,5 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-// import UserPicComponent from "./UserPic";
 import UserPicContainer from "../containers/UserPicContainer";
 
 class Comment extends React.Component {

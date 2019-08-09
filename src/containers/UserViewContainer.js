@@ -12,7 +12,6 @@ const mapStateToProps = (state, ownProps) => {
     });
 };
 const mapDispatchToProps = dispatch => {
-    console.log("MAPPING DISPATH");
     return ({
         follow: (id) => dispatch(follow(id)),
         unfollow: (id) => dispatch(unfollow(id)),

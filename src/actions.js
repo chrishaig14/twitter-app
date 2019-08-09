@@ -1,5 +1,4 @@
-import {push, replace} from "connected-react-router";
-import {parse} from "query-string";
+import {replace} from "connected-react-router";
 import Cookies from "js-cookie";
 
 const serverUrl = "http://localhost:8888";
@@ -126,7 +125,6 @@ export const fetchUserPosts = (username) => {
         });
         res = await res.json();
 
-        console.log(`GOT USER ${username} POSTS:`, res);
         dispatch(receiveUserPosts(res));
     };
 };
@@ -143,7 +141,6 @@ export const checkFollowed = (username) => {
             method: "GET", headers: {"Authorization": getState().main.token}
         }).then(
             res => {
-                console.log("RES.STATUS: ", res.status);
                 if (res.status === 200) {
                     dispatch(setUserFollowed(username, true));
                 } else {
@@ -160,7 +157,6 @@ export const follow = (username) => {
             method: "PUT", headers: {"Authorization": getState().main.token}
         });
         if (res.ok) {
-            console.log("NOW FOLLOWING USER: ", username);
             dispatch(setUserFollowed(username, true));
 
         }
@@ -169,7 +165,6 @@ export const follow = (username) => {
 
 export const logout = () => {
     return (dispatch, getState) => {
-        console.log("LOGGING OUT!");
         Cookies.remove("token");
         dispatch(replace("/"));
     };
@@ -181,7 +176,6 @@ export const unfollow = (username) => {
             method: "DELETE", headers: {"Authorization": getState().main.token}
         });
         if (res.ok) {
-            console.log("STOPPED FOLLOWING USER: ", username);
             dispatch(setUserFollowed(username, false));
         }
 
@@ -249,14 +243,10 @@ export const sharePost = (postId) => {
         ).then(
             res => {
                 if (res.ok) {
-                    // console.log("SHARED POST OK!");
                     return res.json();
-                } else {
-                    // console.log("COULD NOT SHARE POST!");
                 }
             }
         ).then(res => {
-            // console.log("SHARED POST: ", res);
             dispatch(receiveSharedPost(res));
             dispatch(showModal("SHARED POST!"));
         });
@@ -304,9 +294,7 @@ export const submitNewComment = (data) => {
             res => res.json()
         ).then(
             res => {
-                // this.props.onSubmit(res);
                 dispatch(receiveNewComment(res));
-                // console.log("NEW COMMENT POSTED: ", res);
             }
         );
     };
@@ -322,7 +310,6 @@ export const updateImage = (result) => {
             body: result
         });
         if (res.ok) {
-            console.log("UPDATED IMAGE OK!");
             dispatch(showModal("IMAGE UPDATED!"));
         } else {
             console.log("COULD NOT UPDATE IMAGE!");

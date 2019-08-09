@@ -1,7 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import Comment from "./Comment";
-// import UserPicComponent from "./UserPic";
 import NewCommentComponent from "./NewCommentComponent";
 import UserPicContainer from "../containers/UserPicContainer";
 
@@ -9,7 +8,6 @@ class Quote extends React.Component {
     constructor(props) {
         super(props);
         this.state = {userpic: ""};
-        // this.token = PostComponent.str_obj(document.cookie).token;
     }
 
     render() {

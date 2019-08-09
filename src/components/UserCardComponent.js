@@ -9,7 +9,6 @@ class UserCardComponent extends React.Component {
     render() {
         return (
             <div className={"followed-user"}>
-                {/*<img className={"followed-user-pic"} src={this.state.pic}/>*/}
                 <NavLink to={"/users/" + this.props.username}>{this.props.username}</NavLink>
                 {this.props.followed ?
                     (<button onClick={() => this.props.unfollow(this.props.username)}>Unfollow</button>) :

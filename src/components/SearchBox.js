@@ -2,8 +2,6 @@ import React from "react";
 import {Redirect} from "react-router-dom";
 
 class SearchBox extends React.Component {
-    serverUrl = "http://localhost:8888";
-
     constructor(props) {
         super(props);
         this.onSearch = this.onSearch.bind(this);
@@ -12,7 +10,6 @@ class SearchBox extends React.Component {
     }
 
     onSearch(event) {
-        console.log("SUBMITTING SEARCGH");
         this.setState({toResult: true});
         event.preventDefault();
     }

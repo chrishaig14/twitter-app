@@ -1,7 +1,6 @@
 export const selectUserPosts = (state, username) => {
     let posts = [];
     for (const postId in state.main.posts) {
-        // console.log("FILTERING POST: ", post.username,  "USERNAME:", username);
         let post = state.main.posts[postId];
         if (post.username === username) {
             console.log("PUSHING POST: ", post);

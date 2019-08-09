@@ -14,7 +14,6 @@ const mapDispatchToProps = dispatch => ({
         dispatch(fetchPostComments(postId));
     },
     share: (postId) => {
-        // console.log("SHARNI POST!");
         dispatch(sharePost(postId));
     },
     quote: (postId, quoteContent) => {

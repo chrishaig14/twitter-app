@@ -8,7 +8,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     signup: (data) => {
-        console.log("DISPATCHING SIGNUP");
         dispatch(signup(data));
     }
 });

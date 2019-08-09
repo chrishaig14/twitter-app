@@ -1,9 +1,7 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import Comment from "./Comment";
-// import UserPicComponent from "./UserPic";
 import PostContent from "./PostContent";
-import NewCommentComponent from "./NewCommentComponent";
 import NewCommentContainer from "../containers/NewCommentContainer";
 import UserPicContainer from "../containers/UserPicContainer";
 
@@ -56,15 +54,12 @@ class PostComponent extends React.Component {
     }
 
     render() {
-        // console.log("DATA:", this.props.data);
         let date = (new Date(this.props.data.timestamp));
-        // console.log("this.props.data", this.props.data);
         return (
             <div className={"simple-post"}>
                 {this.props.data.shares.length !== 0 ?
                     <div>
                         Shared by {[...new Set(this.props.data.shares)].join(",")}
-                        {/*Shared by {this.props.data.shares.join(", ")}*/}
                     </div>
                     :
                     null

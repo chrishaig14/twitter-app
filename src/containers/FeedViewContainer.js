@@ -4,9 +4,6 @@ import {fetchFeed} from "../actions";
 import {selectFeed} from "../selectors";
 
 const mapStateToProps = state => {
-    // console.log("POST LIST: ", state.main.posts);
-
-    // console.log(posts);
     return {
         posts: selectFeed(state)
     };
@@ -14,7 +11,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     onMount: () => {
-        console.log("DISPATCHING FETCH FEED");
         dispatch(fetchFeed());
     }
 });

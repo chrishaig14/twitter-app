@@ -3,10 +3,7 @@ import NewCommentComponent from "../components/NewCommentComponent";
 import {changeCommentContent, submitNewComment} from "../actions";
 
 const mapStateToProps = (state, ownProps) => {
-    // console.log("new comment ok: ", state.main.newCommentOk);
     return {
-        // id: ownProps.data.id,
-        // data: ownProps.data,
         content: state.main.commentContent
     };
 };

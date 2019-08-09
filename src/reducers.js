@@ -3,9 +3,7 @@ import {connectRouter} from "connected-react-router";
 import Cookies from "js-cookie";
 
 function reducer(state = {}, action) {
-    // console.log("REDUCER CALLED WITH ACTION: ", action, "AND STATE IS: ", state);
     let new_state = JSON.parse(JSON.stringify(state));
-    // console.log("RECEVED USER IMAGE:", new_state);
     switch (action.type) {
         case "REQUEST FEED":
             break;
@@ -13,14 +11,8 @@ function reducer(state = {}, action) {
             let postList = {};
             for (let post of action.data.posts) {
                 post.comments = [];
-                // post.shares = [];
                 postList[post.id] = post;
             }
-            // for (let post of action.data.posts) {
-            //     post.comments = [];
-            //     // post.shares = [];
-            //     postList[post.id] = post;
-            // }
             new_state.posts = postList;
         }
             break;
@@ -34,7 +26,6 @@ function reducer(state = {}, action) {
             let postList = {};
             for (let post of action.data.posts) {
                 post.comments = [];
-                // post.shares = [];
                 postList[post.id] = post;
             }
             new_state.posts = postList;
@@ -50,11 +41,9 @@ function reducer(state = {}, action) {
         case "RECEIVE NEW POST":
             let post = action.postData;
             post.comments = [];
-            // post.shares = [];
             new_state.posts[post.id] = post;
             break;
         case "RECEIVE SHARED POST":
-            // console.log("SHARE RECEIVED: post = ", action.postId);
             new_state.posts[action.postId].shares.push(action.username);
             break;
         case "SET FOLLOWED":
@@ -81,13 +70,11 @@ function reducer(state = {}, action) {
             break;
         case "RECEIVE USER IMAGE":
             new_state.userImages[action.username] = action.img;
-            // console.log("RECEVED USER IMAGE:", new_state);
             break;
         case "CHANGE COMMENT CONTENT":
             new_state.commentContent = action.commentContent;
             break;
         case "SHOW MODAL":
-            // console.log("SHOWING MODAL: ", action.text);
             new_state.modal = action.text;
             break;
         case "HIDE MODAL":

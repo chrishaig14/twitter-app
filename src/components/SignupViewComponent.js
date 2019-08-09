@@ -1,7 +1,5 @@
 import React from "react";
 
-// import "./SignupViewComponent.css"
-
 class SignupViewComponent extends React.Component {
     serverUrl = "http://localhost:8888";
 
