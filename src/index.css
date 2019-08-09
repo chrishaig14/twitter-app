@@ -250,25 +250,32 @@ input[type="text"]:focus, input[type="password"]:focus {
   .user-info .user-info-info {
     font-family: Serif; }
 
-.other-user-view-main {
+.other-user-view {
   display: flex;
-  flex-direction: column; }
-  .other-user-view-main .user-posts-title {
+  flex-direction: column;
+  margin-top: 70px;
+}
+
+.other-user-view .user-posts-title {
     font-weight: bold; }
-  .other-user-view-main .other-user-info {
+
+.other-user-view .other-user-info {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
     border-bottom: solid 1px black; }
-    .other-user-view-main .other-user-info .other-user-pic {
+
+.other-user-view .other-user-info .other-user-pic {
       width: 96px;
       height: 96px;
       border-radius: 50%;
       border: solid 1px gray; }
-    .other-user-view-main .other-user-info .username {
+
+.other-user-view .other-user-info .username {
       font-weight: bold; }
-  .other-user-view-main .user-posts {
+
+.other-user-view .user-posts {
     flex-grow: 10;
     background-color: blue; }
 
@@ -288,8 +295,8 @@ input[type="text"]:focus, input[type="password"]:focus {
 .profile {
   display: flex;
   flex-direction: column;
-    justify-content: center;
-    margin-top: 70px;
+  justify-content: center;
+  margin-top: 70px;
 }
   .profile .profile-form {
     display: flex;
@@ -340,8 +347,8 @@ input[type="text"]:focus, input[type="password"]:focus {
   flex-direction: column; }
 
 .userpic {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border: solid 1px gray;
   border-radius: 50%; }
 

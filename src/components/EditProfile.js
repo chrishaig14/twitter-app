@@ -20,12 +20,6 @@ class EditProfile extends React.Component {
         console.log("IMAGE SELECTED!");
         let file = this.refs.pic.files[0];
         this.encodeImageFileAsURL(file, this.props.onImageSelect);
-        // // this
-        // // this.setState({pic:})
-        // this.encodeImageFileAsURL(file, (pic) => {
-        //     this.setState({pic: pic});
-        // });
-        // this.props.onImageSelect(file);
     }
 
     profileSubmit(event) {

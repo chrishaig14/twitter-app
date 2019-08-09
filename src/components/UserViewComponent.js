@@ -15,8 +15,6 @@ class UserViewComponent extends React.Component {
         console.log("followed? :", this.props.followed);
         return (
             <div className={"other-user-view"}>
-
-                <div className={"other-user-view-main"}>
                     <div className={"other-user-info"}>
                         {/*<img className={"other-user-pic"} src={this.state.pic}></img>*/}
                         <UserPicContainer username={this.props.username}/>
@@ -34,7 +32,6 @@ class UserViewComponent extends React.Component {
                             {this.props.posts.map(data => <PostContainer key={data.id} data={data}/>)}
                         </div>
                     </div>
-                </div>
             </div>
         );
     }

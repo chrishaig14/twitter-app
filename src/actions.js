@@ -14,22 +14,18 @@ export const receiveFeed = (data) => ({
 });
 
 export const fetchFeed = () => {
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
         dispatch(requestFeed());
         let h = {"Authorization": getState().main.token};
-        fetch(serverUrl + "/feed",
+        let res = await fetch(serverUrl + "/feed",
             {
                 method: "GET",
                 headers: h
             }
-        ).then(res => res.json()
-        ).then(
-            res => {
-                // for (let post of res.posts) {
-                //     console.log("RECEIVED FEED DATA: ", post);
-                // }
-                dispatch(receiveFeed(res));
-            });
+        );
+        res = await res.json();
+
+        dispatch(receiveFeed(res));
     };
 };
 
@@ -46,21 +42,21 @@ export const loginError = (error) => ({
 });
 
 export const fetchLogin = (username, password) => {
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
         dispatch(login(username, password));
-        fetch(serverUrl + "/login",
+        let res = await fetch(serverUrl + "/login",
             {
                 method: "POST",
                 body: JSON.stringify({username, password})
             }
-        ).then(res => {
-            if (res.ok) {
-                dispatch(receiveToken(res.headers.get("Authorization")));
-                dispatch(replace("/feed"));
-            } else {
-                dispatch(loginError("ERROR"));
-            }
-        });
+        );
+        if (res.ok) {
+            dispatch(receiveToken(res.headers.get("Authorization")));
+            dispatch(replace("/feed"));
+        } else {
+            dispatch(loginError("ERROR"));
+        }
+
     };
 };
 
@@ -72,50 +68,35 @@ const receiveNewPost = postData => (
 );
 
 export const newPost = (postContent) => {
-    return (dispatch, getState) => {
-        // dispatch()
-        fetch(serverUrl + "/posts",
+    return async (dispatch, getState) => {
+        let res = await fetch(serverUrl + "/posts",
             {
                 method: "POST",
                 body: JSON.stringify({content: postContent}),
                 headers: {"Authorization": getState().main.token}
             }
-        )
-            .then(
-                res => {
-                    if (res.ok) {
-                        return res.json();
-                    }
-                }
-            ).then(
-            res => {
-                dispatch(receiveNewPost(res));
-                dispatch(showModal("POSTED OK!"));
-            }
         );
+        if (res.ok) {
+            res = await res.json();
+            dispatch(receiveNewPost(res));
+            dispatch(showModal("POSTED OK!"));
+        }
     };
 };
 
 export const followUser = (id) => {
-    return (dispatch, getState) => {
-        // dispatch()
-        fetch(serverUrl + "/users/me/followees/" + id,
+    return async (dispatch, getState) => {
+        let res = await fetch(serverUrl + "/users/me/followees/" + id,
             {
                 method: "PUT",
                 headers: {"Authorization": getState().main.token}
             }
-        )
-            .then(
-                res => {
-                    if (res.ok) {
-                        return res.json();
-                    }
-                }
-            ).then(
-            res => {
-                dispatch({type: "OK"});
-            }
         );
+        if (res.ok) {
+            await res.json();
+            dispatch({type: "OK"});
+        }
+
     };
 };
 
@@ -139,17 +120,14 @@ export const receiveUserPosts = (data) => ({
 });
 
 export const fetchUserPosts = (username) => {
-    return (dispatch) => {
-        fetch(serverUrl + "/users/" + username + "/posts", {
+    return async (dispatch) => {
+        let res = await fetch(serverUrl + "/users/" + username + "/posts", {
             method: "GET"
-        }).then(
-            res => res.json()
-        ).then(
-            res => {
-                console.log(`GOT USER ${username} POSTS:`, res);
-                dispatch(receiveUserPosts(res));
-            }
-        );
+        });
+        res = await res.json();
+
+        console.log(`GOT USER ${username} POSTS:`, res);
+        dispatch(receiveUserPosts(res));
     };
 };
 
@@ -177,19 +155,15 @@ export const checkFollowed = (username) => {
 };
 
 export const follow = (username) => {
-    return (dispatch, getState) => {
-        fetch(serverUrl + "/users/me/followees/" + username, {
+    return async (dispatch, getState) => {
+        let res = await fetch(serverUrl + "/users/me/followees/" + username, {
             method: "PUT", headers: {"Authorization": getState().main.token}
-        }).then(
-            res => {
-                if (res.ok) {
-                    console.log("NOW FOLLOWING USER: ", username);
-                    // this.setState({followed: true});
-                    dispatch(setUserFollowed(username, true));
+        });
+        if (res.ok) {
+            console.log("NOW FOLLOWING USER: ", username);
+            dispatch(setUserFollowed(username, true));
 
-                }
-            }
-        );
+        }
     };
 };
 
@@ -202,18 +176,15 @@ export const logout = () => {
 };
 
 export const unfollow = (username) => {
-    return (dispatch, getState) => {
-        fetch(serverUrl + "/users/me/followees/" + username, {
+    return async (dispatch, getState) => {
+        let res = await fetch(serverUrl + "/users/me/followees/" + username, {
             method: "DELETE", headers: {"Authorization": getState().main.token}
-        }).then(
-            res => {
-                if (res.ok) {
-                    console.log("STOPPED FOLLOWING USER: ", username);
-                    // this.setState({followed: false});
-                    dispatch(setUserFollowed(username, false));
-                }
-            }
-        );
+        });
+        if (res.ok) {
+            console.log("STOPPED FOLLOWING USER: ", username);
+            dispatch(setUserFollowed(username, false));
+        }
+
     };
 };
 
@@ -223,15 +194,11 @@ export const receiveSearch = data => ({
 });
 
 export const fetchSearch = (query) => {
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
         let url = serverUrl + "/search" + query;
-        fetch(url, {method: "GET"}).then(
-            res => {
-                return res.json();
-            }
-        ).then(res => {
-            dispatch(receiveSearch(res.map(a => a.username)));
-        });
+        let res = await fetch(url, {method: "GET"});
+        res = await res.json();
+        dispatch(receiveSearch(res.map(a => a.username)));
     };
 };
 
@@ -346,23 +313,21 @@ export const submitNewComment = (data) => {
 };
 
 export const updateImage = (result) => {
-    return (dispatch, getState) => {
-        fetch(serverUrl + "/users/me/img", {
+    return async (dispatch, getState) => {
+        let res = await fetch(serverUrl + "/users/me/img", {
             method: "PUT",
             headers: {
                 "Authorization": getState().main.token
             },
             body: result
-        }).then(
-            res => {
-                if (res.ok) {
-                    // console.log("UPDATED IMAGE OK!");
-                    dispatch(showModal("IMAGE UPDATED!"));
-                } else {
-                    console.log("COULD NOT UPDATE IMAGE!");
-                }
-            }
-        );
+        });
+        if (res.ok) {
+            console.log("UPDATED IMAGE OK!");
+            dispatch(showModal("IMAGE UPDATED!"));
+        } else {
+            console.log("COULD NOT UPDATE IMAGE!");
+        }
+
     };
 };
 
@@ -373,16 +338,12 @@ export const receivePostComments = (postId, res) => ({
 });
 
 export const fetchPostComments = (postId) => {
-    return (dispatch, getState) => {
-        fetch(serverUrl + "/posts/" + postId + "/comments", {
+    return async (dispatch, getState) => {
+        let res = await fetch(serverUrl + "/posts/" + postId + "/comments", {
             method: "GET"
-        }).then(res => res.json()).then(
-            res => {
-                // this.setState({commentSection: true, comments: res});
-                // console.log("RECEIVED POST COMMENTS: ", res)
-                dispatch(receivePostComments(postId, res));
-            }
-        );
+        });
+        res = await res.json();
+        dispatch(receivePostComments(postId, res));
     };
 };
 
@@ -393,47 +354,35 @@ const receiveUserImage = (username, img) => ({
 });
 
 export const getUserImage = (username) => {
-    return (dispatch, getState) => {
-        // console.log("CGETTING USER IMAGE");
+    return async (dispatch, getState) => {
         if (getState().main.userImages.hasOwnProperty(username)) {
-            // console.log("NOT FETCHING IMAGE BECAUSE I ALREADY HAVE IT!");
             return;
-        } else {
-            // console.log("FETCHING IMAGE BECAUSE I DONT HAVE IT!");
         }
         let url = serverUrl + "/users/" + username + "/img";
-        fetch(url, {
+        let res = await fetch(url, {
             method: "GET"
-        }).then(
-            res => {
-                return res.text();
-            }
-        ).then(
-            res => {
-                dispatch(receiveUserImage(username, res));
-                // console.log("RECEIVED USER IMAGE ", username);
-            }
-        );
+        });
+        res = await res.text();
+        dispatch(receiveUserImage(username, res));
     };
 };
 
 export const signup = (data) => {
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
         console.log(`Signing up username=${data.username} password=${data.password} confirmPassword=${data.confirmPassword}`);
-        fetch(serverUrl + "/users", {
-            method: "POST",
-            body: JSON.stringify({username: data.username, password: data.password})
-        }).then(
-            res => {
-                if (res.ok) {
-                    console.log("SIGNUP OK!");
-                } else {
-                    console.log("ERROR SIGNING UP!");
-                }
+        try {
+            let res = await fetch(serverUrl + "/users", {
+                method: "POST",
+                body: JSON.stringify({username: data.username, password: data.password})
+            });
+            if (res.ok) {
+                console.log("SIGNUP OK!");
+            } else {
+                console.log("ERROR SIGNING UP!");
             }
-        ).catch(e => {
+        } catch (e) {
             console.log("ERRRRRRRRRRRRROR: ", e);
-        });
+        }
     };
 };
 
