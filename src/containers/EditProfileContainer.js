@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import EditProfile from "../components/EditProfile";
-import {updateImage, userImageSelect, userInfoChange, userInfoSave} from "../actions";
+import {userImageSelect, userInfoChange, userInfoSave} from "../actions";
 
 const mapStateToProps = state => {
     return state.main.currentUser;
@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => ({
     onInfoChange: (info) => {
         dispatch(userInfoChange(info));
     },
-    onInfoSave: (info, pic) => {
+    onInfoSave: () => {
         dispatch(userInfoSave());
     }
 });

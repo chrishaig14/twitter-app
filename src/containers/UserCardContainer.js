@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import UserCardComponent from "../components/UserCardComponent";
-import {checkFollowed, follow, followUser, unfollow} from "../actions";
+import {checkFollowed, follow, unfollow} from "../actions";
 
 const mapStateToProps = (state, ownProps) => ({
     username: ownProps.username,

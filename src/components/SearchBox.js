@@ -26,7 +26,7 @@ class SearchBox extends React.Component {
 
         return (
             <div className={"search-box"}>
-                {this.state.toResult ? (<Redirect to={"/search?" + "term=" + this.state.searchTerm}/>) : null}
+                {this.state.toResult ? (<Redirect to={"/search?term=" + this.state.searchTerm}/>) : null}
                 <form onSubmit={this.onSearch}>
                     <input type={"text"} onChange={this.onInputChange}/>
                     <button className={"submit-search-btn"} type={"submit"}>Search</button>

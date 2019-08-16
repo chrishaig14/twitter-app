@@ -26,7 +26,7 @@ class EditProfile extends React.Component {
             <div className={"profile"}>
                 <h1>Edit your profile</h1>
                 <div className={"profile-form"}>
-                    <img className={"profile-pic"} src={this.props.pic}/>
+                    <img className={"profile-pic"} src={this.props.pic} alt={"profile-pic"}/>
                     <label className={"profile-pic-label"}>Change<input type={"file"} ref="pic"
                                                                         onChange={this.onImageSelect}
                                                                         className={"profile-pic-input"}/></label>

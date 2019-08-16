@@ -8,7 +8,7 @@ class UserPicComponent extends React.Component {
 
     render() {
         return (
-            <img src={this.props.img} className={"userpic"}/>
+            <img src={this.props.img} className={"userpic"} alt={"userpic"}/>
         );
     }
 }

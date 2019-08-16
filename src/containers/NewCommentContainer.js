@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 import NewCommentComponent from "../components/NewCommentComponent";
 import {changeCommentContent, submitNewComment} from "../actions";
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
         content: state.main.commentContent
     };

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchLogin, login } from "../actions";
+import {fetchLogin} from "../actions";
 import LoginViewComponent from "../components/LoginViewComponent";
 
 const mapStateToProps = state => ({
