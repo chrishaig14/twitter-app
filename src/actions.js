@@ -15,16 +15,20 @@ export const receiveFeed = (data) => ({
 export const fetchFeed = () => {
     return async (dispatch, getState) => {
         dispatch(requestFeed());
-        let h = {"Authorization": getState().main.token};
-        let res = await fetch(serverUrl + "/feed",
-            {
-                method: "GET",
-                headers: h
-            }
-        );
-        res = await res.json();
+        try {
+            let h = {"Authorization": getState().main.token};
+            let res = await fetch(serverUrl + "/feed",
+                {
+                    method: "GET",
+                    headers: h
+                }
+            );
+            res = await res.json();
+            dispatch(receiveFeed(res));
+        } catch (e) {
+            console.log("ERROR: ", e);
+        }
 
-        dispatch(receiveFeed(res));
     };
 };
 
@@ -43,6 +47,7 @@ export const loginError = (error) => ({
 export const fetchLogin = (username, password) => {
     return async (dispatch, getState) => {
         dispatch(login(username, password));
+
         let res = await fetch(serverUrl + "/login",
             {
                 method: "POST",
