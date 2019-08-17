@@ -25,7 +25,14 @@ const history = createBrowserHistory();
 
 let initialState = {
     main: {
-        token: Cookies.get("token")
+        token: Cookies.get("token"),
+        currentUser: {pic: "", info: ""},
+        newCommentOk: false,
+        userImages: {},
+        posts: {},
+        searchResults: [],
+        following: [],
+        userFollowed: {}
     }
 };
 

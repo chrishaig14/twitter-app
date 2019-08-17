@@ -215,7 +215,8 @@ export const fetchFollowing = () => {
             res => res.json()
         ).then(
             res => {
-                dispatch(receiveFollowing(res.map(x => x.followee)));
+                console.log("RECEIVED FOLLOWING: ", res);
+                dispatch(receiveFollowing(res));
             }
         );
     };

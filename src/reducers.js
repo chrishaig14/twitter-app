@@ -131,7 +131,7 @@ function hide_modal(old_state, action) {
 }
 
 function reducer(old_state = {}, action) {
-    let state = {};
+    let state = old_state;
     let map = {};
 
     map["REQUEST FEED"] = request_feed;
@@ -235,19 +235,11 @@ function reducer(old_state = {}, action) {
     //         state.userFollowed = {};
     //         break;
     // }
-
+    console.log("RECEIVED ACTION: ", action);
     if (map.hasOwnProperty(action.type)) {
         state = map[action.type](old_state, action);
-    } else {
-
-        state.currentUser = {pic: "", info: ""};
-        state.newCommentOk = false;
-        state.userImages = {};
-        state.posts = {};
-        state.searchResults = [];
-        state.following = [];
-        state.userFollowed = {};
     }
+    // console.log(state)
     return state;
 }
 
