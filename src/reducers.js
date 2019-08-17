@@ -63,7 +63,7 @@ function receive_new_post(old_state, action) {
 
 function receive_shared_post(old_state, action) {
     let state = JSON.parse(JSON.stringify(old_state));
-    state.posts[action.postId].shares.push(action.username);
+    state.posts[action.postId].shares.push(state.token);
     return state;
 }
 

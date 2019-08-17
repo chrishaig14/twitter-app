@@ -222,10 +222,9 @@ export const fetchFollowing = () => {
     };
 };
 
-const receiveSharedPost = shareData => ({
+const receiveSharedPost = post_id => ({
     type: "RECEIVE SHARED POST",
-    username: shareData.username,
-    postId: shareData.post_id
+    postId: post_id
 });
 
 const showModal = text => ({
@@ -253,7 +252,7 @@ export const sharePost = (postId) => {
                 }
             }
         ).then(res => {
-            dispatch(receiveSharedPost(res));
+            dispatch(receiveSharedPost(postId));
             dispatch(showModal("SHARED POST!"));
         });
     };
