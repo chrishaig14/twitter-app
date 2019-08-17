@@ -1,5 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
+import UserPicContainer from "../containers/UserPicContainer";
 
 class UserCardComponent extends React.Component {
     componentDidMount() {
@@ -9,6 +10,7 @@ class UserCardComponent extends React.Component {
     render() {
         return (
             <div className={"followed-user"}>
+                <UserPicContainer username={this.props.username}/>
                 <NavLink to={"/users/" + this.props.username}>{this.props.username}</NavLink>
                 {this.props.followed ?
                     (<button onClick={() => this.props.unfollow(this.props.username)}>Unfollow</button>) :

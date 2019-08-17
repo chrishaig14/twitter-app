@@ -35,8 +35,9 @@ let initialState = {
         userFollowed: {}
     }
 };
+// , window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
-const store = createStore(createRootReducer(history), initialState, compose(applyMiddleware(routerMiddleware(history), thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+const store = createStore(createRootReducer(history), initialState, compose(applyMiddleware(routerMiddleware(history), thunk)));
 
 ReactDOM.render(
     <Provider store={store}>
