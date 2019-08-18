@@ -7,10 +7,10 @@ class NewCommentComponent extends React.Component {
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        this.props.submit({postId: this.props.postId, comment: this.props.content});
+                        this.props.submit(this.props.postId, this.props.content);
                     }}>
                     <input autoComplete={"off"} id="content" value={this.props.content}
-                           onChange={this.props.onInputChange}
+                           onChange={(e) => this.props.onInputChange(this.props.postId, e.target.value)}
                            type={"text"}/>
                     <button type={"submit"}>Send</button>
                 </form>

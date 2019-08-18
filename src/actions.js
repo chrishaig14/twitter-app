@@ -287,11 +287,15 @@ const receiveNewComment = (data) => ({
     data: data
 });
 
-export const submitNewComment = (data) => {
+export const submitNewComment = (postId) => {
     return (dispatch, getState) => {
-        fetch(serverUrl + "/posts/" + data.postId + "/comments", {
+        console.log("NEW COMMENT: ", postId);
+
+
+        let data = getState().main.commentContent[postId];
+        fetch(serverUrl + "/posts/" + postId + "/comments", {
             method: "POST",
-            body: JSON.stringify({content: data.comment, parent: -1}),
+            body: JSON.stringify({content: data, parent: -1}),
             headers: {"Authorization": getState().main.token}
         }).then(
             res => res.json()
@@ -408,8 +412,9 @@ export const getUserInfo = (username) => {
     };
 };
 
-export const changeCommentContent = (content) => ({
+export const changeCommentContent = (postId, content) => ({
     type: "CHANGE COMMENT CONTENT",
+    postId: postId,
     commentContent: content
 });
 

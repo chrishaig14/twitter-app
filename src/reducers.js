@@ -9,9 +9,13 @@ function request_feed(old_state = {}, action) {
 function receive_feed(old_state = {}, action) {
     let state = JSON.parse(JSON.stringify(old_state));
     let postList = {};
+    console.log("COMMENT CONTENT: ", state.commentContent);
+
     for (let post of action.data.posts) {
+        console.log("POST.ID: ", post.id);
         post.comments = [];
         postList[post.id] = post;
+        state.commentContent[post.id] = "";
     }
     state.posts = postList;
     return state;
@@ -37,6 +41,7 @@ function receive_user_posts(old_state, action) {
     for (let post of action.data.posts) {
         post.comments = [];
         postList[post.id] = post;
+        state.commentContent[post.id] = "";
     }
     state.posts = postList;
     return state;
@@ -60,6 +65,7 @@ function receive_new_post(old_state, action) {
     let state = JSON.parse(JSON.stringify(old_state));
     let post = action.postData;
     post.comments = [];
+    state.commentContent[post.id] = "";
     state.posts[post.id] = post;
     return state;
 }
@@ -103,8 +109,9 @@ function receive_comments(old_state, action) {
 function new_comment(old_state, action) {
     let state = JSON.parse(JSON.stringify(old_state));
     console.log("RECEIVED NEW COMMENT: ", action.data);
-    state.commentContent = "";
+    // state.commentContent = "";
     state.posts[action.data.post].comments.push(action.data);
+    state.commentContent[action.data.post] = "";
     console.log("new_state: ", state);
     return state;
 }
@@ -117,7 +124,8 @@ function receive_user_image(old_state, action) {
 
 function change_comment_content(old_state, action) {
     let state = JSON.parse(JSON.stringify(old_state));
-    state.commentContent = action.commentContent;
+    console.log("ACTION : ", action);
+    state.commentContent[action.postId] = action.commentContent;
     return state;
 }
 
