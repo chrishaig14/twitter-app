@@ -26,7 +26,10 @@ class SignupViewComponent extends React.Component {
         return (
             <div id={"signup-view"}>
                 <h1>Sign up View</h1>
-                <form onSubmit={() => this.props.signup(this.state)}>
+                <form onSubmit={(e) => {
+                    this.props.signup(this.state);
+                    e.preventDefault();
+                }}>
                     <label>USERNAME
                         <input type={"text"} value={this.state.username}
                                onChange={this.onUsernameChange}/>
