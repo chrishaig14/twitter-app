@@ -66,6 +66,7 @@ function receive_new_post(old_state, action) {
     let post = action.postData;
     post.comments = [];
     state.commentContent[post.id] = "";
+    state.newPostContent = "";
     state.posts[post.id] = post;
     return state;
 }
@@ -147,6 +148,12 @@ function user_image_change_ok(old_state, action) {
     return state;
 }
 
+function new_post_content_change(old_state, action) {
+    let state = JSON.parse(JSON.stringify(old_state));
+    state.newPostContent = action.content;
+    return state;
+}
+
 function reducer(old_state = {}, action) {
     let state = old_state;
     let map = {};
@@ -187,6 +194,7 @@ function reducer(old_state = {}, action) {
     map["SHOW MODAL"] = show_modal;
 
     map["HIDE MODAL"] = hide_modal;
+    map["NEW POST CONTENT CHANGE"] = new_post_content_change;
 
     // switch (action.type) {
     //     case "REQUEST FEED":

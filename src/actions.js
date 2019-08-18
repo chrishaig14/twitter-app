@@ -71,12 +71,17 @@ const receiveNewPost = postData => (
     }
 );
 
-export const newPost = (postContent) => {
+export const newPostContentChange = content => ({
+    type: "NEW POST CONTENT CHANGE",
+    content
+});
+
+export const sendNewPost = () => {
     return async (dispatch, getState) => {
         let res = await fetch(serverUrl + "/posts",
             {
                 method: "POST",
-                body: JSON.stringify({content: postContent}),
+                body: JSON.stringify({content: getState().main.newPostContent}),
                 headers: {"Authorization": getState().main.token}
             }
         );
