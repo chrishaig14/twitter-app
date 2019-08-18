@@ -26,13 +26,14 @@ const history = createBrowserHistory();
 let initialState = {
     main: {
         token: Cookies.get("token"),
-        currentUser: {pic: "", info: ""},
+        currentUser: Cookies.get("token"),
         newCommentOk: false,
         userImages: {},
         posts: {},
         searchResults: [],
         following: [],
-        userFollowed: {}
+        userFollowed: {},
+        currentUserTempImage: ""
     }
 };
 // , window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {logout} from "../actions";
 
 const mapStateToProps = state => ({
-    username: state.main.token
+    username: state.main.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({

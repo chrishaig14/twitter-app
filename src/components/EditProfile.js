@@ -4,6 +4,7 @@ class EditProfile extends React.Component {
     constructor(props) {
         super(props);
         this.onImageSelect = this.onImageSelect.bind(this);
+        this.state = {pic: this.props.pic};
     }
 
 
@@ -19,20 +20,23 @@ class EditProfile extends React.Component {
     onImageSelect() {
         console.log("IMAGE SELECTED!");
         let file = this.refs.pic.files[0];
-        this.encodeImageFileAsURL(file, this.props.onImageSelect);
+        this.encodeImageFileAsURL(file, (x) => {
+            this.setState({pic: x});
+        });
     }
+
     render() {
         return (
             <div className={"profile"}>
                 <h1>Edit your profile</h1>
                 <div className={"profile-form"}>
-                    <img className={"profile-pic"} src={this.props.pic} alt={"profile-pic"}/>
+                    <img className={"profile-pic"} src={this.state.pic} alt={"profile-pic"}/>
                     <label className={"profile-pic-label"}>Change<input type={"file"} ref="pic"
                                                                         onChange={this.onImageSelect}
                                                                         className={"profile-pic-input"}/></label>
-                    <label>Info:<input className={"profile-info"} type={"text"} onChange={this.props.onInfoChange}
-                                       value={this.props.userInfo}/></label>
-                    <button onClick={() => this.props.onInfoSave(this.props.userInfo, this.props.pic)}>Save</button>
+                    <label>Info:<input className={"profile-info"} type={"text"} onChange={this.onInfoChange}
+                                       value={this.state.userInfo}/></label>
+                    <button onClick={() => this.props.onInfoSave(this.state.pic, this.props.info)}>Save</button>
                 </div>
 
             </div>

@@ -237,24 +237,22 @@ export const hideModal = () => ({
 });
 
 export const sharePost = (postId) => {
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
         // console.log("SHARING POST: ", postId);
-        fetch(serverUrl + "/shares",
+        let res = await fetch(serverUrl + "/shares",
             {
                 method: "POST",
                 headers: {"Authorization": getState().main.token},
                 body: JSON.stringify({post_id: postId})
             }
-        ).then(
-            res => {
-                if (res.ok) {
-                    return res.json();
-                }
-            }
-        ).then(res => {
+        );
+
+        if (res.ok) {
             dispatch(receiveSharedPost(postId));
             dispatch(showModal("SHARED POST!"));
-        });
+        } else {
+            dispatch(showModal("COULD NOT SHARE POST!"));
+        }
     };
 };
 
@@ -305,19 +303,32 @@ export const submitNewComment = (data) => {
     };
 };
 
+const userImageChangeOk = (img) => ({
+    type: "USER IMAGE CHANGE OK",
+    img: img
+});
+
 export const updateImage = (result) => {
     return async (dispatch, getState) => {
-        let res = await fetch(serverUrl + "/users/me/img", {
-            method: "PUT",
-            headers: {
-                "Authorization": getState().main.token
-            },
-            body: result
-        });
-        if (res.ok) {
-            dispatch(showModal("IMAGE UPDATED!"));
-        } else {
-            console.log("COULD NOT UPDATE IMAGE!");
+        try {
+            let res = await fetch(serverUrl + "/users/me/img", {
+                method: "PUT",
+                headers: {
+                    "Authorization": getState().main.token
+                },
+                body: result
+            });
+            if (res.ok) {
+                let r = await res.text();
+                console.log("UPDATED IMAGE OKaaa!", result);
+                console.log("R: ", r);
+                dispatch(userImageChangeOk(result));
+                dispatch(showModal("IMAGE UPDATED!"));
+            } else {
+                console.log("COULD NOT UPDATE IMAGE!");
+            }
+        } catch (e) {
+            console.log("THERE WAS AN ERROR:", e);
         }
 
     };
@@ -412,9 +423,10 @@ export const userInfoChange = (info) => ({
     info: info
 });
 
-export const userInfoSave = () => {
+export const userInfoSave = (pic, info) => {
     return (dispatch, getState) => {
-        dispatch(updateImage(getState().main.currentUser.pic));
+        console.log("PIC: ", pic);
+        dispatch(updateImage(pic));
         dispatch(replace("/feed"));
     };
 };

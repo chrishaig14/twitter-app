@@ -19,7 +19,9 @@ function receive_feed(old_state = {}, action) {
 
 function user_image_select(old_state, action) {
     let state = JSON.parse(JSON.stringify(old_state));
-    state.currentUser.pic = action.pic;
+    // state.currentUser.pic = action.pic;
+    state.currentUserTempImage = action.pic;
+    console.log("UPDATING USER IMAGE!");
     return state;
 }
 
@@ -43,6 +45,7 @@ function receive_user_posts(old_state, action) {
 function receive_token(old_state, action) {
     let state = JSON.parse(JSON.stringify(old_state));
     state.token = action.token;
+    state.currentUser = action.token;
     Cookies.set("token", action.token);
     return state;
 }
@@ -130,6 +133,12 @@ function hide_modal(old_state, action) {
     return state;
 }
 
+function user_image_change_ok(old_state, action) {
+    let state = JSON.parse(JSON.stringify(old_state));
+    state.userImages[state.currentUser] = action.img;
+    return state;
+}
+
 function reducer(old_state = {}, action) {
     let state = old_state;
     let map = {};
@@ -139,6 +148,7 @@ function reducer(old_state = {}, action) {
     map["RECEIVE FEED"] = receive_feed;
 
     map["USER IMAGE SELECT"] = user_image_select;
+    map["USER IMAGE CHANGE OK"] = user_image_change_ok;
 
     map["USER INFO CHANGE"] = user_info_change;
 
