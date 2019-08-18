@@ -9,10 +9,7 @@ function request_feed(old_state = {}, action) {
 function receive_feed(old_state = {}, action) {
     let state = JSON.parse(JSON.stringify(old_state));
     let postList = {};
-    console.log("COMMENT CONTENT: ", state.commentContent);
-
     for (let post of action.data.posts) {
-        console.log("POST.ID: ", post.id);
         post.comments = [];
         postList[post.id] = post;
         state.commentContent[post.id] = "";
@@ -23,9 +20,7 @@ function receive_feed(old_state = {}, action) {
 
 function user_image_select(old_state, action) {
     let state = JSON.parse(JSON.stringify(old_state));
-    // state.currentUser.pic = action.pic;
     state.currentUserTempImage = action.pic;
-    console.log("UPDATING USER IMAGE!");
     return state;
 }
 
