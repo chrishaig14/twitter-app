@@ -12,7 +12,6 @@ class UserViewComponent extends React.Component {
         return (
             <div className={"other-user-view"}>
                     <div className={"other-user-info"}>
-                        {/*<img className={"other-user-pic"} src={this.state.pic}></img>*/}
                         <UserPicContainer username={this.props.username}/>
                         <span className={"username"}>{this.props.username}</span>
                         {this.props.followed ?

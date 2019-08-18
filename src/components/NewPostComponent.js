@@ -1,18 +1,6 @@
 import React from "react";
 
 class NewPostComponent extends React.Component {
-    serverUrl = "http://localhost:8888";
-
-    constructor(props) {
-        super(props);
-        // this.state = {"post": ""};
-        // this.onContentChange = this.onContentChange.bind(this);
-    }
-
-    // onContentChange(event) {
-    //     this.setState({post: event.target.value});
-    // }
-
     render() {
         return (
             <div className={"new-post"}>

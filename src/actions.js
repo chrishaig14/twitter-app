@@ -220,7 +220,6 @@ export const fetchFollowing = () => {
             res => res.json()
         ).then(
             res => {
-                console.log("RECEIVED FOLLOWING: ", res);
                 dispatch(receiveFollowing(res));
             }
         );
@@ -243,7 +242,6 @@ export const hideModal = () => ({
 
 export const sharePost = (postId) => {
     return async (dispatch, getState) => {
-        // console.log("SHARING POST: ", postId);
         let res = await fetch(serverUrl + "/shares",
             {
                 method: "POST",
@@ -272,10 +270,9 @@ export const quote = (postId, quoteContent) => {
         ).then(
             res => {
                 if (res.ok) {
-                    console.log("RETWEETED OK!");
                     return res.json();
                 } else {
-                    console.log("COULD NOT RETWEET!");
+                    dispatch(showModal("ERROR!"));
                 }
             }
         ).then(
@@ -294,9 +291,6 @@ const receiveNewComment = (data) => ({
 
 export const submitNewComment = (postId) => {
     return (dispatch, getState) => {
-        console.log("NEW COMMENT: ", postId);
-
-
         let data = getState().main.commentContent[postId];
         fetch(serverUrl + "/posts/" + postId + "/comments", {
             method: "POST",
@@ -328,13 +322,10 @@ export const updateImage = (result) => {
                 body: result
             });
             if (res.ok) {
-                let r = await res.text();
-                console.log("UPDATED IMAGE OKaaa!", result);
-                console.log("R: ", r);
                 dispatch(userImageChangeOk(result));
                 dispatch(showModal("IMAGE UPDATED!"));
             } else {
-                console.log("COULD NOT UPDATE IMAGE!");
+                dispatch(showModal("COULD NOT UPDATE IMAGE!"));
             }
         } catch (e) {
             console.log("THERE WAS AN ERROR:", e);
@@ -388,9 +379,10 @@ export const signup = (data) => {
                 body: JSON.stringify({username: data.username, password: data.password})
             });
             if (res.ok) {
-                console.log("SIGNUP OK!");
+                dispatch(showModal("USER CREATED!"));
+                dispatch(replace("/"));
             } else {
-                console.log("ERROR SIGNING UP!");
+                dispatch(showModal("ERROR SIGNING UP!"));
             }
         } catch (e) {
             console.log("ERRRRRRRRRRRRROR: ", e);
@@ -435,7 +427,6 @@ export const userInfoChange = (info) => ({
 
 export const userInfoSave = (pic, info) => {
     return (dispatch, getState) => {
-        console.log("PIC: ", pic);
         dispatch(updateImage(pic));
         dispatch(replace("/feed"));
     };

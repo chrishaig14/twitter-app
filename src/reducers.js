@@ -95,13 +95,11 @@ function receive_following(old_state, action) {
     for (let username of action.following) {
         state.userFollowed[username] = true;
     }
-    console.log("RECEIVED FOLLOWING RESULTS: ", action.following);
     return state;
 }
 
 function receive_comments(old_state, action) {
     let state = JSON.parse(JSON.stringify(old_state));
-    console.log("RECEIVED COMMENTS:", action.comments);
     state.posts[action.postId].comments = action.comments;
     return state;
 }
@@ -109,11 +107,8 @@ function receive_comments(old_state, action) {
 
 function new_comment(old_state, action) {
     let state = JSON.parse(JSON.stringify(old_state));
-    console.log("RECEIVED NEW COMMENT: ", action.data);
-    // state.commentContent = "";
     state.posts[action.data.post].comments.push(action.data);
     state.commentContent[action.data.post] = "";
-    console.log("new_state: ", state);
     return state;
 }
 
@@ -125,7 +120,6 @@ function receive_user_image(old_state, action) {
 
 function change_comment_content(old_state, action) {
     let state = JSON.parse(JSON.stringify(old_state));
-    console.log("ACTION : ", action);
     state.commentContent[action.postId] = action.commentContent;
     return state;
 }
@@ -195,77 +189,9 @@ function reducer(old_state = {}, action) {
 
     map["HIDE MODAL"] = hide_modal;
     map["NEW POST CONTENT CHANGE"] = new_post_content_change;
-
-    // switch (action.type) {
-    //     case "REQUEST FEED":
-    //         state = request_feed(old_state, action);
-    //         break;
-    //     case "RECEIVE FEED":
-    //         state = receive_feed(old_state, action);
-    //         break;
-    //     case "USER IMAGE SELECT":
-    //         state = user_image_select(old_state, action);
-    //         break;
-    //     case "USER INFO CHANGE":
-    //         state = user_info_change(old_state, action);
-    //         break;
-    //     case "RECEIVE USER POSTS":
-    //         state = receive_user_posts(old_state, action);
-    //         break;
-    //     case "RECEIVE TOKEN":
-    //         state = receive_token(old_state, action);
-    //         break;
-    //     case "LOGIN ERROR":
-    //         state = login_error(old_state, action);
-    //         break;
-    //     case "RECEIVE NEW POST":
-    //         state = receive_new_post(old_state, action);
-    //         break;
-    //     case "RECEIVE SHARED POST":
-    //         state = receive_shared_post(old_state, action);
-    //         break;
-    //     case "SET FOLLOWED":
-    //         state = set_followed(old_state, action);
-    //         break;
-    //     case "RECEIVE SEARCH":
-    //         state = receive_search(old_state, action);
-    //         break;
-    //     case "RECEIVE FOLLOWING":
-    //         state = receive_following(old_state, action);
-    //         break;
-    //     case "RECEIVE COMMENTS":
-    //         state = receive_comments(old_state, action);
-    //         break;
-    //     case "NEW COMMENT":
-    //         state = new_comment(old_state, action);
-    //         break;
-    //     case "RECEIVE USER IMAGE":
-    //         state = receive_user_image(old_state, action);
-    //         break;
-    //     case "CHANGE COMMENT CONTENT":
-    //         state = change_comment_content(old_state, action);
-    //         break;
-    //     case "SHOW MODAL":
-    //         state = show_modal(old_state, action);
-    //         break;
-    //     case "HIDE MODAL":
-    //         state = hide_modal(old_state, action);
-    //         break;
-    //     default:
-    //         state.currentUser = {pic: "", info: ""};
-    //         state.newCommentOk = false;
-    //         state.userImages = {};
-    //         state.posts = {};
-    //         state.searchResults = [];
-    //         state.following = [];
-    //         state.userFollowed = {};
-    //         break;
-    // }
-    console.log("RECEIVED ACTION: ", action);
     if (map.hasOwnProperty(action.type)) {
         state = map[action.type](old_state, action);
     }
-    // console.log(state)
     return state;
 }
 

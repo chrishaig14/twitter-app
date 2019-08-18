@@ -10,7 +10,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     submit: (data) => {
-        console.log("DISPATCHING NEW COMMENT: ", data);
         dispatch(submitNewComment(data));
     },
     onInputChange: (postId, value) => {

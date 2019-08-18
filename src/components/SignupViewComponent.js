@@ -1,7 +1,6 @@
 import React from "react";
 
 class SignupViewComponent extends React.Component {
-    serverUrl = "http://localhost:8888";
 
     constructor(props) {
         super(props);
